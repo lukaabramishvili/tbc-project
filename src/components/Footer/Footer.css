@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+}
+
+footer{
+    background-color: silver;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footerContext h3{
+    text-transform: uppercase;
+    font: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.footerContext p{
+    padding: 0.5rem;
+}
+
+.footerContext .navList ul{
+    text-align: center;
+}
+
+.navList li{
+    text-align: center;
+    list-style-type: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.navList li:hover{
+    background-color: black;
+    color: white;
+}
+
+.footerContext img{
+    max-width: 2rem;
+}
+
+.footerContext li{
+    list-style-type: none;
+}
+
+.social-networks li{
+    text-align: center;
+    padding: 0.5rem;
+}

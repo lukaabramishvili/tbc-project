@@ -1,0 +1,23 @@
+.App{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+Header{
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.main{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+Footer{
+    flex-shrink: 0;
+    width: 100%;
+}
+
