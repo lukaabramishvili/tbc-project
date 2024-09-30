@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Shop from "./components/Shop/Shop";
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
+import Assigment3 from "./components/Assigment3/Assigment3"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+          <Route path="/assigment-3" element={<Assigment3 />} />
         </Routes>      
         </div>
         <Footer />
