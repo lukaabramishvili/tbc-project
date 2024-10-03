@@ -3,7 +3,7 @@ import "./Contact.css"
 
 export default function Contact() {
   return (
-    <div class="container">
+    <div class="contactContainer">
       <h1>Contact</h1>
       <form>
           <div class="form-group">

@@ -11,9 +11,10 @@ const ProductDetails = () => {
     imageURL: 'https://example.com/images/product-10002.jpg',
   };
 
-  const list = Object.entries(obj).reduce((acc, [key, value]) => {
+  const list = Object.entries(obj).reduce((acc, [key, value], index) => {
     acc.push(
       <tr key={key}>
+        <td>{index}</td>
         <td>{key}</td>
         <td>{value}</td>
       </tr>
@@ -26,6 +27,7 @@ const ProductDetails = () => {
       <table>
         <thead>
           <tr>
+            <th>Index</th>
             <th>Key</th>
             <th>Value</th>
           </tr>

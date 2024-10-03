@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Footer.css"
+import Navbar from '../Navbar/Navbar';
 
 export default function Footer() {
   return (
@@ -12,10 +13,7 @@ export default function Footer() {
       <div className="footerContext">
           <h3>navigation</h3>
           <ul className='navList'>
-              <li>home</li>
-              <li>shop</li>
-              <li>dealers</li>
-              <li>about us</li>
+              <Navbar/>
           </ul>
       </div>
       <div className="footerContext">

@@ -7,6 +7,8 @@ import Shop from "./components/Shop/Shop";
 import Contact from "./components/Contact/Contact";
 import About from "./components/About/About";
 import Assigment3 from "./components/Assigment3/Assigment3"
+import Profile from "./components/Profile/Profile"
+import Blog from './components/Blog/Blog';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/assigment-3" element={<Assigment3 />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>      
         </div>
         <Footer />
