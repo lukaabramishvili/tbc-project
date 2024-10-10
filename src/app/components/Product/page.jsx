@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Product.css"
+import "./index.css"
 
 export default function Product(props) {
     let stock;

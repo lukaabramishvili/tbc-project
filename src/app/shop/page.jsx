@@ -1,6 +1,6 @@
-import React from 'react'
-import Product from '../Product/Product'
-import "./Shop.css"
+import React from 'react';
+import Product from '../components/Product/page';
+import "./index.css";
 
 export default function Shop() {
   return (
