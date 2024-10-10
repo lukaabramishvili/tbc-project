@@ -1,22 +1,11 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Header from "./components/Header/Header";
-import Footer from './components/Footer/Footer';
-import Home from "./components/Home/Home";
-import Shop from "./components/Shop/Shop";
-import Contact from "./components/Contact/Contact";
-import About from "./components/About/About";
-import Assigment3 from "./components/Assigment3/Assigment3"
-import Profile from "./components/Profile/Profile"
-import Blog from './components/Blog/Blog';
+import Home from "./app/home/page" 
+
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <div className="main">
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/contact" element={<Contact />} />
@@ -24,10 +13,8 @@ function App() {
           <Route path="/assigment-3" element={<Assigment3 />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/blog" element={<Blog />} />
-        </Routes>      
-        </div>
-        <Footer />
-      </Router>
+        </Routes>       */}
+        <Home/>
     </div>
   );
 }
