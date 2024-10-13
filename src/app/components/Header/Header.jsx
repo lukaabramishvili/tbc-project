@@ -2,7 +2,7 @@ import React from 'react'
 import "./Header.css";
 import Navbar from '../Navbar/Navbar';
 import Link from 'next/link';
-
+import profilImage from "../../../../public/profile-icon.png"
 
 
 export default function Header() {
@@ -15,7 +15,7 @@ export default function Header() {
       
       <div className='profileIcon'>
         <Link href="/profile">
-          <img src="../public/profile-icon.png" alt="profile icon" />
+          <img src={profilImage.src} alt="profile icon" />
         </Link>          
       </div>
     </header>

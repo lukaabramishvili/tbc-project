@@ -1,6 +1,10 @@
 import React from 'react'
 import "./Footer.css"
 import Navbar from '../Navbar/Navbar';
+import facebookIcon from '../../../../public/facebook.png';
+import instagramIcon from '../../../../public/instagram.png'
+import twitterIcon from '../../../../public/twitter.png'
+
 
 export default function Footer() {
   return (
@@ -21,17 +25,17 @@ export default function Footer() {
           <ul className='social-networks'>
               <li>
                   <a href="#">
-                      <img src="../public/facebook.png" alt="facebook" />
+                      <img src={facebookIcon.src} alt="facebook" />
                   </a>
               </li>
               <li>
                   <a href="#">
-                      <img src="../public/instagram.png" alt="instagram" />
+                      <img src={instagramIcon.src} alt="instagram" />
                   </a>
               </li>
               <li>
                   <a href="#">
-                      <img src="../public/twitter.png" alt="twitter" />
+                      <img src={twitterIcon.src} alt="twitter" />
                   </a>
               </li>
           </ul>
