@@ -1,59 +1,41 @@
-import React from 'react';
-import Product from '../components/Product/page';
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import LoadingSpinner from '../components/LoadingSpinner/loadingSpinner';
+import Product from '../components/Product/page'; 
 import "./index.css";
 
 export default function Shop() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("https://dummyjson.com/products");
+      const data = await res.json();
+
+      setProducts(data.products);
+      setLoading(false);
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <div className='container'>
-        <Product
-          imgUrl = "public\Products\AsusROGStrix15.6_5_1024x1024.webp"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {true}
-        />
-        <Product
-          imgUrl = "public\Products\rp09ea-1.jpeg"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {true}
-        />
-        <Product
-          imgUrl = "public\Products\lll.jpg"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {false}
-        />
-        <Product
-          imgUrl = "public\Products\dv0022ur-1.jpg"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {false}
-        />
-        <Product
-          imgUrl = "public\Products\rp09ea-1.jpeg"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {true}
-        />
-        <Product
-          imgUrl = "public\Products\AsusROGStrix15.6_5_1024x1024.webp"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {true}
-        />
-        <Product
-          imgUrl = "public\Products\lll.jpg"
-          price = "1399"
-          lastPrice = "1499"
-          name = "Asus ROG Strix 15"
-          stock = {false}
-        />
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        products.map((item) => (
+          <Product
+            key={item.id}
+            imgUrl={item.images[0]}
+            price={item.price}
+            title={item.title} 
+            description={item.description} 
+          />
+        ))
+      )}
     </div>
-  )
+  );
 }

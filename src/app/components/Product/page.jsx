@@ -14,10 +14,10 @@ export default function Product(props) {
     }
 
   return (
-    <div className='productConteiner'>
+    <div className='productConteiner' key={props.key}>
         <div className={`stock ${stockColor}`}>{stock}</div>
         <div className="productImage">
-            <img src={props.imgUrl} alt="computer" />
+            <img src={props.imgUrl} alt='productImage' />
         </div>
         <div className="productDescription">
             <div className="profuctPrice">
