@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import LoadingSpinner from '../components/LoadingSpinner/loadingSpinner';
 import Product from '../components/Product/page'; 
 import "./index.css";
+import Link from 'next/link';
 
 export default function Shop() {
   const [products, setProducts] = useState([]);
@@ -24,16 +24,20 @@ export default function Shop() {
   return (
     <div className='container'>
       {loading ? (
-        <LoadingSpinner />
+        <div className='loading'>loading...</div>
       ) : (
         products.map((item) => (
+          <Link href={`/product/${item.id}`}>
           <Product
+            id={item.id}
             key={item.id}
             imgUrl={item.images[0]}
             price={item.price}
+            lastPrice = {Math.round(item.price + (item.price * 0.2))}
             title={item.title} 
             description={item.description} 
           />
+          </Link>
         ))
       )}
     </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./index.css"
+import Link from 'next/link';
 
 export default function Product(props) {
     let stock;
@@ -15,6 +16,7 @@ export default function Product(props) {
 
   return (
     <div className='productConteiner' key={props.key}>
+        <Link href={`/products/${props.id}`}>
         <div className={`stock ${stockColor}`}>{stock}</div>
         <div className="productImage">
             <img src={props.imgUrl} alt='productImage' />
@@ -33,6 +35,7 @@ export default function Product(props) {
                 </button>
             </div>
         </div>
+        </Link>
     </div>
   )
 }

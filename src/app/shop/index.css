@@ -10,3 +10,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
 }
+
+.loading{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
