@@ -1,9 +1,9 @@
 "use client";
 
+// import ProductCard from '../components/ProductCard/page'
 import { useEffect, useState } from "react";
 import "./index.css";
 import Link from "next/link";
-import ProductCard from '../components/ProductCard/page'
 import LoadingSpinner from "../components/LoadingSpinner/loadingSpinner";
 
 const ProductFetch = () => {
@@ -24,15 +24,29 @@ const ProductFetch = () => {
     fetchData();
   }, []);
 
+  const [search, setSearch] = useState('')  
+
   return (
     <div className="product-page container">
       <h1>Our Products</h1>
+
+      <div className="search-input">
+        <input 
+          onChange={(e) => setSearch(e.target.value)}
+          type="text" 
+          placeholder="Search" 
+        />
+      </div>
 
       {loading ? (
         <LoadingSpinner />
       ) : (
         <div className="product-grid">
-          {products.map((item) => (
+          {products.filter((item) => {
+            return search 
+            ? item.title.toLowerCase().includes(search.toLowerCase()) 
+            : true;
+          }).map((item) => (
             <div key={item.id} className="product-card">
               <Link href={`/products/${item.id}`}>
                 <img
