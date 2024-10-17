@@ -1,4 +1,4 @@
-import notFound from "../../notFound";
+import NotFoundPage from "../NotFoundPage"
 import "./index.css";
 import Like from "../../../../public/like.png";
 import Dislike from "../../../../public/dislike.png";
@@ -28,7 +28,7 @@ export default async function PostsDetails({ params }) {
   let post = await getPosts(params.id);
 
   if (!post) {
-    return <notFound />;
+    return <NotFoundPage />;
   }
 
   return (

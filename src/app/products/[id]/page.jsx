@@ -1,7 +1,6 @@
 import "../index.css";
 import ReturnButton from "../../components/ReturnButton/ReturnButton";
-// import notFound from "../../notFound";
-// import { Suspense } from "react";
+import NotFoundPage from "../NotFoundPage"
 // import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const getProduct = async (id) => {
@@ -29,7 +28,7 @@ export default async function ProductDetail({ params }) {
   let product = await getProduct(params.id);
 
   if (!product) {
-    // return <notFound />;
+    return <NotFoundPage />;
     return <div>123</div>
   }
 

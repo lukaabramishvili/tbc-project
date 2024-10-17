@@ -1,52 +1,40 @@
-"use client";
-
-// import ProductCard from '../components/ProductCard/page'
-import { useEffect, useState } from "react";
+import SearchBar from "../components/searchBar/searchBar";
+import SortComponent from "../components/sort/sortComponent";
 import "./index.css";
 import Link from "next/link";
-import LoadingSpinner from "../components/LoadingSpinner/loadingSpinner";
-
-const ProductFetch = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("https://dummyjson.com/products");
-      const data = await res.json();
-
-      setTimeout(() => {
-        setProducts(data.products);
-        setLoading(false);
-      }, 2000);
-    }
-
-    fetchData();
-  }, []);
-
-  const [search, setSearch] = useState('')  
-
-  return (
-    <div className="product-page container">
-      <h1>Our Products</h1>
-
-      <div className="search-input">
-        <input 
-          onChange={(e) => setSearch(e.target.value)}
-          type="text" 
-          placeholder="Search" 
-        />
-      </div>
-
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
+import NotFoundPage from "../NotFoundPage"
+ 
+async function ProductFetch({ searchParams }) {
+  const searchTerm = searchParams.search || "";
+  const sortOptions = searchParams.sortBy || "";
+  const [sortOption, sortOrder] = sortOptions.split("-");
+  
+ 
+  
+  let url = "https://dummyjson.com/products";
+  if (searchTerm) {
+    url = `https://dummyjson.com/products/search?q=${searchTerm}`;
+  }
+  if (sortOption) {
+    url = `https://dummyjson.com/products?sortBy=${sortOption}&order=${sortOrder}`;
+  }
+ 
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const products = data.products || [];
+ 
+    return (
+      <div className="product-page container">
+        <h1>Our Products</h1>
+        <div className="searchProduct">
+          <SearchBar searchType={"products"} />        
+        </div>
+        <div className="sortProducts">
+          <SortComponent />
+        </div>
         <div className="product-grid">
-          {products.filter((item) => {
-            return search 
-            ? item.title.toLowerCase().includes(search.toLowerCase()) 
-            : true;
-          }).map((item) => (
+          {products.map((item) => (
             <div key={item.id} className="product-card">
               <Link href={`/products/${item.id}`}>
                 <img
@@ -58,23 +46,17 @@ const ProductFetch = () => {
                   <h2>{item.title}</h2>
                   <p className="product-description">{item.description}</p>
                   <p className="product-price">${item.price}</p>
-                  <p className="product-last-price">${Math.round(item.price - item.price * 0.2)}</p>
                 </div>
               </Link>
             </div>
-            // <ProductCard
-            //   key = {item.id}
-            //   id = {item.id}
-            //   imgUrl = {item.images[0]}
-            //   price = {item.price}
-            //   lastPrice = {Math.round(item.price - item.price * 0.2)} 
-            //   name = {item.name}
-            // />
           ))}
         </div>
-      )}
-    </div>
-  );
-};
-
+      </div>
+    );
+  } catch (error) {
+    console.log("Error fetching data: ", error);
+    return <NotFoundPage />;
+  }
+}
+ 
 export default ProductFetch;

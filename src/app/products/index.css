@@ -1,6 +1,20 @@
 .product-page{
     padding: 20px 0px;
-  }
+}
+
+.searchProduct{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sortProducts{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
 .search-input{
   width: 100%;

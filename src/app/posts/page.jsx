@@ -1,38 +1,32 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import "./index.css";
 import Like from "../../../public/like.png";
 import Dislike from "../../../public/dislike.png";
 import Link from "next/link";
+import SearchBar from "../components/searchBar/searchBar";
+import NotFoundPage from "../NotFoundPage"
 
-const PostsFetch = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+async function PostsFetch({searchParams}){
 
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("https://dummyjson.com/posts");
-      const data = await res.json();
+  const searchTerm = searchParams.search || "";
 
-      setTimeout(() => {
-        setPosts(data.posts);
-        setLoading(false); 
-      }, 2000);
+  try {
+    let url = "https://dummyjson.com/posts";
+    if(searchTerm){
+        url = `https://dummyjson.com/posts/search?q=${searchTerm}`;
     }
+    
+    const response = await fetch(url);
+    const data = await response.json();
+    const posts = data.posts || [];
 
-    fetchData();
-  }, []);
+  
 
   return (
     <div className="postContainer">
       <h1 className="postTitle">Posts</h1>
-
-      {loading ? (
-        <div className="spinner-container">
-          <div className="spinner"></div>
-        </div>
-      ) : (
+      <div className="searchPosts">
+        <SearchBar searchType={"posts"}/>
+      </div>
         <div className="posts">
           {posts.map((post) => (
               <Link key={post.id} className="postLink" href={`/posts/${post.id}`}>
@@ -60,9 +54,14 @@ const PostsFetch = () => {
                 </Link>
           ))}
         </div>
-      )}
+    
     </div>
-  );
+  ); }
+  catch (error) {
+  console.log("Error fetching data: ", error);
+  return <NotFoundPage />;
+}
+
 };
 
 export default PostsFetch;
