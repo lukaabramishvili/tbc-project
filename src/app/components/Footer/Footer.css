@@ -6,7 +6,7 @@
 
 footer{
     background-color: silver;
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
     justify-content: space-around;
 }
@@ -24,6 +24,7 @@ footer{
 
 .footerContext .navList ul{
     text-align: center;
+    display: flex;
 }
 
 .navList li{
@@ -44,6 +45,10 @@ footer{
 
 .footerContext li{
     list-style-type: none;
+}
+
+.social-networks{
+    display: flex;
 }
 
 .social-networks li{
