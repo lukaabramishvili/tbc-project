@@ -1,8 +1,8 @@
-import SearchBar from "../components/searchBar/searchBar";
-import SortComponent from "../components/sort/sortComponent";
+import SearchBar from "../../components/searchBar/searchBar";
+import SortComponent from "../../components/sort/sortComponent";
 import "./index.css";
 import Link from "next/link";
-import NotFoundPage from "../NotFoundPage"
+import NotFoundPage from "../../NotFoundPage"
  
 async function ProductFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";

@@ -1,21 +1,43 @@
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
+'use client';
 
-import "./layout/index.css"
-
-export const metadata = {
-    title: 'TBC',
-    description: 'My App is a...',
-}
+import './global.css';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import { usePathname } from 'next/navigation';
+import { UserDataProvider } from './providers/UserDataProvider';
 
 export default function RootLayout({ children }) {
-return (
+  const pathname = usePathname();
+  const isLoginPage = pathname === '/Login';
+
+  return (
     <html lang="en">
-    <body>
-        <Header/>
-        <div id="root">{children}</div>
-        <Footer/>
-    </body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body>
+        <UserDataProvider>
+          <div id="root">
+            <div className="application">
+              {!isLoginPage && <Header />}
+              <div className="main-children">
+              {children}
+
+              </div>
+              {!isLoginPage && <Footer />}
+            </div>
+          </div>
+        </UserDataProvider>
+      </body>
     </html>
-)
+  );
 }

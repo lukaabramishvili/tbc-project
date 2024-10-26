@@ -3,6 +3,7 @@ import "./Header.css";
 import Navbar from '../Navbar/Navbar';
 import Link from 'next/link';
 import profilImage from "../../../../public/profile-icon.png"
+import HeaderLoggedIn from '../Header/HeaderLoggedIn';
 
 
 export default function Header() {
@@ -12,7 +13,7 @@ export default function Header() {
         <Link href="/"><h1>tbc</h1></Link>
       </div>
       <Navbar/>
-      
+      <HeaderLoggedIn/>
       <div className='profileIcon'>
         <Link href="/profile">
           <img src={profilImage.src} alt="profile icon" />

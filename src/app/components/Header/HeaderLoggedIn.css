@@ -1,0 +1,8 @@
+.header-loggedIn{
+    border-left: 1px solid white;
+    padding: 0.8rem;
+}
+
+.header-hello{
+    color: white;
+}

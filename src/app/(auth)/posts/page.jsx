@@ -1,9 +1,9 @@
 import "./index.css";
-import Like from "../../../public/like.png";
-import Dislike from "../../../public/dislike.png";
+import Like from "../../../../public/like.png";
+import Dislike from "../../../../public/dislike.png";
 import Link from "next/link";
-import SearchBar from "../components/searchBar/searchBar";
-import NotFoundPage from "../NotFoundPage"
+import SearchBar from "../../components/searchBar/searchBar";
+import NotFoundPage from "../../NotFoundPage"
 
 async function PostsFetch({searchParams}){
 

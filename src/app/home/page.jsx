@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './index.css';
+import { authUser } from '../services/authService';
 
 const slides = [
   'Slide 1 Content',
@@ -16,7 +17,7 @@ export default function Home() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  };  
 
   return (
     <main className='homeContainer'>
