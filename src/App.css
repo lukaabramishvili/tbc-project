@@ -1,6 +1,6 @@
 .App{
     margin: 0;
-    height: 100vh;
+    height: calc(100vh - 12.875rem);
     display: flex;
     align-items: flex-start;
     flex-direction: column;
