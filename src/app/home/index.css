@@ -10,11 +10,15 @@
 
 .homeSlider {
   position: relative;
-  width: 30rem;
-  min-height: 20rem;
+  width: 100%;
+  max-height: calc(100vh - 12.875rem);
   margin: 1rem 0;
   overflow: hidden;
   background: #ccc;
+}
+
+.homeSlide img{
+  height: 28rem;
 }
 
 .homeSlide {

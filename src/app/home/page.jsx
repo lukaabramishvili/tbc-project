@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import './index.css';
 import { authUser } from '../services/authService';
+import chrysler from '../../../public/car-photo.webp';
+import infiniti from '../../../public/infiniti-q60.jpg'
+import bmw from '../../../public/BMW-6.jpg'
 
 const slides = [
-  'Slide 1 Content',
-  'Slide 2 Content',
-  'Slide 3 Content'
+  <img src={chrysler.src} alt="profile icon" />,
+  <img src={infiniti.src} alt="profile icon" />,
+  <img src={bmw.src} alt="profile icon" />,
 ];
 
 export default function Home() {
@@ -18,6 +21,10 @@ export default function Home() {
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };  
+
+  setTimeout(() => {
+    nextSlide()
+  }, 5000);
 
   return (
     <main className='homeContainer'>
