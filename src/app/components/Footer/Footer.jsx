@@ -12,7 +12,6 @@ export default function Footer() {
       <div className="footerContext">
           <h3>contact us</h3>
           <p>Email: info@gmail.com</p>
-          <p>Phone: +995 555-11-11-11</p>
       </div>
       <div className="footerContext">
           <h3>navigation</h3>

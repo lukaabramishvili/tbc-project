@@ -1,6 +1,6 @@
 import "../index.css";
-import ReturnButton from "../../components/ReturnButton/ReturnButton";
-import NotFoundPage from "../NotFoundPage"
+import ReturnButton from "../../../components/ReturnButton/returnButton";
+import NotFoundPage from "../../../NotFoundPage"
 // import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const getProduct = async (id) => {
