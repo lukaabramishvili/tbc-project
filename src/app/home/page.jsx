@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './index.css';
-import { authUser } from '../services/authService';
-import chrysler from '../../../public/car-photo.webp';
-import infiniti from '../../../public/infiniti-q60.jpg'
-import bmw from '../../../public/BMW-6.jpg'
+import chrysler  from '../../../public/car-photo.webp';
+import infiniti  from '../../../public/infiniti-q60.jpg';
+import bmw  from '../../../public/BMW-6.jpg';
 
 const slides = [
-  <img src={chrysler.src} alt="profile icon" />,
-  <img src={infiniti.src} alt="profile icon" />,
-  <img src={bmw.src} alt="profile icon" />,
+  <img src={chrysler.src} alt="Chrysler car" />,
+  <img src={infiniti.src} alt="Infiniti Q60" />,
+  <img src={bmw.src} alt="BMW 6" />,
 ];
 
 export default function Home() {
@@ -20,11 +19,13 @@ export default function Home() {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };  
+  };
 
-  setTimeout(() => {
-    nextSlide()
-  }, 5000);
+  useEffect(() => {
+    const intervalId = setInterval(nextSlide, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <main className='homeContainer'>

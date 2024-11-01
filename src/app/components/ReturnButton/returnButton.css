@@ -1,0 +1,16 @@
+.return-button{
+    padding: 1rem 0.8rem;
+    margin-top: 1.5rem;
+  
+    border: none;
+    border-radius: 0.5rem;
+  
+    font-weight: bold;
+    cursor: pointer;
+    background-color: white;
+}
+
+.return-button:hover {
+    background-color: rgb(87, 87, 87);
+    color: white;
+}

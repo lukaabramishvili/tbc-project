@@ -4,6 +4,9 @@ import "./Login.css";
 import { authUser, getCookie } from "../../services/authService";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Username from '../../../../public/user.png';
+import Password from '../../../../public/password.png';
+
 
 export default function login() {
   const router = useRouter();
@@ -33,7 +36,7 @@ export default function login() {
             <h1>Please Authenticate To Access Resources.</h1>
               <div className="username">
                 <label htmlFor="username">
-                  <img src='user.png'/>
+                  <img src={Username.src}/>
                   Username:
                 </label>
                 <input
@@ -41,13 +44,14 @@ export default function login() {
                   id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  autoFocus
                   required
                 />
               </div>
               <div className="password">
                 <label htmlFor="password">
-                <img src='password.png'/>
-                Password:
+                  <img src={Password.src}/>
+                  Password:
                 </label>
                 <input
                   type="password"

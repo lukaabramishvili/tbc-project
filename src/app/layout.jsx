@@ -30,8 +30,7 @@ export default function RootLayout({ children }) {
             <div className="application">
               {!isLoginPage && <Header />}
               <div className="main-children">
-              {children}
-
+                {children}
               </div>
               {!isLoginPage && <Footer />}
             </div>

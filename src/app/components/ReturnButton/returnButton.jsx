@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation";
+import './returnButton.css'
 
 const ReturnButton = () => {
   const router = useRouter();
@@ -12,9 +13,9 @@ const ReturnButton = () => {
   return (
     <button
       onClick={handleBack}
-      style={{ padding: "10px 20px", cursor: "pointer" }}
+      className="return-button"
     >
-      Return Back
+      Return
     </button>
   );
 };
