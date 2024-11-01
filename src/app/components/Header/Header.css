@@ -44,8 +44,7 @@ header nav ul{
 header nav ul li{
     text-transform: uppercase;
     cursor: pointer;
-    height: 3rem;
-    width: 6rem;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -36,9 +36,22 @@
 }
 
 .homeContainer .prev {
+  padding: 2rem;
   left: 2rem;
 }
 
+.homeContainer .prev:hover{
+  background-color: black;
+  color: white;
+}
+
 .homeContainer .next {
+  padding: 2rem;
   right: 2rem;
 }
+
+.homeContainer .next:hover{
+  background-color: black;
+  color: white;
+}
+
