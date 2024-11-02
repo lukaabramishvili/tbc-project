@@ -8,10 +8,10 @@ import twitterIcon from '../../../../public/twitter.png'
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className='bg-silver pt-4 flex justify-around'> 
       <div className="footerContext">
-          <h3>contact us</h3>
-          <p>Email: info@gmail.com</p>
+          <h3 className='uppercase text-2xl mb-4 text-center'>contact us</h3>
+          <p className='p-2'>Email: info@gmail.com</p>
       </div>
       <div className="footerContext">
           <h3>navigation</h3>
