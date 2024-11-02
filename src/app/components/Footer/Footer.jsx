@@ -14,13 +14,13 @@ export default function Footer() {
           <p className='p-2'>Email: info@gmail.com</p>
       </div>
       <div className="footerContext">
-          <h3>navigation</h3>
+          <h3 className='uppercase text-2xl mb-4 text-center'>navigation</h3>
           <ul className='navList'>
               <Navbar/>
           </ul>
       </div>
       <div className="footerContext">
-          <h3>follow us</h3>
+          <h3 className='uppercase text-2xl mb-4 text-center'>follow us</h3>
           <ul className='social-networks'>
               <li>
                   <a href="#">
