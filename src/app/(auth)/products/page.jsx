@@ -3,6 +3,9 @@ import SortComponent from "../../components/sort/sortComponent";
 import "./index.css";
 import Link from "next/link";
 import NotFoundPage from "../../NotFoundPage"
+import EditButton from "../../components/EditButton/editButton";
+import DeleteButton from "../../components/DeleteButton/deleteButton";
+
  
 async function ProductFetch({ searchParams }) {
   const searchTerm = searchParams.search || "";
@@ -23,7 +26,7 @@ async function ProductFetch({ searchParams }) {
     const response = await fetch(url);
     const data = await response.json();
     const products = data.products || [];
- 
+
     return (
       <div className="product-page container">
         <h1>Our Products</h1>
@@ -36,6 +39,10 @@ async function ProductFetch({ searchParams }) {
         <div className="product-grid">
           {products.map((item) => (
             <div key={item.id} className="product-card">
+              <div className="delete edit">
+                <EditButton />
+                <DeleteButton productId={item.id} />
+              </div>
               <Link href={`/products/${item.id}`}>
                 <img
                   src={item.images[0]}

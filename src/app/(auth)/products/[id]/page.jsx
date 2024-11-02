@@ -1,9 +1,10 @@
 import "../index.css";
 import ReturnButton from "../../../components/ReturnButton/returnButton";
 import NotFoundPage from "../../../NotFoundPage"
+import EditButton from "../../../components/EditButton/editButton";
 // import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
-const getProduct = async (id) => {
+export const getProduct = async (id) => {
   let res = await fetch(`https://dummyjson.com/products/${id}`);
   if (!res.ok) {
     return null;

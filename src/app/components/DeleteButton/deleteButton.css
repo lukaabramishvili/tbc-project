@@ -1,4 +1,4 @@
-.return-button{
+.delete-button{
     padding: 1rem 0.8rem;
     margin-top: 1.5rem;
   
@@ -7,17 +7,11 @@
   
     font-weight: bold;
     cursor: pointer;
+    color: red;
     background-color: white;
 }
 
-.return-button:hover {
-    background-color: rgb(87, 87, 87);
+.delete-button:hover {
+    background-color: red;
     color: white;
-}
-
-.return-back{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }

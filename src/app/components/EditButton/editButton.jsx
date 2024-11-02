@@ -6,9 +6,14 @@ import './editButton.css'
 const EditButton = () => {
   const router = useRouter()
 
+  const handleClick = () => {
+    
+  }
+
   return (
     <button
       className="edit-button"
+      onClick={handleClick}
     >
       Edit
     </button>
