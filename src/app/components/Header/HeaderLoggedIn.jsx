@@ -1,8 +1,4 @@
-'use client';
 
-import { useEffect, useState } from "react";
-import { getCurrentAuthUser } from "../../services/authService";
-import "./HeaderLoggedIn.css"
 import { useUserDataContext } from '../../providers/UserDataProvider';
 
 export default function HeaderLoggedIn() {
@@ -18,10 +14,13 @@ export default function HeaderLoggedIn() {
   }
 
   return (
-    <div className="header-loggedIn">
-      <span className="header-hello">{`Hello ${userData.firstName}!`} </span>
-      <span className="header-logout">
-        <button className="btn-logout" onClick={handleLogout}>
+    <div className=" p-3">
+      <span className="text-white">{`Hello ${userData.firstName}!`}</span>
+      <span className="block mt-2">
+        <button 
+          className="w-full py-1 bg-green-600 border-none rounded text-white text-lg cursor-pointer hover:bg-green-500"
+          onClick={handleLogout}
+        >
           Log Out
         </button>
       </span>

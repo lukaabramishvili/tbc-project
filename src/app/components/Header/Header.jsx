@@ -8,16 +8,14 @@ import HeaderLoggedIn from '../Header/HeaderLoggedIn';
 
 export default function Header() {
   return (
-    <header className='header'>
-      <div className="car-logo">
-        <Link href="/"><h1>tbc</h1></Link>
-      </div>
+    <header className='bg-silver max-w-full h-24 flex items-center justify-around'>
+      <Link href="/"><h1 className='text-5xl uppercase cursor-pointer'>tbc</h1></Link>
       <Navbar/>
-      <HeaderLoggedIn/>
-      <div className='profileIcon'>
+      <div className='profileIcon flex'>
         <Link href="/profile">
-          <img src={profilImage.src} alt="profile icon" />
+          <img className='max-h-20 cursor-pointer' src={profilImage.src} alt="profile icon" />
         </Link>          
+        <HeaderLoggedIn/>
       </div>
     </header>
   )

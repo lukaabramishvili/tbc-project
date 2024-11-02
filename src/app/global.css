@@ -75,3 +75,16 @@
     font-family: 'Roboto', sans-serif;
   }
   
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+Link{
+  text-decoration: none;
+}
