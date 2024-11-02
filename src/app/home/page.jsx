@@ -28,16 +28,16 @@ export default function Home() {
   }, []);
 
   return (
-    <main className='homeContainer'>
-      <h2>Welcome to Our Website!</h2>
-      <div className='homeSlider'>
-        <div className='homeSlide'>
+    <main className='flex flex-col items-center justify-center w-full bg-gray-200 text-center '>
+      <h2 className='text-3xl'>Welcome to Our Website!</h2>
+      <div className='relative w-full max-h-[calc(100vh-12.875rem)] my-4 overflow-hidden bg-gray-300'>
+        <div className='homeSlide min-w-full transition-opacity duration-500 ease-in-out'>
           {slides[currentSlide]}
         </div>
-        <button className='prev' onClick={prevSlide}>
+        <button className='absolute top-[40%] left-8 p-8 bg-white bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-black hover:text-white' onClick={prevSlide}>
           &#10094;
         </button>
-        <button className='next' onClick={nextSlide}>
+        <button className='absolute top-[40%] right-8 p-8 bg-white bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-black hover:text-white' onClick={nextSlide}>
           &#10095;
         </button>
       </div>
