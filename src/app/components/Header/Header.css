@@ -16,3 +16,8 @@ header nav ul li{
     align-items: center;
     justify-content: center;
 }
+
+header nav ul li:hover{
+    background-color: black;
+    color: white;
+}
