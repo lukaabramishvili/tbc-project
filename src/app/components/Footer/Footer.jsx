@@ -21,7 +21,7 @@ export default function Footer() {
       </div>
       <div className="footerContext dark:text-white">
           <h3 className='uppercase text-2xl mb-4 text-center'>follow us</h3>
-          <ul className='social-networks flex gap-6 pb-2'>
+          <ul className='social-networks flex gap-6'>
               <li className='dark:bg-white w-6 h-6 flex items-center justify-center'>
                   <a href="#">
                       <img src={facebookIcon.src} alt="facebook" />
