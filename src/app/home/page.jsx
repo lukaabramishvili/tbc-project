@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main className='flex flex-col items-center justify-center w-full bg-gray-200 dark:bg-gray-700 text-center '>
-      <h2 className='text-3xl'>Welcome to Our Website!</h2>
+      <h2 className='text-3xl text-white'>Welcome to Our Website! <a href="/api/auth/login">Login</a></h2>
       <div className='relative w-full max-h-[calc(100vh-12.875rem)] my-4 overflow-hidden bg-gray-300 dark:bg-gray-800'>
         <div className='homeSlide min-w-full transition-opacity duration-500 ease-in-out'>
           {slides[currentSlide]}

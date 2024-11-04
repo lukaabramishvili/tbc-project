@@ -31,46 +31,47 @@ export default function login() {
     <main>
       <div className="login">
         {!isAuthenticated ? (
-          <>
-            <form className="login-form" onSubmit={sendAuthentication}>
-            <h1>Please Authenticate To Access Resources.</h1>
-              <div className="username">
-                <label htmlFor="username">
-                  <img src={Username.src}/>
-                  Username:
-                </label>
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  autoFocus
-                  required
-                />
-              </div>
-              <div className="password">
-                <label htmlFor="password">
-                  <img src={Password.src}/>
-                  Password:
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <button type="submit" className="btn-login">
-                Login
-              </button>
-              {!isCredsCorrect && (
-                <p className="login-incorrect">
-                  Username Or Passowrd Is Incorrect!
-                </p>
-              )}
-            </form>
-          </>
+          // <>
+          //   <form className="login-form" onSubmit={sendAuthentication}>
+          //   <h1>Please Authenticate To Access Resources.</h1>
+          //     <div className="username">
+          //       <label htmlFor="username">
+          //         <img src={Username.src}/>
+          //         Username:
+          //       </label>
+          //       <input
+          //         type="text"
+          //         id="username"
+          //         value={username}
+          //         onChange={(e) => setUsername(e.target.value)}
+          //         autoFocus
+          //         required
+          //       />
+          //     </div>
+          //     <div className="password">
+          //       <label htmlFor="password">
+          //         <img src={Password.src}/>
+          //         Password:
+          //       </label>
+          //       <input
+          //         type="password"
+          //         id="password"
+          //         value={password}
+          //         onChange={(e) => setPassword(e.target.value)}
+          //         required
+          //       />
+          //     </div>
+          //     <button type="submit" className="btn-login">
+          //       Login
+          //     </button>
+          //     {!isCredsCorrect && (
+          //       <p className="login-incorrect">
+          //         Username Or Passowrd Is Incorrect!
+          //       </p>
+          //     )}
+          //   </form>
+          // </>
+          <a href="/api/auth/login">Login</a>
         ) : (
           <h1 className="login-authenticated">
             You Are Already Authenticated.
