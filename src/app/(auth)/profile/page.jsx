@@ -37,14 +37,12 @@ const Profile = () => {
       <div className="prof-header-cont">
         <div className="profile-header">
           {user.image && (
-            // <Image
-            //   src={user.image}
-            //   alt="User Profile Avatar"
-            //   width={72}
-            //   height={72}
-            //   className="profile-avatar"
-            // />
-          <p>1</p>
+            <img 
+              src={user.image} 
+              alt="User Profile Avatar"
+              width={72}
+              height={72}
+            />
           )}
           <div className="header-text">
             <p className="F-name">{user.firstName}</p>

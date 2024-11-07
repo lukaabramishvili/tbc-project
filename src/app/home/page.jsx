@@ -33,18 +33,18 @@ export default function Home() {
 
   return (
     <main className='flex flex-col items-center justify-center w-full bg-gray-200 dark:bg-gray-700 text-center '>
-      <h2 className='text-3xl text-white'>Welcome to Our Website! <a href="/api/auth/login">Login</a></h2>
+      <h2 className='text-3xl dark:text-white'>Welcome to Our Website! <a href="/api/auth/login">Login</a></h2>
       <div className='relative w-full max-h-[calc(100vh-12.875rem)] my-4 overflow-hidden bg-gray-300 dark:bg-gray-800'>
         <div className='homeSlide min-w-full transition-opacity duration-500 ease-in-out'>
           {slides[currentSlide]}
         </div>
-        <button className='absolute top-[40%] left-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-black dark:hover:bg-gray-700 hover:text-white dark:hover:text-white' onClick={prevSlide}>
-          <img className="w-10 " src={leftWhiteArrow.src} alt="dark" />
+        <button className='absolute top-[40%] left-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-gray-600 dark:hover:bg-gray-700 hover:text-white dark:hover:text-white' onClick={prevSlide}>
+          <img className="w-10 hidden dark:block" src={leftWhiteArrow.src} alt="dark" />
           <img className="w-10 dark:hidden" src={leftblackArrow.src} alt="light" />
         </button>
-        <button className='absolute top-[40%] right-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-black dark:hover:bg-gray-700 hover:text-white dark:hover:text-white' onClick={nextSlide}>
-          <img className="w-10 " src={rightWhiteArrow.src} alt="dark" />
+        <button className='absolute top-[40%] right-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-gray-600 dark:hover:bg-gray-700 hover:text-white dark:hover:text-white' onClick={nextSlide}>
           <img className="w-10 dark:hidden" src={rightblackArrow.src} alt="light" />
+          <img className="w-10 hidden dark:block" src={rightWhiteArrow.src} alt="dark" />
         </button>
       </div>
     </main>
