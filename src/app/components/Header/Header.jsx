@@ -5,6 +5,7 @@ import Link from 'next/link';
 import profilImage from "../../../../public/profile-icon.png";
 import HeaderLoggedIn from '../Header/HeaderLoggedIn';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import LanguageToggle from '../LanguageToggle/LanguageToggle';
 
 export default function Header() {
   return (
@@ -19,6 +20,7 @@ export default function Header() {
         </Link>
         <HeaderLoggedIn/>
         <ThemeToggle/>
+        <LanguageToggle/>
       </div>
     </header>
   );
