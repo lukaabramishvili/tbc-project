@@ -5,6 +5,8 @@ import { getCurrentAuthUser } from '../../services/authService';
 import './index.css';
 import Link from 'next/link';
 import HeaderLoggedIn from '../../components/Header/HeaderLoggedIn';
+import Loading from '../../../../public/loading.png'
+import Image from 'next/image';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -22,8 +24,16 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <main id="prof">
-        <div className="loader"></div>
+      <main id="prof" className='flex gap-7'>
+        <div className="loader">
+          <Image
+            src={Loading.src}
+            width={100}
+            height={100}
+            className='w-16 h-16'
+          />
+        </div>
+        <h1 className='text-2xl'>Loading...</h1>
       </main>
     );
   }
