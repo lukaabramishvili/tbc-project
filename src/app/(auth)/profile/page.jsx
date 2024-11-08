@@ -24,8 +24,8 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <main id="prof" className='flex gap-7'>
-        <div className="loader">
+      <main id="prof" className='flex items-center justify-center gap-y-7 my-40'>
+        <div className="border-4 border-gray-800 border-t-[#BAB9B9] rounded-full  animate-spin flex justify-center items-center">
           <Image
             src={Loading.src}
             width={100}
@@ -33,7 +33,7 @@ const Profile = () => {
             className='w-16 h-16'
           />
         </div>
-        <h1 className='text-2xl'>Loading...</h1>
+        <h1 className='text-2xl text-gray-700'>Loading...</h1>
       </main>
     );
   }
@@ -43,9 +43,9 @@ const Profile = () => {
   }
 
   return (
-    <main id="profile-page">
-      <div className="prof-header-cont">
-        <div className="profile-header">
+    <main id="profile-page" className='p-12'>
+      <div className="prof-header-cont flex items-center justify-center mb-12">
+        <div className="profile-header flex items-center justify-center gap-3 bg-profileSecondaryColor w-fit px-6 rounded-lg shadow-custom shadow-profileAccent">
           {user.image && (
             <img 
               src={user.image} 
@@ -54,14 +54,14 @@ const Profile = () => {
               height={72}
             />
           )}
-          <div className="header-text">
-            <p className="F-name">{user.firstName}</p>
-            <p className="L-name">{user.lastName}</p>
+          <div className="header-text flex items-center flex-col text-profileAccent">
+            <p className="F-name text-4xl">{user.firstName}</p>
+            <p className="L-name text-2xl">{user.lastName}</p>
           </div>
         </div>
       </div>
-      <div className="grid-cont">
-        <div className="personal-info grid-item">
+      <div className="grid-cont grid grid-cols-2 gap-6 justify-items-center mb-12">
+        <div className="grid-item">
           <h6>{user.username}</h6>
           <p className="age">
             <span>Age:</span> {user.age}{' '}
@@ -82,29 +82,29 @@ const Profile = () => {
         </div>
         <div className="contacts  grid-item">
           <h6>Contact info</h6>
-          <p className="mail">
+          <p className="mail flex gap-1">
             <span>mail:</span>
             <Link href={`mailto:${user.email}`}>{user.email}</Link>
           </p>
-          <p className="phone">
+          <p className="phone flex gap-1">
             <span>phone:</span>
             <Link href={`tel:${user.phone}`}>{user.phone}</Link>
           </p>
         </div>
-        <div className="payment-info">
-          <h6 className="payment-title">Payment Information</h6>
-          <div className="payment-types">
-            <div className="cards">
-              <h5>Banking Cards</h5>
+        <div className="payment-info flex flex-col bg-profileSecondaryColor p-6 rounded-lg gap-4 mt-6 shadow-custom shadow-profileAccent">
+          <h6 className="payment-title text-2xl border-b-2 border-profileAccent pb-2 text-profileAccent">Payment Information</h6>
+          <div className="payment-types flex items-center justify-center gap-5">
+            <div className="cards p-5 rounded-lg bg-profileAccent w-full text-profileSecondaryColor">
+              <h5 className='text-profileSecondaryColor text-[18px] border-b border-profileSecondaryColor pb-2 mb-3'>Banking Cards</h5>
               <p>
-                <span>{user.bank.cardType}:</span>{' '}
+                <span className='text-white'>{user.bank.cardType}:</span>{' '}
                 {' ' + '**** ****' + ' ' + user.bank.cardNumber.slice(-4)}
               </p>
             </div>
-            <div className="wallets">
-              <h5>Crypto Wallets</h5>
+            <div className="wallets p-5 rounded-lg bg-profileAccent w-full text-profileSecondaryColor">
+              <h5 className='text-profileSecondaryColor text-[18px] border-b border-profileSecondaryColor pb-2 mb-3'>Crypto Wallets</h5>
               <p>
-                <span>{user.crypto.coin}:</span>{' '}
+                <span className='text-white'>{user.crypto.coin}:</span>{' '}
                 {user.crypto.wallet.slice(0, 4) +
                   ' ' +
                   '**** ****' +
