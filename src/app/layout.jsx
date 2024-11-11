@@ -5,7 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import { usePathname } from 'next/navigation';
 import { UserDataProvider } from './providers/UserDataProvider';
-
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
           rel="stylesheet"
         />
       </head>
+      <UserProvider>
         <body>
           <UserDataProvider>
             <div id="root">
@@ -38,6 +39,7 @@ export default function RootLayout({ children }) {
             </div>
           </UserDataProvider>
         </body>
+      </UserProvider>
     </html>
   );
 }
