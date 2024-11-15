@@ -1,3 +1,15 @@
+import { getSession } from "@auth0/nextjs-auth0";
+  
+export async function checkisIsAuthenticated() {
+  try {
+    const session = await getSession();
+    return !!session?.user; 
+  } catch (error) {
+    console.error('Error checking authentication:', error);
+    return false; 
+  }
+}
+
 // export async function authUser(username, password) {
 //     const response = await fetch('https://dummyjson.com/auth/login', {
 //       method: 'POST',
@@ -45,20 +57,6 @@
 //     const data = await response.json();
 //     return data;
 //   }
-import { getSession } from "@auth0/nextjs-auth0";
-  
-export async function checkisIsAuthenticated() {
-  try {
-    const session = await getSession();
-    return !!session?.user; // Returns true if user exists, false otherwise
-  } catch (error) {
-    console.error('Error checking authentication:', error);
-    return false; // Fallback to false in case of an error
-  }
-}
-
-
-
 
 // export async function checkisIsAuthenticated() {
 //   // const check = getCookie('token');

@@ -80,8 +80,9 @@
 //   );
 // }
 
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import User from "../../user/page";
 
 export default function login() {
-  return <User/>
+  return <UserProvider><User/></UserProvider>
 } 
