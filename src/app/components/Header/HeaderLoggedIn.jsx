@@ -1,19 +1,18 @@
-import { useUserDataContext } from '../../providers/UserDataProvider';
+import { useUserDataContext } from '../../providers/_app';
 
-export default async function HeaderLoggedIn() {
-  const userData = useUserDataContext();
+export default function HeaderLoggedIn() {
+  const userData = useUserDataContext(); 
 
-
-  if (!user) {
-    return null;
+  if (!userData) {
+    return null; 
   }
 
   return (
-    <div className=" p-3">
-      <span className="text-white">{`Hello ${user.email}!`}</span>
+    <div className="p-3">
+      <span className="text-white">{`Hello ${userData.email}!`}</span>
       <span className="block mt-2">
-      <a href="/api/auth/logout">Logout</a>
-          Log Out
+        <a href="/api/auth/logout">Logout</a> 
+        Log Out
       </span>
     </div>
   );
