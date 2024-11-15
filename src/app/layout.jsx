@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import './global.css';
 
 export default function Layout({ children }) {
   const pathname = usePathname();
