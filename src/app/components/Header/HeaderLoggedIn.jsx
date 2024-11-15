@@ -4,13 +4,9 @@ export default async function HeaderLoggedIn() {
   const userData = useUserDataContext();
 
 
-  if (!userData) {
+  if (!user) {
     return null;
   }
-
-  const session = await getSession();
-  const user = session?.user;
-
 
   return (
     <div className=" p-3">
