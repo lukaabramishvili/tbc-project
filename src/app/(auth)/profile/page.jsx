@@ -1,73 +1,73 @@
 //                                                                პირველი  ვარიანტი 11111111111111111111111111111111111111
 
-'use client';
+// 'use client';
 
-import React, { useEffect, useState } from 'react';
-import './index.css';
-import Link from 'next/link';
-import HeaderLoggedIn from '../../components/Header/HeaderLoggedIn';
-import Loading from '../../../../public/loading.png';
-import Image from 'next/image';
-import { getSession } from 'next-auth/react';
+// import React, { useEffect, useState } from 'react';
+// import './index.css';
+// import Link from 'next/link';
+// import HeaderLoggedIn from '../../components/Header/HeaderLoggedIn';
+// import Loading from '../../../../public/loading.png';
+// import Image from 'next/image';
+// import { getSession } from '@auth0/nextjs-auth0';
 
-const Profile = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+// const Profile = () => {
+//   const [user, setUser] = useState(null);
+//   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const session = await getSession();
-        console.log('Session:', session);
+//   useEffect(() => {
+//     const fetchUserData = async () => {
+//       try {
+//         const session = await getSession();
+//         console.log('Session:', session);
 
-        if (session && session.user) {
-          setUser(session.user);
-        } else {
-          console.warn('No user data found in session.');
-        }
-      } catch (error) {
-        console.error('Error fetching session:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+//         if (session && session.user) {
+//           setUser(session.user);
+//         } else {
+//           console.warn('No user data found in session.');
+//         }
+//       } catch (error) {
+//         console.error('Error fetching session:', error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchUserData();
-  }, []);
+//     fetchUserData();
+//   }, []);
 
-  if (loading) {
-    return (
-      <main id="prof" className='flex items-center justify-center gap-y-7 my-40'>
-        <div className="border-4 border-gray-800 border-t-[#BAB9B9] rounded-full animate-spin flex justify-center items-center">
-          <Image
-            src={Loading.src}
-            width={100}
-            height={100}
-            alt="Loading spinner"
-            className='w-16 h-16'
-          />
-        </div>
-        <h1 className='text-2xl text-gray-700'>Loading...</h1>
-      </main>
-    );
-  }
+//   if (loading) {
+//     return (
+//       <main id="prof" className='flex items-center justify-center gap-y-7 my-40'>
+//         <div className="border-4 border-gray-800 border-t-[#BAB9B9] rounded-full animate-spin flex justify-center items-center">
+//           <Image
+//             src={Loading.src}
+//             width={100}
+//             height={100}
+//             alt="Loading spinner"
+//             className='w-16 h-16'
+//           />
+//         </div>
+//         <h1 className='text-2xl text-gray-700'>Loading...</h1>
+//       </main>
+//     );
+//   }
 
-  if (!user) {
-    return <p className='text-center text-red-500'>User not found or not authenticated.</p>;
-  }
+//   if (!user) {
+//     return <p className='text-center text-red-500'>User not found or not authenticated.</p>;
+//   }
 
-  return (
-    <div className='p-4'>
-      <h2 className='text-2xl font-bold'>Profile</h2>
-      <div className='mt-2'>
-        <p><strong>Email:</strong> {user.email}</p>
-        <p><strong>Username:</strong> {user.username || 'Username not available'}</p>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div className='p-4'>
+//       <h2 className='text-2xl font-bold'>Profile</h2>
+//       <div className='mt-2'>
+//         <p><strong>Email:</strong> {user.email}</p>
+//         <p><strong>Username:</strong> {user.username || 'Username not available'}</p>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default Profile;
+// export default Profile;
 
 
 
@@ -264,3 +264,23 @@ export default Profile;
 // };
 
 // export default Profile;
+
+
+
+
+//                                                         მეოთხე ვარიანტი
+
+
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import User from "../../user/page";
+
+const Profile = () => {
+
+  return (
+    <UserProvider>
+      <User/>
+    </UserProvider>
+  );
+};
+
+export default Profile;
