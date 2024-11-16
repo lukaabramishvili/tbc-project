@@ -10,6 +10,7 @@ export async function checkisIsAuthenticated() {
   }
 }
 
+
 // export async function authUser(username, password) {
 //     const response = await fetch('https://dummyjson.com/auth/login', {
 //       method: 'POST',

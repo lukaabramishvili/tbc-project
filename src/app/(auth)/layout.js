@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { checkisIsAuthenticated } from "../services/authService";
+import { getSession } from "next-auth/react";
 
 export default function authLayout({ children }) {
   const [isAuthenticated, setIsAuthenticated] = useState(true);
@@ -10,11 +11,17 @@ export default function authLayout({ children }) {
 
   useEffect(() => {
     async function getAuthStatus() {
-      const res = await checkisIsAuthenticated();
-      setIsAuthenticated(res);
+      const session = await getSession();
+      const user = session?.user
+  
+      if (user) {
+        setIsAuthenticated(true);
+      }
     }
     getAuthStatus();
   }, []);
+
+  
 
   return <div>{isAuthenticated ? children : router.push("/login")}</div>;
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react';
 import './index.css';
 import chrysler  from '../../../public/car-photo.webp';
