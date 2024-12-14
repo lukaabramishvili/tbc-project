@@ -1,9 +1,7 @@
-import React from 'react';
 import "./Header.css";
 import Navbar from '../Navbar/Navbar';
 import Link from 'next/link';
 import profilImage from "../../../../public/profile-icon.png";
-import HeaderLoggedIn from '../Header/HeaderLoggedIn';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import LanguageToggle from '../LanguageToggle/LanguageToggle';
 
@@ -15,12 +13,11 @@ export default function Header() {
       </Link>
       <Navbar/>
       <div className="profileIcon flex items-center gap-4">
+        <ThemeToggle/>
+        <LanguageToggle/>
         <Link href="/profile">
           <img className="max-h-20 cursor-pointer" src={profilImage.src} alt="profile icon" />
         </Link>
-        <HeaderLoggedIn/>
-        <ThemeToggle/>
-        <LanguageToggle/>
       </div>
     </header>
   );
