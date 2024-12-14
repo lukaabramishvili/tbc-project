@@ -27,8 +27,6 @@ const LanguageToggle = () => {
         }
     }, [language]);
 
-    console.log(language);
-    
 
     return (
         <div 
