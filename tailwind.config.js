@@ -12,7 +12,9 @@ export default {
         profileAccent: '#50C878',         
       },
       boxShadow: {
-        custom: '0.1rem 0.1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25)', // Customize the color as needed
+        custom: '0.1rem 0.1rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25)', 
+        white: 
+          '0 0.5rem 1.5rem rgba(255, 255, 255, 0.3), 0 0.5rem 1.5rem rgba(255, 255, 255, 0.1)', 
       },
     },
   },
