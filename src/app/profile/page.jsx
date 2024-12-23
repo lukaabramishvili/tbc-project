@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Loading from '../../../../public/loading.png';
+import Checkout from '../../components/Payment/Checkout';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -93,6 +94,7 @@ const Profile = () => {
           </p>
         </div>
       </div>
+      <Checkout/>
       <div className="logout-btn-container flex justify-center mt-6">
         <Link href="/api/auth/logout">
           <button className='cursor-pointer border-none bg-red-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 hover:shadow-lg transition duration-200'>Log Out</button>
