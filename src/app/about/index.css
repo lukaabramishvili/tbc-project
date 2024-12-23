@@ -1,0 +1,16 @@
+.aboutContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.aboutContainer h1{
+    font-size: 4rem;
+}
+
+.aboutContainer p{
+    font-size: 2rem;
+    color: red;
+}
