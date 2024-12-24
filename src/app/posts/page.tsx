@@ -5,7 +5,27 @@ import Link from "next/link";
 import SearchBar from "../components/searchBar/searchBar";
 import NotFoundPage from "../NotFoundPage";
 
-async function PostsFetch({ searchParams }) {
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+  reactions: {
+    likes: number;
+    dislikes: number;
+  };
+  tags: string[];
+  views: number;
+}
+
+interface SearchParams {
+  search?: string;
+}
+
+interface Props {
+  searchParams: SearchParams;
+}
+
+async function PostsFetch({ searchParams }: Props) {
   const searchTerm = searchParams.search || "";
 
   try {
@@ -16,7 +36,7 @@ async function PostsFetch({ searchParams }) {
 
     const response = await fetch(url);
     const data = await response.json();
-    const posts = data.posts || [];
+    const posts: Post[] = data.posts || [];
 
     return (
       <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-gray-700">
@@ -26,7 +46,11 @@ async function PostsFetch({ searchParams }) {
         </div>
         <div className="flex flex-col gap-4">
           {posts.map((post) => (
-            <Link key={post.id} href={`/posts/${post.id}`} className="text-black dark:text-white ">
+            <Link
+              key={post.id}
+              href={`/posts/${post.id}`}
+              className="text-black dark:text-white"
+            >
               <div className="post hover:scale-105 flex flex-col items-center gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 ease-in-out">
                 <h2 className="text-3xl mb-2">{post.title}</h2>
                 <p className="text-lg leading-7 max-w-4xl">{post.body}</p>
@@ -46,7 +70,9 @@ async function PostsFetch({ searchParams }) {
                     <span key={index}>#{tag}</span>
                   ))}{" "}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-white mb-4">views: {post.views}</p>
+                <p className="text-sm text-gray-500 dark:text-white mb-4">
+                  views: {post.views}
+                </p>
               </div>
             </Link>
           ))}
@@ -54,7 +80,7 @@ async function PostsFetch({ searchParams }) {
       </div>
     );
   } catch (error) {
-    console.log("Error fetching data: ", error);
+    console.error("Error fetching data: ", error);
     return <NotFoundPage />;
   }
 }

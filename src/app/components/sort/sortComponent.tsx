@@ -1,24 +1,28 @@
 "use client";
- 
+
 import { useRouter } from "next/navigation";
 import "./sortComponent.css";
- 
+
+interface SortOption {
+  label: string;
+  value: string;
+}
+
 const SortComponent = () => {
-  const sortOptions = [
-    {label: "sort by:", value:""},
+  const sortOptions: SortOption[] = [
+    { label: "sort by:", value: "" },
     { label: "Price: Low to High", value: "price-asc" },
     { label: "Price: High to Low", value: "price-desc" },
     { label: "Name: A-Z", value: "title-asc" },
     { label: "Name: Z-A", value: "title-desc" },
   ];
- 
+
   const router = useRouter();
 
- 
-  const handlerSort = (selectedSortValue) => {
+  const handlerSort = (selectedSortValue: string) => {
     router.push(`/products/?sortBy=${selectedSortValue}`);
   };
- 
+
   return (
     <>
       <select
@@ -35,5 +39,5 @@ const SortComponent = () => {
     </>
   );
 };
- 
+
 export default SortComponent;
