@@ -1,17 +1,15 @@
-import SearchBar from "../components/searchBar/searchBar";
-import SortComponent from "../components/sort/sortComponent";
+"use client";
 import "./index.css";
-import Link from "next/link";
-import NotFoundPage from "../NotFoundPage";
-import EditButton from "../components/EditButton/editButton";
-import DeleteButton from "../components/DeleteButton/deleteButton";
+import { useEffect, useState } from "react";
 
 interface Product {
   id: number;
+  user_id: string;
   title: string;
-  description: string;
   price: number;
-  images: string[];
+  stripe_price_id: string;
+  stripe_product_id: string;
+  img_url: string;
 }
 
 interface SearchParams {
@@ -19,65 +17,42 @@ interface SearchParams {
   sortBy?: string;
 }
 
-interface Props {
-  searchParams: SearchParams;
-}
+function Products() {
+  const [products, setProducts] = useState<Product[]>([]);
+  useEffect(() => {
+    async function fetchProducts() {
+      const response = await fetch("/api/fetchProducts", {
+        method: "GET",
+      });
+      if (response.status === 200) {
+        const { data } = await response.json();
+        console.log(data);
+        setProducts(data);
+      }
+    }
+    fetchProducts();
+  }, []);
 
-async function ProductFetch({ searchParams }: Props) {
-  const searchTerm = searchParams.search || "";
-  const sortOptions = searchParams.sortBy || "";
-  const [sortOption, sortOrder] = sortOptions.split("-");
-
-  let url = "https://dummyjson.com/products";
-  if (searchTerm) {
-    url = `https://dummyjson.com/products/search?q=${searchTerm}`;
-  }
-  if (sortOption) {
-    url = `https://dummyjson.com/products?sortBy=${sortOption}&order=${sortOrder}`;
-  }
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    const products: Product[] = data.products || [];
-
-    return (
-      <div className="product-page container">
-        <h1>Our Products</h1>
-        <div className="searchProduct">
-          <SearchBar searchType={"products"} />
-        </div>
-        <div className="sortProducts">
-          <SortComponent />
-        </div>
-        <div className="product-grid">
-          {products.map((item) => (
-            <div key={item.id} className="product-card">
-              <div className="delete edit">
-                <EditButton />
-                <DeleteButton productId={item.id.toString()} />
-              </div>
-              <Link href={`/products/${item.id}`}>
-                <img
-                  src={item.images[0]}
-                  alt={item.title}
-                  className="product-image"
-                />
-                <div className="product-info">
-                  <h2>{item.title}</h2>
-                  <p className="product-description">{item.description}</p>
-                  <p className="product-price">${item.price}</p>
-                </div>
-              </Link>
+  return (
+    <div className="product-page container min-h-96">
+      <h1>Our Products</h1>
+      <div className="product-grid">
+        {products.map((item) => (
+          <div
+            key={item.id}
+            className="w-60 h-72 flex flex-col items-center text-start p-5 border rounded-2xl bg-slate-200"
+          >
+            <div className="font-bold w-full p-2">Name: {item.title}</div>
+            <img className="w-56 h-56 items-center" src={item.img_url}></img>
+            <div className="font-bold w-full p-2">
+              Price: {item.price / 100}$
             </div>
-          ))}
-        </div>
+            <div></div>
+          </div>
+        ))}
       </div>
-    );
-  } catch (error) {
-    console.error("Error fetching data: ", error);
-    return <NotFoundPage />;
-  }
+    </div>
+  );
 }
 
-export default ProductFetch;
+export default Products;
