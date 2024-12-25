@@ -94,6 +94,9 @@ export default function CartDialog() {
                   ))
                 )}
               </ul>
+              <div className="border rounded-2xl w-40 bg-green-200 h-10 flex flex-col items-center justify-center cursor-pointer">
+                Proceed to Checkout
+              </div>
             </div>
           </div>
         </div>
