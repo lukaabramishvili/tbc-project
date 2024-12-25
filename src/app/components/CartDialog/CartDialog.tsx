@@ -1,6 +1,7 @@
 import React from "react";
 import { Minus, Plus, X } from "lucide-react"; // Assuming you have these icons available
 import { CartItem, useCart } from "../providers/CartProvider";
+import { createCheckoutSessionForCart } from "@/app/actions/stripe";
 
 export default function CartDialog() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -9,6 +10,11 @@ export default function CartDialog() {
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
+  async function handleChekout() {
+    const { url } = await createCheckoutSessionForCart(cartItems);
+
+    window.location.assign(url as string);
+  }
 
   return (
     <>
@@ -94,7 +100,10 @@ export default function CartDialog() {
                   ))
                 )}
               </ul>
-              <div className="border rounded-2xl w-40 bg-green-200 h-10 flex flex-col items-center justify-center cursor-pointer">
+              <div
+                onClick={() => handleChekout()}
+                className="border rounded-2xl w-40 bg-green-200 h-10 flex flex-col items-center justify-center cursor-pointer"
+              >
                 Proceed to Checkout
               </div>
             </div>
