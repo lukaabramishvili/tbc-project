@@ -1,9 +1,10 @@
 "use client";
 import AddProductDialog from "../components/AddProductDialog/AddProductDialog";
+import { useCart } from "../components/providers/CartProvider";
 import "./index.css";
 import { useEffect, useState } from "react";
 
-interface Product {
+export interface Product {
   id: number;
   user_id: string;
   title: string;
@@ -21,6 +22,8 @@ interface SearchParams {
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isRetriggered, retriggerFetch] = useState<boolean>(false);
+  const { addItemToCart } = useCart();
+
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch("/api/fetchProducts", {
@@ -50,10 +53,19 @@ function Products() {
           >
             <div className="font-bold w-full p-2">Name: {item.title}</div>
             <img className="w-56 h-56 items-center" src={item.img_url}></img>
-            <div className="font-bold w-full p-2">
-              Price: {item.price / 100}$
+            <div className="flex flex-row items-center justify-center ">
+              <div className="font-bold w-full p-2 ">
+                Price: {item.price / 100}$
+              </div>
+              <div
+                className="flex text-sm w-40 underline"
+                onClick={() => {
+                  addItemToCart({ product: item, quantity: 1 });
+                }}
+              >
+                Add to cart
+              </div>
             </div>
-            <div></div>
           </div>
         ))}
       </div>
