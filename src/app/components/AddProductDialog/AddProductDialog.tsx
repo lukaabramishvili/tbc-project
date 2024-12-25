@@ -53,7 +53,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
     <div>
       <button
         onClick={() => setOpen(true)}
-        className="border w-40 rounded shadow-lg bg-slate-400 hover:bg-slate-300"
+        className="border-none  w-40 rounded shadow-xl bg-gray-900 hover:bg-gray-500 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-800 dark:hover:text-white p-4 text-xl text-white cursor-pointer"
       >
         Add Product
       </button>
