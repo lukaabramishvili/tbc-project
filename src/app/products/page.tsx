@@ -1,4 +1,5 @@
 "use client";
+import AddProductDialog from "../components/AddProductDialog/AddProductDialog";
 import "./index.css";
 import { useEffect, useState } from "react";
 
@@ -19,6 +20,7 @@ interface SearchParams {
 
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isRetriggered, retriggerFetch] = useState<boolean>(false);
   useEffect(() => {
     async function fetchProducts() {
       const response = await fetch("/api/fetchProducts", {
@@ -31,11 +33,15 @@ function Products() {
       }
     }
     fetchProducts();
-  }, []);
+  }, [isRetriggered]);
 
   return (
     <div className="product-page container min-h-96">
-      <h1>Our Products</h1>
+      <h1 className="">Our Products</h1>
+      <div className="flex flex-row items-center justify-center p-2 mt-0 pt-0">
+        <AddProductDialog retriggerFetch={retriggerFetch}></AddProductDialog>
+      </div>
+
       <div className="product-grid">
         {products.map((item) => (
           <div
