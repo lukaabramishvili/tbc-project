@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 
 interface AddProductDialogProps {
   retriggerFetch: React.Dispatch<React.SetStateAction<boolean>>;
@@ -9,6 +9,25 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
 }) => {
   const [open, setOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  useEffect(() => {
+    if (window !== undefined) {
+      if (document) {
+        const inputElement = document.getElementById("price");
+        if (inputElement) {
+          const handleInput = (event: Event) => {
+            const target = event.target as HTMLInputElement;
+            if (target) {
+              target.value = target.value.replace(/[^0-9]/g, "");
+            }
+          };
+          inputElement.addEventListener("input", handleInput);
+          return () => {
+            inputElement.removeEventListener("input", handleInput);
+          };
+        }
+      }
+    }
+  });
 
   const createProduct = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,11 +40,13 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
     });
 
     if (response.ok) {
+      alert("Product Added");
       retriggerFetch(true);
       setOpen(false);
       setIsLoading(false);
+    } else {
+      alert("Something went wrong");
     }
-    console.log(response);
   };
 
   return (
@@ -39,7 +60,10 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
 
       {open && (
         <div className="sm:max-w-[580px] h-80 m-5 p-5 fixed top-0 right-96 bg-slate-200 rounded-2xl">
-          <div className="absolute right-5" onClick={() => setOpen(false)}>
+          <div
+            className="absolute right-5 cursor-pointer"
+            onClick={() => setOpen(false)}
+          >
             Close
           </div>
           <div className="flex flex-col items-start justify-start">
@@ -63,6 +87,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                 <input
                   id="price"
                   name="price"
+                  type="number"
                   className="col-span-3"
                   required
                 />
