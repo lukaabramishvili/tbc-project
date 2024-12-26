@@ -10,7 +10,6 @@ export default function Layout({ children }) {
     <html lang="en">
       <CartProvider>
         <body>
-          {" "}
           <div className="layout-wrapper">
             <Header />
             <main className="main-content">{children}</main>
