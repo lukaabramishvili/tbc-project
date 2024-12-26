@@ -14,7 +14,7 @@ export default async function Profile() {
   const user = data?.user;
 
   return (
-    <main className="flex flex-col gap-8 min-h-full items-center justify-center text-center max-w-[136rem] mx-auto p-8">
+    <section className="flex flex-col gap-8 min-h-full items-center justify-center text-center max-w-[136rem] mx-auto p-8">
       <h1 className="text-3xl">Profile</h1>
       <div className="flex items-center gap-6 justify-center">
         <Image
@@ -43,6 +43,6 @@ export default async function Profile() {
           </button>
         </form>
       </div>
-    </main>
+    </section>
   );
 }
