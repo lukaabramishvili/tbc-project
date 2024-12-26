@@ -8,7 +8,6 @@ export async function GET(request: NextRequest) {
     const supabase = await createClient();
 
     const { data } = await supabase.from("products").select();
-    console.log();
 
     return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
