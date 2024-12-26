@@ -26,6 +26,12 @@ export default async function OrdersPage() {
     .select("*")
     .eq("user_id", user.id);
 
+  const sortedOrders = orders?.sort((a, b) => {
+    const dateA = new Date(a.created_at);
+    const dateB = new Date(b.created_at);
+    return dateB.getTime() - dateA.getTime();
+  });
+
   if (ordersError) {
     console.error("Error fetching orders:", ordersError.message);
   }
@@ -35,9 +41,9 @@ export default async function OrdersPage() {
       <h1 className="text-4xl font-bold text-gray-800">Your Orders</h1>
 
       {/* Orders Section */}
-      {orders && orders.length > 0 ? (
+      {sortedOrders && sortedOrders.length > 0 ? (
         <ul className="flex flex-col gap-2 w-full max-w-4xl space-y-6">
-          {orders.map((order) => (
+          {sortedOrders.map((order) => (
             <Link href={`/orders/${order.id}`} key={order.id}>
               <li className="list-none border border-gray-300 bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition-shadow duration-300 cursor-pointer">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">

@@ -12,6 +12,11 @@ export default function CartDialog() {
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   async function handleChekout() {
+    if (cartItems.length === 0) {
+      console.log("Cart is empty");
+      return;
+    }
+
     const { url } = await createCheckoutSessionForCart(cartItems);
 
     window.location.assign(url as string);
