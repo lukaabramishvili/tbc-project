@@ -32,7 +32,6 @@ export default async function ResultPage({
             product_id: cartItems[index].product_id,
             stripe_purchase_id: session.payment_intent,
           });
-          console.log(data, error, index);
         });
       }
     }
