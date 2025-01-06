@@ -28,22 +28,22 @@ export default function Login() {
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-700">
-      <div className="w-full max-w-md p-6"> {/* Container with fixed max width */}
+      <div className="w-full max-w-md p-6"> 
         {isLogin ? (
           <form onSubmit={handleLogin}>
-            <div className="bg-gray-900 border-[4px] border-blue-900 rounded-2xl hover:border-blue-500 transition-all duration-200 p-8">
+            <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
               <div className="flex flex-col items-center space-y-4 font-semibold text-gray-500">
                 <Image src={Logo} alt="logo" width={200} height={200} />
-                <h1 className="text-white text-2xl">Log in Job Finder</h1>
+                <h1 className="text-black dark:text-white text-2xl ">Log in Job Finder</h1>
                 <input
-                  className="w-full p-2 bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
+                  className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
                   placeholder="Email"
                   type="email"
                   name="email"
                   id="email"
                 />
                 <input
-                  className="w-full p-2 bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
+                  className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
                   placeholder="Password"
                   type="password"
                   name="password"
@@ -68,19 +68,19 @@ export default function Login() {
           </form>
         ) : (
           <form onSubmit={handleSignup}>
-            <div className="bg-gray-900 border-[4px] border-blue-900 rounded-2xl hover:border-blue-500 transition-all duration-200 p-8">
+            <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
               <div className="flex flex-col items-center space-y-4 font-semibold text-gray-500">
                 <Image src={Logo} alt="logo" width={200} height={200} />
-                <h1 className="text-white text-2xl">Sign up Job Finder</h1>
+                <h1 className="text-black dark:text-white text-2xl">Sign up Job Finder</h1>
                 <input
-                  className="w-full p-2 bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
+                  className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
                   placeholder="Email"
                   type="email"
                   name="email"
                   id="email-signup"
                 />
                 <input
-                  className="w-full p-2 bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
+                  className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
                   placeholder="Password"
                   type="password"
                   name="password"
