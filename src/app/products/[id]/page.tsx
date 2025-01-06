@@ -1,4 +1,3 @@
-import "../index.css";
 import ReturnButton from "../../components/ReturnButton/returnButton";
 import NotFoundPage from "../../NotFoundPage";
 
@@ -15,33 +14,23 @@ interface Params {
 }
 
 export const getProduct = async (id: string): Promise<Product | null> => {
+  console.log("Product ID:", id); 
   try {
-    const res = await fetch(`https://dummyjson.com/products/${id}`);
+    const res = await fetch(`/api/fetchProductById/${id}`);
     if (!res.ok) {
       return null;
     }
-    const product: Product = await res.json();
-    return product;
+    const { data } = await res.json();
+    return data.length > 0 ? data[0] : null; 
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;
   }
 };
 
-export async function generateStaticParams() {
-  try {
-    const productsData = await fetch("https://dummyjson.com/products").then(
-      (res) => res.json()
-    );
-    const products: Product[] = productsData.products;
 
-    return products.map((product) => ({
-      params: { id: product.id.toString() },
-    }));
-  } catch (error) {
-    console.error("Error generating static params:", error);
-    return [];
-  }
+interface Params {
+  id: string;
 }
 
 export default async function ProductDetail({ params }: { params: Params }) {

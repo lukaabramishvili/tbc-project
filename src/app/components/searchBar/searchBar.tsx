@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import "./searchBar.css";
 import { useRouter } from "next/navigation";
-import { useDebounce } from "../../hook/useDebounce";
+import { useDebounce } from "../../app/hook/useDebounce";
 import Search from "../../../../public/search.png";
 
 interface SearchBarProps {
