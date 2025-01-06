@@ -1,7 +1,6 @@
 import ProductDetail from "@/app/products/[id]/page";
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
-import React from "react";
 
 export async function GET(request: NextRequest) {
   try {
