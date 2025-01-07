@@ -15,6 +15,7 @@
   align-items: center;
   overflow: hidden;
   cursor: pointer;
+  z-index: 1;
 }
 
 .button span {

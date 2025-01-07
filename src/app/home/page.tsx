@@ -55,7 +55,7 @@ export default function Home() {
         </div>
         <div className="search-job-right flex flex-col justify-center gap-10 bg-[#7f73eb] p-10 rounded-xl ">
           <h3 className="text-start text-white text-3xl font-bold">Search your dream job</h3>
-          <div className="search-job-right-inputs flex gap-4">
+          <div className="search-job-right-inputs flex gap-4 sm:flex-row flex-col">
             <input 
               type="text" 
               id="job-title" 
