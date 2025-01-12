@@ -60,6 +60,7 @@ export default function Login() {
                   type="email"
                   name="email"
                   id="email"
+                  data-cy="email"
                 />
                 <input
                   className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
@@ -67,10 +68,12 @@ export default function Login() {
                   type="password"
                   name="password"
                   id="password"
+                  data-cy="password"
                 />
                 <input
                   className="cursor-pointer w-full p-2 bg-gray-50 rounded-full font-bold text-gray-900 border-[4px] border-gray-700 hover:border-blue-500 transition-all duration-200"
                   type="submit"
+                  data-cy="login"
                 />
                 <p>
                   Do you already have an account?{" "}
