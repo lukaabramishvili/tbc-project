@@ -52,6 +52,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
   return (
     <div>
       <button
+        data-cy='add-product'
         onClick={() => setOpen(true)}
         className="border-none  w-40 rounded shadow-xl bg-gray-900 hover:bg-gray-500 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-800 dark:hover:text-white p-4 text-xl text-white cursor-pointer"
       >
@@ -59,7 +60,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
       </button>
 
       {open && (
-        <div className="sm:max-w-[580px] h-80 m-5 p-5 fixed top-0 right-96 bg-slate-200 rounded-2xl">
+        <div className="sm:max-w-[580px] h-80 m-5 p-5 z-10 fixed top-0 right-96 bg-slate-200 rounded-2xl">
           <div
             className="absolute right-5 cursor-pointer"
             onClick={() => setOpen(false)}
@@ -75,13 +76,19 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
           <form onSubmit={createProduct}>
             <div className="grid gap-4 py-4 pr-10">
               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="name" className="text-right">
+                <label htmlFor="name" className="text-right" >
                   Name
                 </label>
-                <input id="name" name="name" className="col-span-3" required />
+                <input 
+                  id="name" 
+                  name="name" 
+                  className="col-span-3" 
+                  data-cy="add-product-name" 
+                  required 
+                />
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="price" className="text-right">
+                <label htmlFor="price" className="text-right" >
                   Price
                 </label>
                 <input
@@ -90,6 +97,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                   type="number"
                   className="col-span-3"
                   required
+                  data-cy="add-product-price"
                 />
               </div>
               <div>
@@ -101,7 +109,8 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                   type="file"
                   name="file"
                   className="col-span-3"
-                  required
+                  data-cy="add-product-img"
+                  // required
                 />
               </div>
             </div>
@@ -110,6 +119,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
               <button
                 type="submit"
                 className="rounded-2xl bg-slate-400 w-40 h-10"
+                data-cy="add-product-submit"
               >
                 Create
               </button>
