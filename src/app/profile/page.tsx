@@ -36,6 +36,7 @@ export default async function Profile() {
         {/* Logout */}
         <form action={logout}>
           <button
+            data-cy="logout"
             type="submit"
             className="rounded-lg px-6 py-2 cursor-pointer text-white bg-slate-700 hover:bg-slate-600 duration-300"
           >

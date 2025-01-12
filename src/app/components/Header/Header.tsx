@@ -33,7 +33,7 @@ export default function Header() {
       <div className="profileIcon flex items-center gap-4">
       <ThemeToggle />
       <LanguageToggle />
-      <Link href="/profile">
+      <Link href="/profile" data-cy="profile-icon"> 
         <img
         className="max-h-20 cursor-pointer"
         src={profilImage.src}
