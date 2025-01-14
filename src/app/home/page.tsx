@@ -67,7 +67,7 @@ export default function Home() {
               className="p-4 rounded-full"
               placeholder="location"/>
           </div>
-          <button className="rounded-full bg-transparent px-4 py-4 bg-[#5d52ba] hover:bg-[#0dcaf0] text-white hover:text-white">Find a job</button>
+          <button className="border-4 border-[#0dcaf0] hover:border-[#83def0]  rounded-full bg-transparent px-4 py-4 bg-[#5d52ba] hover:bg-[#0dcaf0] text-white hover:text-white">Find a job</button>
         </div>
       </div>
       

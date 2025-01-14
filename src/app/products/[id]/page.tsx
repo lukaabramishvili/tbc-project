@@ -13,8 +13,7 @@ interface Params {
   id: string;
 }
 
-export const getProduct = async (id: string): Promise<Product | null> => {
-  console.log("Product ID:", id); 
+async function getProduct(id: string): Promise<Product | null> {
   try {
     const res = await fetch(`/api/fetchProductById/${id}`);
     if (!res.ok) {
@@ -26,11 +25,6 @@ export const getProduct = async (id: string): Promise<Product | null> => {
     console.error("Error fetching product:", error);
     return null;
   }
-};
-
-
-interface Params {
-  id: string;
 }
 
 export default async function ProductDetail({ params }: { params: Params }) {
