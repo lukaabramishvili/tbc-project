@@ -15,35 +15,34 @@ export interface Product {
   img_url: string;
 }
 
-interface SearchParams {
-  search?: string;
-  sortBy?: string;
-}
-
 function Products() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [isRetriggered, retriggerFetch] = useState<boolean>(false);
   const [isDeleting, setIsDeleting] = useState<number | null>(null);
+  const [isRetriggered, retriggerFetch] = useState<boolean>(false);
   const { addItemToCart } = useCart();
 
   useEffect(() => {
     async function fetchProducts() {
-      const response = await fetch("/api/fetchProducts", {
-        method: "GET",
-      });
-      if (response.status === 200) {
-        const { data } = await response.json();
-        setProducts(data);
+      try {
+        const response = await fetch("/api/fetchProducts");
+        if (response.ok) {
+          const { data } = await response.json();
+          setProducts(data);
+        } else {
+          console.error("Failed to fetch products.");
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
       }
     }
     fetchProducts();
-  }, [isRetriggered, isDeleting]);
+  }, []);
 
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
-
+  
     setIsDeleting(id);
-
+  
     try {
       const response = await fetch(`/api/deleteProduct`, {
         method: "DELETE",
@@ -52,29 +51,30 @@ function Products() {
         },
         body: JSON.stringify({ id }),
       });
-
+  
       if (response.ok) {
+        setProducts((prev) => prev.filter((product) => product.id !== id));
         alert("Product deleted successfully.");
-        retriggerFetch(prev => !prev);
       } else {
-        alert("Failed to delete the product. Please try again.");
+        const { error } = await response.json();
+        console.error("Failed to delete product:", error);
+        alert(`Failed to delete the product. Error: ${error}`);
       }
     } catch (error) {
       console.error("Error deleting product:", error);
       alert("An error occurred. Please try again later.");
-
     } finally {
       setIsDeleting(null);
     }
   };
-
+  
   return (
     <div className="container min-h-screen p-6 mx-auto bg-gray-100 dark:bg-gray-700">
       <h1 className="text-center text-4xl font-bold mb-6 dark:text-white">
         Our Products
       </h1>
       <div className="flex justify-center mb-4">
-        <AddProductDialog retriggerFetch={retriggerFetch}></AddProductDialog>
+        <AddProductDialog retriggerFetch={retriggerFetch} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -91,7 +91,10 @@ function Products() {
                   </div>
                   <button
                     className="mt-2 cursor-pointer border-none px-6 py-2 text-sm font-semibold text-white bg-red-600 rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 dark:bg-red-500 dark:hover:bg-red-400 dark:focus:ring-red-300 transition-all duration-300"
-                    onClick={() => handleDelete(item.id)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleDelete(item.id);
+                    }}
                     disabled={isDeleting === item.id}
                   >
                     {isDeleting === item.id ? "Deleting..." : "Delete"}
