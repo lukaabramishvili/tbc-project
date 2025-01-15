@@ -1,9 +1,6 @@
 "use server";
 
 import { Stripe } from "stripe";
-
-import { headers } from "next/headers";
-
 import { CartItem } from "../components/providers/CartProvider";
 import { stripe } from "../lib/stripe";
 
