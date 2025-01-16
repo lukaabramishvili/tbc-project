@@ -6,6 +6,7 @@ import { login, signup } from "./actions";
 import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import { url } from "inspector";
+import SignInWithGithub from "./signinWithGithub";
 
 export default function Login() {
   const router = useRouter();
@@ -51,6 +52,7 @@ export default function Login() {
         <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-700">
           <div className="w-full max-w-md p-6">
         {isLogin ? (
+          <div>
           <form onSubmit={handleLogin}>
             <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
               <div className="flex flex-col items-center space-y-4 font-semibold text-gray-500">
@@ -90,6 +92,11 @@ export default function Login() {
               </div>
             </div>
           </form>
+
+          <h3 className="flex items-center justify-center mt-4 dark:text-white text-xl">or</h3>
+
+          <SignInWithGithub/>
+          </div>
         ) : (
           <form onSubmit={handleSignup}>
             <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
