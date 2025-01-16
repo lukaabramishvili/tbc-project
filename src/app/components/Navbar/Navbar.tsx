@@ -22,6 +22,9 @@ export default function Navbar() {
         <li className="dark:hover:bg-white dark:hover:text-black">
           <Link data-cy="nav-pricing" href="/pricing">pricing</Link>
         </li>
+        <li className="dark:hover:bg-white dark:hover:text-black">
+          <Link data-cy="nav-pricing" href="/subscribedUserView">subscribed</Link>
+        </li>
       </ul>
     </nav>
   );
