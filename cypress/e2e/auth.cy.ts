@@ -1,4 +1,5 @@
 import 'cypress-file-upload';
+import { useState } from 'react';
 
 describe('Auth', () => {
   it('logs in successfully', () => {
@@ -44,4 +45,23 @@ describe('Auth', () => {
     }).as('createProductRequest');  
   });
 
-})
+  it('product delete successfully', () => {
+    cy.visit('http://localhost:3000/login'); 
+  
+    cy.get('[data-cy="email"]').type('testaccount@gmail.com');
+    cy.get('[data-cy="password"]').type('test123'); 
+    cy.get('[data-cy="login"]').click().wait(4000);
+    cy.url().should('include', 'http://localhost:3000'); 
+  
+    cy.get('[data-cy="nav-products"]').click({ multiple: true });
+    cy.url().should('include', '/products'); 
+  
+    cy.get('[data-cy="delete-product-1"]').click().wait(1000);
+
+    cy.on('window:alert', (alertText) => {
+      expect(alertText).to.include('Product deleted successfully');
+    });
+  });
+
+  
+});

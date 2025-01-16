@@ -80,6 +80,7 @@ function Products() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((item) => (
           <div
+            data-cy={`item-${item.id}`}
             key={item.id}
             className="cursor-pointer flex flex-col items-center p-5 border rounded-xl bg-white dark:bg-gray-800 shadow-xl hover:shadow-2xl dark:shadow-xl dark:hover:shadow-2xl transform hover:scale-105 dark:hover:scale-105 transition-all duration-300 ease-in-out"
           >
@@ -96,6 +97,7 @@ function Products() {
                       handleDelete(item.id);
                     }}
                     disabled={isDeleting === item.id}
+                    data-cy={"delete-product-" + item.id}
                   >
                     {isDeleting === item.id ? "Deleting..." : "Delete"}
                   </button>
