@@ -10,6 +10,12 @@ import rightWhiteArrow from "../../../public/rwa.png";
 import rightblackArrow from "../../../public/rba.png";
 import { createClient } from "../../utils/supabase/client";
 import './index.css';
+import Image from "next/image";
+import WebDesign from "../../../public/browse-by-categories/ui-ux.png";
+import Marketing from "../../../public/browse-by-categories/marketing.png";
+import Video from "../../../public/browse-by-categories/play-button.png";
+import Website from "../../../public/browse-by-categories/world-wide-web.png";
+import CustomerSupport from "../../../public/browse-by-categories/customer-support.png";
 
 const slides = [
   <img src={chrysler.src} alt="Chrysler car" />,
@@ -71,6 +77,32 @@ export default function Home() {
         </div>
       </div>
       
+      <div className="browse-by-categories mt-24 mb-10">
+        <h3 className="text-5xl font-bold text-gray-900 dark:text-gray-200 mb-12">Browse by Categories</h3>
+        <div className="categories flex gap-16">
+          <div className="web-design cursor-pointer bg-[#5d52ba] p-4 rounded-full flex items-center justify-center w-1/6 aspect-square border-8 border-[#7b6df4] hover:border-white dark:hover:border-gray-600 transition-all duration-300">
+            <Image src={WebDesign.src} alt="WebDesign" width={50} height={50} />
+            <span className="mt-2 text-white text-center">Web Design</span>
+          </div>
+          <div className="marketing cursor-pointer bg-[#f59e0b] p-4 rounded-full flex items-center justify-center w-1/6 aspect-square border-8 border-[#f4b850] hover:border-white dark:hover:border-gray-600 transition-all duration-300">
+            <Image src={Marketing.src} alt="Marketing" width={50} height={50} />
+            <span className="mt-2 text-white text-center">Marketing</span>
+          </div>
+          <div className="video cursor-pointer bg-[#10b981] p-4 rounded-full flex items-center justify-center w-1/6 aspect-square border-8 border-[#40f6b9] hover:border-white dark:hover:border-gray-600 transition-all duration-300">
+            <Image src={Video.src} alt="Video" width={50} height={50} />
+            <span className="mt-2 text-white text-center">Video</span>
+          </div>
+          <div className="website cursor-pointer bg-[#3b82f6] p-4 rounded-full flex items-center justify-center w-1/6 aspect-square border-8 border-[#629eff] hover:border-white dark:hover:border-gray-600 transition-all duration-300">
+            <Image src={Website.src} alt="Website" width={50} height={50} />
+            <span className="mt-2 text-white text-center">Website</span>
+          </div>
+          <div className="customer-support cursor-pointer bg-[#ef4444] p-4 rounded-full flex items-center justify-center w-1/6 aspect-square border-8 border-[#fa7474] hover:border-white dark:hover:border-gray-600 transition-all duration-300">
+            <Image src={CustomerSupport.src} alt="Customer Support" width={50} height={50} />
+            <span className="mt-2 text-white text-center">Customer Support</span>
+          </div>
+        </div>
+      </div>
+
       {/* <h2 className="text-3xl dark:text-white">Welcome to Our Website!</h2>
       <div className="relative w-full max-h-[calc(100vh-12.875rem)] my-4 overflow-hidden bg-gray-300 dark:bg-gray-800">
         <div className="homeSlide min-w-full transition-opacity duration-500 ease-in-out">
