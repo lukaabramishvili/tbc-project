@@ -27,10 +27,12 @@ export default function Login() {
   
 
   async function handleSignup(event: React.FormEvent<HTMLFormElement>) {
+    setLoading(true);
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     await signup(formData);
     router.push("/");
+    setLoading(false);
   }
 
   return (
