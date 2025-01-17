@@ -119,6 +119,7 @@ function Products() {
                   e.preventDefault(); 
                   addItemToCart({ product: item, quantity: 1 });
                 }}
+                data-cy={"add-to-cart-" + item.id}
               >
                 Add to cart
               </button>
