@@ -3,19 +3,16 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import githubIcon from "../../../public/github.png";
-import { usePathname } from'next/navigation';
 
 export default function SignInWithGithub() {
-  const pathname = usePathname();
   const signInWithGithub = async () => {
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: `${pathname}/auth/callback`,
+        redirectTo: "tbc-project-five.vercel.app/auth/callback",
       },
     });
-    console.log(pathname);
     
     if (error) {
       console.error("Error during sign-in:", error.message);
