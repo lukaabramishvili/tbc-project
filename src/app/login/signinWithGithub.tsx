@@ -3,17 +3,19 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import githubIcon from "../../../public/github.png";
+import { usePathname } from'next/navigation';
 
 export default function SignInWithGithub() {
+  const pathname = usePathname();
   const signInWithGithub = async () => {
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "http://localhost:3000/auth/callback",
+        redirectTo: `${pathname}/auth/callback`,
       },
     });
-    console.log(data);
+    console.log(pathname);
     
     if (error) {
       console.error("Error during sign-in:", error.message);
