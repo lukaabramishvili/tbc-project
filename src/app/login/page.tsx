@@ -80,7 +80,7 @@ export default function Login() {
                   data-cy="login"
                 />
                 <p>
-                  Do you already have an account?{" "}
+                  Don't have an account?{" "}
                   <button
                     type="button"
                     onClick={toggleForm}
@@ -122,7 +122,7 @@ export default function Login() {
                   type="submit"
                 />
                 <p>
-                  Don't have an account?{" "}
+                  Do you already have an account?{" "}
                   <button
                     type="button"
                     onClick={toggleForm}
