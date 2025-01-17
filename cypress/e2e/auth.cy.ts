@@ -63,5 +63,17 @@ describe('Auth', () => {
     });
   });
 
+  it('purchased successfully', () => {
+    cy.visit('http://localhost:3000/login'); 
   
+    cy.get('[data-cy="email"]').type('testaccount@gmail.com');
+    cy.get('[data-cy="password"]').type('test123'); 
+    cy.get('[data-cy="login"]').click().wait(4000);
+    cy.url().should('include', 'http://localhost:3000'); 
+  
+    cy.get('[data-cy="nav-products"]').click({ multiple: true });
+    cy.url().should('include', '/products'); 
+  
+    cy.get('[data-cy="add-to-cart-1"]').click().wait(1000);
+  });
 });
