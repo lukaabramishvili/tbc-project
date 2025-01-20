@@ -1,30 +1,14 @@
 {
   "node": {
-    "723a8a44c8877e7cacbddb0df9c09e76c71c2ef4": {
-      "workers": {
-        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Clogin%5C%5Cactions.tsx%22%2C%5B%22signup%22%2C%22login%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Cactions%5C%5Cstripe.ts%22%2C%5B%22createCheckoutSessionForCart%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/login/page": "action-browser"
-      }
-    },
-    "ee09eaa9fef77bed91db2cb93df7b2cc7cb0222f": {
-      "workers": {
-        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Clogin%5C%5Cactions.tsx%22%2C%5B%22signup%22%2C%22login%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Cactions%5C%5Cstripe.ts%22%2C%5B%22createCheckoutSessionForCart%22%5D%5D%5D&__client_imported__=true!"
-      },
-      "layer": {
-        "app/login/page": "action-browser"
-      }
-    },
     "04da0b62f43857fec1be335d972e987dacd19d9a": {
       "workers": {
-        "app/login/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Clogin%5C%5Cactions.tsx%22%2C%5B%22signup%22%2C%22login%22%5D%5D%2C%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Cactions%5C%5Cstripe.ts%22%2C%5B%22createCheckoutSessionForCart%22%5D%5D%5D&__client_imported__=true!"
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Clukaa%5C%5COneDrive%5C%5CDocuments%5C%5CGitHub%5C%5Ctbc-project%5C%5Csrc%5C%5Capp%5C%5Cactions%5C%5Cstripe.ts%22%2C%5B%22createCheckoutSessionForCart%22%5D%5D%5D&__client_imported__=true!"
       },
       "layer": {
-        "app/login/page": "action-browser"
+        "app/page": "action-browser"
       }
     }
   },
   "edge": {},
-  "encryptionKey": "fBGe9yw3OvyGCqV+Dk4Ldth6+GRFf+BWBynAkm+cYL4="
+  "encryptionKey": "t2xb3HN2id4k/9/7YqVOvEPN7wkWTp2bLOlA17ua7mI="
 }
