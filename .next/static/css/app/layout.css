@@ -954,9 +954,6 @@ video {
 .w-1\/2 {
   width: 50%;
 }
-.w-1\/6 {
-  width: 16.666667%;
-}
 .w-10 {
   width: 2.5rem;
 }
@@ -1079,9 +1076,6 @@ video {
 }
 .gap-12 {
   gap: 3rem;
-}
-.gap-16 {
-  gap: 4rem;
 }
 .gap-2 {
   gap: 0.5rem;
@@ -1285,10 +1279,6 @@ video {
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 .bg-gray-300 {
   --tw-bg-opacity: 1;
@@ -1665,11 +1655,6 @@ Link{
 .hover\:border-blue-500:hover {
   --tw-border-opacity: 1;
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
-}
-
-.hover\:border-white:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .hover\:border-gray-300:hover {
