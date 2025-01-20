@@ -25,7 +25,7 @@ export default function Header() {
       <div className="logoAndNavbar flex items-center gap-4">
       <Link href="/">
         <h1 className="text-5xl uppercase cursor-pointer text-black dark:text-white">
-        <Image src={Logo} alt="logo" width={170} height={170} />
+          <Image src={Logo} alt="logo" width={170} height={170} />
         </h1>
       </Link>
       <Navbar />
