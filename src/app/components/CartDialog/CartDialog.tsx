@@ -3,6 +3,8 @@ import { Minus, Plus, X } from "lucide-react"; // Assuming you have these icons 
 import { CartItem, useCart } from "../providers/CartProvider";
 import { createCheckoutSessionForCart } from "@/app/actions/stripe";
 import "./style.css";
+import { use } from "chai";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function CartDialog() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -22,10 +24,14 @@ export default function CartDialog() {
     window.location.assign(url as string);
   }
 
+  const { language } = useLanguage();
+
   return (
     <>
       <button className="button" onClick={handleOpen}>
-        <span>Checkout</span>
+        <span>
+          {language === "eng" ? "Cart Items" : "კალათა"}
+        </span>
         <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g strokeWidth="0" id="SVGRepo_bgCarrier"></g>
           <g

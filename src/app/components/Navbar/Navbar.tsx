@@ -1,29 +1,49 @@
+"use client";
+
+import { useLanguage } from "@/app/context/LanguageContext";
 import Link from "next/link";
+import LanguageToggle from "../LanguageToggle/LanguageToggle";
 
 export default function Navbar() {
+  const { language } = useLanguage();
+
   return (
-    <nav>
-      <ul className="dark:text-white">
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-home" href="/">Home</Link>
+    <nav className="flex justify-between items-center p-4">
+      <ul className="dark:text-white flex space-x-4">
+        <li>
+          <Link data-cy="nav-home" href="/">
+            {language === "eng" ? "Home" : "მთავარი"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-products" href="/products">Products</Link>
+        <li>
+          <Link data-cy="nav-products" href="/products">
+            {language === "eng" ? "Products" : "პროდუქტები"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-contact" href="/contact">Contact</Link>
+        <li>
+          <Link data-cy="nav-contact" href="/contact">
+            {language === "eng" ? "Contact" : "კონტაქტი"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-about" href="/about">About</Link>
+        <li>
+          <Link data-cy="nav-about" href="/about">
+            {language === "eng" ? "About" : "ჩვენს შესახებ"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-posts" href="/posts">Posts</Link>
+        <li>
+          <Link data-cy="nav-posts" href="/posts">
+            {language === "eng" ? "Posts" : "პოსტები"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-pricing" href="/pricing">pricing</Link>
+        <li>
+          <Link data-cy="nav-pricing" href="/pricing">
+            {language === "eng" ? "Pricing" : "ფასები"}
+          </Link>
         </li>
-        <li className="dark:hover:bg-white dark:hover:text-black">
-          <Link data-cy="nav-pricing" href="/subscribedUserView">subscribed</Link>
+        <li>
+          <Link data-cy="nav-subscribed" href="/subscribedUserView">
+            {language === "eng" ? "Subscribed" : "გამოწერა"}
+          </Link>
         </li>
       </ul>
     </nav>

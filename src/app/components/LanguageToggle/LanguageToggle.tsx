@@ -1,43 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import eng from "../../../../public/united-states.png";
-import geo from "../../../../public/geo.png";
+import Image from "next/image";
+import english from "../../../../public/united-states.png";
+import georgian from "../../../../public/geo.png";
+import { useLanguage } from "@/app/context/LanguageContext";
 
-const LanguageToggle = () => {
-  const [language, setLanguage] = useState(true);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "eng") {
-      setLanguage(true);
-    } else {
-      setLanguage(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (language) {
-      document.documentElement.classList.add("eng");
-      localStorage.setItem("language", "eng");
-    } else {
-      document.documentElement.classList.remove("eng");
-      localStorage.setItem("theme", "geo");
-    }
-  }, [language]);
+export default function LanguageToggle() {
+  const { language, toggleLanguage } = useLanguage();
 
   return (
     <div
       className="flex items-center justify-center pl-10 cursor-pointer dark:bg-transparent bg-transparent rounded-full"
-      onClick={() => setLanguage(!language)}
+      onClick={toggleLanguage}
     >
-      {language ? (
-        <img className="w-10" src={eng.src} alt="dark" />
+      {language === "eng" ? (
+        <Image className="w-10" src={english.src} width={50} height={50} alt="English" />
       ) : (
-        <img className="w-10" src={geo.src} alt="light" />
+        <Image className="w-10" src={georgian.src} width={50} height={50} alt="English" />
       )}
     </div>
   );
-};
-
-export default LanguageToggle;
+}
