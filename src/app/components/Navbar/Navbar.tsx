@@ -8,7 +8,7 @@ export default function Navbar() {
   const { language } = useLanguage();
 
   return (
-    <nav className="flex justify-between items-center p-4">
+    <nav className="hidden justify-between items-center p-4 xl:flex">
       <ul className="dark:text-white flex space-x-4">
         <li>
           <Link data-cy="nav-home" href="/">

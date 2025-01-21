@@ -10,7 +10,7 @@ export default function LanguageToggle() {
 
   return (
     <div
-      className="flex items-center justify-center pl-10 cursor-pointer dark:bg-transparent bg-transparent rounded-full"
+      className="flex items-center justify-center cursor-pointer dark:bg-transparent bg-transparent rounded-full"
       onClick={toggleLanguage}
     >
       {language === "eng" ? (
