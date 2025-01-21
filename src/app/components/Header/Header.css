@@ -22,7 +22,7 @@ header nav ul li:hover{
     display: none;
 }
 
-@media screen and (max-width: 930px){
+@media screen and (max-width: 1280px){
     header nav ul{
         flex-direction: column;
         position: absolute;
@@ -31,15 +31,6 @@ header nav ul li:hover{
         width: 100%;
         background-color: white;
         display: none;
-    }
-
-    header nav ul.active{
-        display: flex;
-    }
-
-    header nav ul li{
-        width: 100%;
-        border-bottom: 1px solid black;
     }
 
     header .profileIcon{

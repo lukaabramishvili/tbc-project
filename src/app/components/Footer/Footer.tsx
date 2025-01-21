@@ -1,25 +1,17 @@
 import "./Footer.css";
 import Navbar from "../Navbar/Navbar";
-import facebookIcon from "../../../../public/facebook.png";
-import instagramIcon from "../../../../public/instagram.png";
-import twitterIcon from "../../../../public/twitter.png";
 
 export default function Footer() {
   return (
     <footer className="dark:bg-[#2c2758] bg-white pt-4 flex flex-col md:flex-row justify-between px-4 md:px-8">
-      <div className="footerContext dark:text-white text-center mb-8 md:mb-0">
-        <h3 className="uppercase text-2xl mb-4 hidden lg:block">Contact Us</h3>
-        <p className="p-2 hidden lg:block">Email: info@gmail.com</p>
-      </div>
-
-      <div className="footerContext dark:text-white text-center mb-8 md:mb-0">
+      <div className="footerContext hidden xl:block dark:text-white text-center w-full mb-8 md:mb-0">
         <h3 className="uppercase text-2xl mb-4">Navigation</h3>
         <ul className="navList flex justify-center gap-4">
           <Navbar />
         </ul>
       </div>
 
-      <div className="footerContext dark:text-white text-center">
+      <div className="footerContext dark:text-white text-center w-full flex items-center justify-center flex-col">
         <h3 className="uppercase text-2xl mb-4">Follow Us</h3>
         <ul className="wrapper flex justify-center gap-4">
           <li className="icon facebook shadow-md dark:shadow-[0_1rem_1rem_rgba(255,255,255,0.1)]">

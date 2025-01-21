@@ -51,6 +51,15 @@ export default function Header() {
       {burgerBar && (
       <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-75 z-50">
         <nav className="flex flex-col items-center justify-center gap-4 text-[#7f73eb] bg-white p-4 rounded-lg">
+          <Link href="/profile" data-cy="profile-icon"> 
+            <img
+            className="max-h-20 cursor-pointer"
+            src={profilImage.src}
+            alt="profile icon"
+            />
+          </Link>
+          <ThemeToggle />
+          <LanguageToggle />
           <Link href="/" className="text-xl">Home</Link>
           <Link href="/products" className="text-xl">Products</Link>
           <Link href="/contact" className="text-xl">Contact</Link>
