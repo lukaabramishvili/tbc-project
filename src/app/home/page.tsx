@@ -16,6 +16,7 @@ import Marketing from "../../../public/browse-by-categories/marketing.png";
 import Video from "../../../public/browse-by-categories/play-button.png";
 import Website from "../../../public/browse-by-categories/world-wide-web.png";
 import CustomerSupport from "../../../public/browse-by-categories/customer-support.png";
+import { IntroductionJobFinder } from "../components/ForHome/IntroductionJobFinder";
 
 const slides = [
   <img src={chrysler.src} alt="Chrysler car" />,
@@ -102,6 +103,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <IntroductionJobFinder />
 
       {/* <h2 className="text-3xl dark:text-white">Welcome to Our Website!</h2>
       <div className="relative w-full max-h-[calc(100vh-12.875rem)] my-4 overflow-hidden bg-gray-300 dark:bg-gray-800">
