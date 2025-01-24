@@ -6,11 +6,14 @@ import githubIcon from "../../../public/github.png";
 
 export default function SignInWithGithub() {
   const signInWithGithub = async () => {
+
+    const baseUrl = window.location.origin
+
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "github",
       options: {
-        redirectTo: "tbc-project-five.vercel.app/auth/callback",
+        redirectTo: `${baseUrl}/auth/callback`,
       },
     });
     

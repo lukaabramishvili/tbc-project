@@ -6,11 +6,14 @@ import GoogleIcon from "../../../public/google.png";
 
 export default function SignInWithGoogle() {
   const signInWithGoogle = async () => {
+
+    const baseUrl = window.location.origin
+
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: "tbc-project-five.vercel.app/auth/callback",
+        redirectTo: `${baseUrl}/auth/callback`,
       },
     });
     
