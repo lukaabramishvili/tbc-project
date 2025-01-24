@@ -7,6 +7,7 @@ import Image from "next/image";
 import Logo from "../../../public/logo.png";
 import { url } from "inspector";
 import SignInWithGithub from "./signinWithGithub";
+import SignInWithGoogle from "./signinWithGoogle";
 
 export default function Login() {
   const router = useRouter();
@@ -96,6 +97,9 @@ export default function Login() {
           <h3 className="flex items-center justify-center mt-4 dark:text-white text-xl">or</h3>
 
           <SignInWithGithub/>
+
+          <SignInWithGoogle/>
+
           </div>
         ) : (
           <form onSubmit={handleSignup}>
