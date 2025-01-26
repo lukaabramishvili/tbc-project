@@ -38,6 +38,9 @@ function Products() {
     fetchProducts();
   }, []);
 
+  console.log(products);
+  
+
   const handleDelete = async (id: number) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
   
