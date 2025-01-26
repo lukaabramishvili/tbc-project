@@ -1,42 +1,52 @@
+'use client';
+
 import "./index.css";
 import Like from "../../../public/like.png";
 import Dislike from "../../../public/dislike.png";
 import Link from "next/link";
 import SearchBar from "../components/searchBar/searchBar";
 import NotFoundPage from "../NotFoundPage";
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
+import { Product } from "../products/page";
 
 interface Post {
   id: number;
   title: string;
   body: string;
-  reactions: {
-    likes: number;
-    dislikes: number;
-  };
+  like: number;
+  dislike: number;
   tags: string[];
   views: number;
 }
 
-interface SearchParams {
-  search?: string;
-}
+// interface SearchParams {
+//   search?: string;
+// }
 
-interface Props {
-  searchParams: SearchParams;
-}
+// interface Props {
+//   searchParams: SearchParams;
+// }
 
-async function PostsFetch({ searchParams }: Props) {
-  const searchTerm = searchParams.search || "";
-
+function PostsFetch() {
   try {
-    let url = "https://dummyjson.com/posts";
-    if (searchTerm) {
-      url = `https://dummyjson.com/posts/search?q=${searchTerm}`;
-    }
-
-    const response = await fetch(url);
-    const data = await response.json();
-    const posts: Post[] = data.posts || [];
+      const [posts, setPosts] = useState<Post[]>([]);
+    
+      useEffect(() => {
+        async function fetchPosts() {
+          try {
+            const response = await fetch("/api/fetchPosts");
+            if (response.ok) {
+              const { data } = await response.json();
+              setPosts(data);
+            } else {
+              console.error("Failed to fetch Posts.");
+            }
+          } catch (error) {
+            console.error("Error fetching Posts:", error);
+          }
+        }
+        fetchPosts();
+      }, []);
 
     return (
       <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-gray-700">
@@ -57,18 +67,22 @@ async function PostsFetch({ searchParams }: Props) {
                 <div className="flex items-center gap-10">
                   <div className="flex items-center gap-2">
                     <img src={Like.src} alt="like" className="w-5" />
-                    <p>{post.reactions.likes}</p>
+                    <p>{post.like}</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <img src={Dislike.src} alt="dislike" className="w-5" />
-                    <p>{post.reactions.dislikes}</p>
+                    <p>{post.dislike}</p>
                   </div>
                 </div>
                 <p className="flex gap-2 font-bold mb-4">
-                  Tags:{" "}
-                  {post.tags.map((tag, index) => (
-                    <span key={index}>#{tag}</span>
-                  ))}{" "}
+                {post.tags && typeof post.tags === "string" && JSON.parse(post.tags).map((tag: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined, index: Key | null | undefined) => (
+                  <span
+                    key={index}
+                    className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2"
+                  >
+                    {tag}
+                  </span>
+                ))}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-white mb-4">
                   views: {post.views}
@@ -78,11 +92,10 @@ async function PostsFetch({ searchParams }: Props) {
           ))}
         </div>
       </div>
-    );
-  } catch (error) {
-    console.error("Error fetching data: ", error);
-    return <NotFoundPage />;
-  }
+    );} catch (error) {
+      console.error("Error rendering PostsFetch:", error);
+      return <NotFoundPage />;
+    }
 }
 
 export default PostsFetch;
