@@ -19,14 +19,6 @@ interface Post {
   views: number;
 }
 
-// interface SearchParams {
-//   search?: string;
-// }
-
-// interface Props {
-//   searchParams: SearchParams;
-// }
-
 function PostsFetch() {
   try {
       const [posts, setPosts] = useState<Post[]>([]);

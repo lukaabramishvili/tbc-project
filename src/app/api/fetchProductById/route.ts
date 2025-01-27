@@ -1,18 +1,24 @@
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest) {
   try {
     const supabase = await createClient();
-    const id = params.id; 
+    const url = new URL(request.url);
+    const productId = url.searchParams.get("id"); 
 
-    const { data } = await supabase
-      .from("products")
-      .select()
-      .eq("id", id);
+    if (!productId) {
+      return NextResponse.json({ error: "Product ID is required." }, { status: 400 });
+    }
 
-    if (!data || data.length === 0) {
-      return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    const { data, error } = await supabase
+      .from("products") 
+      .select("*")
+      .eq("id", productId) 
+      .single(); 
+
+    if (error) {
+      return NextResponse.json({ error: (error as any).message }, { status: 400 });
     }
 
     return NextResponse.json({ data }, { status: 200 });
