@@ -2,7 +2,6 @@
 
 import { useLanguage } from "@/app/context/LanguageContext";
 import Link from "next/link";
-import LanguageToggle from "../LanguageToggle/LanguageToggle";
 
 export default function Navbar() {
   const { language } = useLanguage();
