@@ -38,39 +38,29 @@ function Products() {
     fetchProducts();
   }, []);
 
-  console.log(products);
-  
-
   const handleDelete = async (id: number) => {
-    if (!confirm("Are you sure you want to delete this product?")) return;
-  
     setIsDeleting(id);
-  
     try {
-      const response = await fetch(`/api/deleteProduct`, {
+      const response = await fetch(`/api/deleteProduct`, {  
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id }),
+        body: JSON.stringify({ id }), 
       });
   
-      if (response.ok) {
-        setProducts((prev) => prev.filter((product) => product.id !== id));
-        alert("Product deleted successfully.");
-      } else {
-        const { error } = await response.json();
-        console.error("Failed to delete product:", error);
-        alert(`Failed to delete the product. Error: ${error}`);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${await response.text()}`);
       }
-    } catch (error) {
-      console.error("Error deleting product:", error);
-      alert("An error occurred. Please try again later.");
-    } finally {
-      setIsDeleting(null);
-    }
-  };
   
+      setProducts((prev) => prev.filter((item) => item.id !== id));
+      console.log(`Product ${id} deleted`);
+    } catch (error) {
+      console.error("Failed to delete product:", error);
+    }
+    setIsDeleting(null);
+  };
+    
   return (
     <div className="container min-h-screen p-6 mx-auto bg-gray-100 dark:bg-gray-700">
       <h1 className="text-center text-4xl font-bold mb-6 dark:text-white">
@@ -89,7 +79,7 @@ function Products() {
           >
             <Link href={`/products/${item.id}`}>
               <div className="w-full">
-                <div className='w-full flex items-center justify-between'>
+                <div className='w-full flex items-center justify-between pb-4'>
                   <div className="font-semibold text-lg text-gray-900 dark:text-gray-100 p-2">
                     {item.title}
                   </div>

@@ -1,35 +1,38 @@
 import { createClient } from "@/utils/supabase/server";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function DELETE(request: NextRequest) {
-  console.log("DELETE endpoint hit");
-
+export async function DELETE(req: Request): Promise<Response> {
   try {
-    const supabase = await createClient();
-    console.log("Supabase client initialized");
-
-    const body = await request.json();
-    console.log("Request Body:", body);
-
-    const { id } = body;
+    const { id } = await req.json();
+    const supabase = createClient();
 
     if (!id) {
-      console.log("Missing Product ID");
-      return NextResponse.json({ error: "Product ID is required" }, { status: 400 });
+      return new Response(JSON.stringify({ error: "Missing product id" }), {
+        status: 400,
+      });
     }
 
-    console.log(`Deleting product with ID: ${id}`);
-    const { error } = await supabase.from("products").delete().eq("id", id);
+    const { data: user, error: authError } = await (await supabase).auth.getUser();
+    console.log("Deleting product. User:", user);
+    if (authError) console.error("Auth Error:", authError.message);
+
+    const { error } = await (await supabase).from("products").delete().eq("id", id);
 
     if (error) {
-      console.log("Supabase error:", error.message);
-      return NextResponse.json({ error: error.message }, { status: 400 });
+      console.error("Supabase Delete Error:", error.message);
+      return new Response(
+        JSON.stringify({ error: "Failed to delete product", details: error.message }),
+        { status: 500 }
+      );
     }
 
-    console.log("Product deleted successfully");
-    return NextResponse.json({ message: "Product deleted successfully" }, { status: 200 });
-  } catch (error) {
-    console.log("Server error:", error);
-    return NextResponse.json({ error: (error as any).message || "An error occurred" }, { status: 500 });
+    console.log(`✅ Product ${id} deleted successfully`);
+    return new Response(JSON.stringify({ message: "Product deleted successfully" }), {
+      status: 200,
+    });
+  } catch (err: unknown) {
+    console.error("Error deleting product:", err instanceof Error ? err.message : err);
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+    });
   }
 }
