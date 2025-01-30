@@ -4,8 +4,8 @@
   top: 13%;
   height: 3.5rem;
   width: 8rem;
-  background-color: #132233;
-  border: 2px solid rgb(182, 128, 128);
+  background-color: #2C2758;
+  border: 2px solid #2C2758;
   color: #eee;
   transition: .6s;
   font-size: 15px;
@@ -32,8 +32,8 @@
 
 .button:hover {
   width: 8rem;
-  background-color: rgba(51, 34, 51, 0.815);
-  box-shadow: 20px 20px 96px #bebebe,-20px -20px 96px #ffffff;
+  background-color: #2C2758;
+  box-shadow: 20px 20px 96px #2C2758,-20px -20px 96px #2C2758;
 }
 
 .button:hover svg {

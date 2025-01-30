@@ -58,40 +58,41 @@ const recoverPassword = async () => {
 }
 
 
-  return (
-    <div>
-        <input 
-          type="email" 
-          value={user?.email}
-          readOnly 
-          className="border px-4 py-2 rounded cursor-not-allowed w-full max-w-xs"
+return (
+  <div className="flex justify-center items-center min-h-screen bg-white dark:bg-[#2C2758] text-black dark:text-white">
+    <div className="w-full max-w-sm p-6 bg-gray-100 dark:bg-[#374151] shadow-md rounded-lg">
+      {/* <input 
+        type="email" 
+        value={user?.email}
+        readOnly 
+        className="border px-4 py-2 rounded cursor-not-allowed w-full mb-4 bg-gray-200 dark:bg-[#2C2758] text-black dark:text-white border-gray-500"
+      /> */}
+      
+      <div className="relative w-full mb-4">
+        <input
+          id="password"
+          type={showPassword ? "text" : "password"}
+          placeholder="Your new password"
+          className="border px-4 py-2 rounded w-full pr-12 bg-gray-200 dark:bg-[#2C2758] text-black dark:text-white border-gray-500"
+          onClick={(e) => e.currentTarget.select()}
         />
-        
-        <div className="relative w-full max-w-xs">
-          <input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            placeholder="your password"
-            className="border px-4 py-2 rounded w-full pr-12"
-            onClick={(e) => e.currentTarget.select()}
-          />
-          <button
-            onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute inset-y-0 right-2 px-4 py-2 rounded"
-          >
-            {showPassword ?
-              <Image src={ShowPassword} alt="Show password" width={20} height={20} /> :
-              <Image src={HidePassword} alt="Hide password" width={20} height={20} />
-            }
-          </button>
-          <button 
-            className="rounded-lg px-6 py-2 cursor-pointer text-white bg-slate-700 hover:bg-slate-600 duration-300"
-            onClick={recoverPassword}
-          >
-            change password
-          </button>
-
-        </div>
+        <button
+          onClick={() => setShowPassword((prev) => !prev)}
+          className="absolute inset-y-0 right-2 px-4 py-2"
+        >
+          {showPassword ?
+            <Image src={ShowPassword} alt="Show password" width={20} height={20} /> :
+            <Image src={HidePassword} alt="Hide password" width={20} height={20} />
+          }
+        </button>
+      </div>
+      
+      <button 
+        className="w-full rounded-lg px-6 py-2 cursor-pointer text-black dark:text-white bg-gray-300 dark:bg-[#2C2758] hover:bg-gray-400 dark:hover:bg-[#374151] duration-300"
+        onClick={recoverPassword}
+      >
+        Change Password
+      </button>
     </div>
-  )
-}
+  </div>
+)}

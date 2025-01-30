@@ -59,9 +59,9 @@ export default function CartDialog() {
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-400 bg-opacity-50 backdrop-blur-md z-40">
+        <div className="fixed top-0 left-0 w-full h-full bg-[#2C2758] bg-opacity-50 backdrop-blur-md z-40">
           <div
-            className="w-3/4 h-3/4 z-50 top-[12.5%] left-[12.5%] fixed pl-10 pr-10 bg-white rounded-xl flex flex-col items-center justify-start"
+            className="w-3/4 h-3/4 z-50 top-[12.5%] left-[12.5%] fixed pl-10 pr-10 bg-[#2C2758] rounded-xl flex flex-col items-center justify-start"
             style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="w-full h-16 border-b-2 border-gray-400 flex flex-row items-center justify-center">
@@ -107,7 +107,7 @@ export default function CartDialog() {
                           Quantity:
                           <div className="flex flex-row gap-2">
                             <Minus
-                              className="cursor-pointer border rounded-2xl hover:bg-slate-200"
+                              className="cursor-pointer border rounded-2xl hover:bg-[#2C2758]"
                               onClick={() =>
                                 updateItemQuantity(
                                   item.product.id,
@@ -117,7 +117,7 @@ export default function CartDialog() {
                             />
                             {item.quantity}
                             <Plus
-                              className="cursor-pointer border rounded-2xl hover:bg-slate-200"
+                              className="cursor-pointer border rounded-2xl hover:bg-[#2C2758]"
                               onClick={() =>
                                 updateItemQuantity(
                                   item.product.id,

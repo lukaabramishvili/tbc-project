@@ -6,7 +6,6 @@ import Link from "next/link";
 import profilImage from "../../../../public/profile-icon.png";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import LanguageToggle from "../LanguageToggle/LanguageToggle";
-import CartDialog from "../CartDialog/CartDialog";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
 import { useState } from "react";
@@ -69,7 +68,6 @@ export default function Header() {
         </nav>
       </div>
       )}
-      <CartDialog />
     </header>
   );
 }

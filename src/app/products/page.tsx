@@ -4,6 +4,7 @@ import Link from 'next/link';
 import AddProductDialog from "../components/AddProductDialog/AddProductDialog";
 import { useCart } from "../components/providers/CartProvider";
 import { useEffect, useState } from "react";
+import CartDialog from '../components/CartDialog/CartDialog';
 
 export interface Product {
   id: number;
@@ -120,6 +121,7 @@ function Products() {
           </div>
         ))}
       </div>
+      <CartDialog />
     </div>
   );
 }
