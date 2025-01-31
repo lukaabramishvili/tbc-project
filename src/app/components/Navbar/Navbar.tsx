@@ -9,38 +9,38 @@ export default function Navbar() {
   return (
     <nav className="hidden justify-between items-center p-4 xl:flex">
       <ul className="dark:text-white flex space-x-4">
-        <li>
-          <Link data-cy="nav-home" href="/">
+        <li className="font-bold">
+          <Link data-cy="nav-home" href="/" className="p-4" >
             {language === "eng" ? "Home" : "მთავარი"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-products" href="/products">
+        <li className="font-bold">
+          <Link data-cy="nav-products" href="/products" className="p-4">
             {language === "eng" ? "Products" : "პროდუქტები"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-contact" href="/contact">
+        <li className="font-bold">
+          <Link data-cy="nav-contact" href="/contact" className="p-4">
             {language === "eng" ? "Contact" : "კონტაქტი"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-about" href="/about">
+        <li className="font-bold">
+          <Link data-cy="nav-about" href="/about" className="p-4">
             {language === "eng" ? "About" : "ჩვენს შესახებ"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-posts" href="/posts">
+        <li className="font-bold">
+          <Link data-cy="nav-posts" href="/posts" className="p-4">
             {language === "eng" ? "Posts" : "პოსტები"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-pricing" href="/pricing">
+        <li className="font-bold">
+          <Link data-cy="nav-pricing" href="/pricing" className="p-4">
             {language === "eng" ? "Pricing" : "ფასები"}
           </Link>
         </li>
-        <li>
-          <Link data-cy="nav-subscribed" href="/subscribedUserView">
+        <li className="font-bold">
+          <Link data-cy="nav-subscribed" href="/subscribedUserView" className="p-4">
             {language === "eng" ? "Subscribed" : "გამოწერა"}
           </Link>
         </li>
