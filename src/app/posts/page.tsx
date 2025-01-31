@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import "./index.css";
 import Like from "../../../public/like.png";
@@ -6,8 +6,9 @@ import Dislike from "../../../public/dislike.png";
 import Link from "next/link";
 import SearchBar from "../components/searchBar/searchBar";
 import NotFoundPage from "../NotFoundPage";
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
-import { Product } from "../products/page";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import SortComponent from "../components/sort/sortComponent";
 
 interface Post {
   id: number;
@@ -20,34 +21,55 @@ interface Post {
 }
 
 function PostsFetch() {
-  try {
-      const [posts, setPosts] = useState<Post[]>([]);
-    
-      useEffect(() => {
-        async function fetchPosts() {
-          try {
-            const response = await fetch("/api/fetchPosts");
-            if (response.ok) {
-              const { data } = await response.json();
-              setPosts(data);
-            } else {
-              console.error("Failed to fetch Posts.");
-            }
-          } catch (error) {
-            console.error("Error fetching Posts:", error);
-          }
-        }
-        fetchPosts();
-      }, []);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get("search") || "";
+  const sortBy = searchParams.get("sortBy") || "";
 
-    return (
-      <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-gray-700">
-        <h1 className="text-center text-4xl mb-8 dark:text-white">Posts</h1>
-        <div className="w-full flex items-center justify-center mb-8">
-          <SearchBar searchType={"posts"} />
-        </div>
-        <div className="flex flex-col gap-4">
-          {posts.map((post) => (
+  // Fetch posts from the API
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch("/api/fetchPosts");
+        if (response.ok) {
+          const { data } = await response.json();
+          setPosts(data);
+        } else {
+          console.error("Failed to fetch Posts.");
+        }
+      } catch (error) {
+        console.error("Error fetching Posts:", error);
+      }
+    }
+    fetchPosts();
+  }, []);
+
+  // Filter posts based on search query
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Sort posts based on the `sortBy` parameter
+  const sortedPosts = [...filteredPosts].sort((a, b) => {
+    if (sortBy === "views-desc") return b.views - a.views;
+    if (sortBy === "views-asc") return a.views - b.views;
+    if (sortBy === "likes-desc") return b.like - a.like;
+    if (sortBy === "likes-asc") return a.like - b.like;
+    if (sortBy === "dislikes-desc") return b.dislike - a.dislike;
+    if (sortBy === "dislikes-asc") return a.dislike - b.dislike;
+    return 0;
+  });
+
+  return (
+    <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-gray-700">
+      <h1 className="text-center text-4xl mb-8 dark:text-white">Posts</h1>
+      <div className="flex items-center justify-between w-full mt-4 md:flex-row flex-col">
+        <SearchBar searchType="posts" />
+        <SortComponent sortType="posts" />
+      </div>
+      <div className="flex flex-col gap-4">
+        {sortedPosts.length > 0 ? (
+          sortedPosts.map((post) => (
             <Link
               key={post.id}
               href={`/posts/${post.id}`}
@@ -67,27 +89,27 @@ function PostsFetch() {
                   </div>
                 </div>
                 <p className="flex gap-2 font-bold mb-4">
-                {post.tags && typeof post.tags === "string" && JSON.parse(post.tags).map((tag: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined, index: Key | null | undefined) => (
-                  <span
-                    key={index}
-                    className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                  {/* {post.tags.map((tag, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded mr-2"
+                    >
+                      {tag}
+                    </span>
+                  ))} */}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-white mb-4">
-                  views: {post.views}
+                  Views: {post.views}
                 </p>
               </div>
             </Link>
-          ))}
-        </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500 dark:text-white">No posts found.</p>
+        )}
       </div>
-    );} catch (error) {
-      console.error("Error rendering PostsFetch:", error);
-      return <NotFoundPage />;
-    }
+    </div>
+  );
 }
 
 export default PostsFetch;
