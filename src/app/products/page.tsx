@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import AddProductDialog from "../components/AddProductDialog/AddProductDialog";
@@ -19,7 +19,7 @@ export interface Product {
   img_url: string;
 }
 
-function Products() {
+const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isDeleting, setIsDeleting] = useState<number | null>(null);
   const { addItemToCart } = useCart();
@@ -28,6 +28,8 @@ function Products() {
   const sortBy = searchParams.get("sortBy") || "";
   const [isRetriggered, retriggerFetch] = useState<boolean>(false);
 
+
+  // Fetch products from the API
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -45,6 +47,7 @@ function Products() {
     fetchProducts();
   }, []);
 
+  // Handle product deletion
   const handleDelete = async (id: number) => {
     setIsDeleting(id);
     try {
@@ -53,33 +56,40 @@ function Products() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
       });
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status} - ${await response.text()}`);
+      if (response.ok) {
+        setProducts((prev) => prev.filter((item) => item.id !== id));
+      } else {
+        throw new Error("Failed to delete product");
       }
-      setProducts((prev) => prev.filter((item) => item.id !== id));
     } catch (error) {
-      console.error("Failed to delete product:", error);
+      console.error("Error deleting product:", error);
     }
     setIsDeleting(null);
   };
 
+  // Filter and sort products
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchQuery)
   );
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortBy === "price-asc") return a.price - b.price;
-    if (sortBy === "price-desc") return b.price - a.price;
-    if (sortBy === "title-asc") return a.title.localeCompare(b.title);
-    if (sortBy === "title-desc") return b.title.localeCompare(a.title);
-    return 0;
+    switch (sortBy) {
+      case "price-asc":
+        return a.price - b.price;
+      case "price-desc":
+        return b.price - a.price;
+      case "title-asc":
+        return a.title.localeCompare(b.title);
+      case "title-desc":
+        return b.title.localeCompare(a.title);
+      default:
+        return 0;
+    }
   });
 
   return (
     <div className="container min-h-screen p-6 mx-auto bg-gray-100 dark:bg-gray-700">
-      <h1 className="text-center text-4xl font-bold mb-6 dark:text-white">
-        Our Products
-      </h1>
+      <h1 className="text-center text-4xl font-bold mb-6 dark:text-white">Our Products</h1>
       <div className="flex items-center justify-center mb-4 flex-col">
         <AddProductDialog retriggerFetch={retriggerFetch} />
         <div className="flex items-center justify-between w-full mt-4 md:flex-row flex-col">
@@ -135,14 +145,18 @@ function Products() {
             </div>
           ))
         ) : (
-          <p className="text-center text-lg text-gray-600 dark:text-gray-300">
-            No products found
-          </p>
+          <p className="text-center text-lg text-gray-600 dark:text-gray-300">No products found</p>
         )}
       </div>
       <CartDialog />
     </div>
   );
-}
+};
 
-export default Products;
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Products />
+    </Suspense>
+  );
+}
