@@ -1,42 +1,43 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import "./searchBar.css";
-import { useRouter } from "next/navigation";
-import Search from "../../../../public/search.png";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useDebounce } from "@/app/hook/useDebounce";
+import Search from "../../../../public/search.png";
 
 interface SearchBarProps {
   searchType: string;
 }
 
 export default function SearchBar({ searchType }: SearchBarProps) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams();
+  const initialSearch = searchParams.get("search") || "";
+  const sortBy = searchParams.get("sortBy") || "";
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
   const debouncedValue = useDebounce(searchTerm, 300);
   const router = useRouter();
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   useEffect(() => {
-    if (debouncedValue) {
-      router.push(`/${searchType}/?search=${debouncedValue}`);
-    } else {
-      router.push(`/${searchType}`);
-    }
-  }, [debouncedValue, router]);
+    const params = new URLSearchParams();
+    if (debouncedValue) params.set("search", debouncedValue);
+    if (sortBy) params.set("sortBy", sortBy);
+    router.push(`/${searchType}/?${params.toString()}`);
+  }, [debouncedValue, router, searchType, sortBy]);
 
   return (
-    <>
-      <div className="searchBar-container container">
-        <img className="searchBar-icon" src={Search.src} alt="search-icon" />
-        <input
-          className="searchBar-input"
-          type="text"
-          value={searchTerm}
-          placeholder="looking for something ?"
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-      </div>
-    </>
+    <div className="searchBar-container flex items-center gap-2">
+      <img className="searchBar-icon w-8 h-8" src={Search.src} alt="search-icon" />
+      <input
+        className="searchBar-input p-4 my-4 w-80 rounded-xl bg-gray-300"
+        type="text"
+        value={searchTerm}
+        placeholder="Looking for something?"
+        onChange={handleSearchChange}
+      />
+    </div>
   );
 }
