@@ -1,46 +1,92 @@
-import "./index.css";
+import { Mail, Phone, Globe, Building, Linkedin} from 'lucide-react';
 
-export default function Contact() {
+interface initValuesTypes {
+  name: string;
+  email: string;
+  message: string;
+  Subject: string;
+}
+
+const initValues: initValuesTypes = {
+  name: '',
+  email: '',
+  message: '',
+  Subject: ''
+};
+
+export default function ContactPage() {
+
   return (
-    <div className="contactContainer">
-      <h1>Contact</h1>
-      <form>
-        <div className="form-group">
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" placeholder="Enter your name" required />
+    <div className="min-h-screen bg-white dark:bg-[#2C2758] p-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.5575042690184!2d44.79247037601565!3d41.70848727601669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440daa2f2fa18d%3A0x4d33e12d151c36ea!2z4YOX4YOY4YOR4YOY4YOh4YOYIOGDmeGDneGDnOGDquGDlOGDnuGDouGDmCAtIFRCQyBDb25jZXB0!5e0!3m2!1sen!2sge!4v1738399217851!5m2!1sen!2sge"
+              width="100%"
+              height="450"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-xl border shadow-md"
+            ></iframe>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              { icon: Building, text: '7 Kote Marjanishvili St, Tbilisi 0102' },
+              { icon: Globe, text: 'https://tbc-project-five.vercel.app/' },
+              { icon: Phone, text: '(+995) 555-11-11-11' },
+              { icon: Mail, text: 'lukaabramishvili3@gmail.com' },
+              { icon: Linkedin, text: 'https://www.linkedin.com/in/luka-abramishvili-9332a7289/' },
+            ].map((item, index) => (
+              <div key={index} className="flex items-center space-x-3 bg-blue-50 dark:bg-[#374151] p-4 rounded-xl">
+                <item.icon className="text-blue-500 dark:text-white" />
+                <p className="dark:text-white">{item.text}</p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Enter your email"
-            required
-          />
+
+        <div className="mt-12 text-center">
+          <h2 className="text-2xl font-bold dark:text-white">Project in mind? Let’s Talk</h2>
+          <form className="mt-6 space-y-4">
+            <div className="grid md:grid-cols-2 gap-4">
+              <input
+                required
+                type="text"
+                placeholder="Full Name"
+                className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
+              />
+              <input
+                required
+                type="email"
+                placeholder="Email Address"
+                className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
+              />
+              <input
+                required
+                type="text"
+                placeholder="Subject"
+                className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
+              />
+
+            </div>
+            <textarea
+              required
+              placeholder="What can we help you?"
+              className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
+              rows={5}
+            ></textarea>
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 dark:bg-[#2C2758] text-white py-3 rounded-full hover:bg-indigo-700 dark:hover:bg-indigo-500 transition transform hover:scale-105 shadow-lg"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" placeholder="Your message" required></textarea>
-        </div>
-        <div className="form-group">
-          <label htmlFor="gender">Gender:</label>
-          <select id="gender" required>
-            <option value="" disabled selected>
-              Select your gender
-            </option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="subscribe">
-            <input type="checkbox" id="subscribe" />
-            Are you sure everything is correct?
-          </label>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+      </div>
     </div>
   );
 }
