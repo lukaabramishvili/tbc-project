@@ -18,7 +18,7 @@ export async function POST(req: Request): Promise<Response> {
       quantity: item.quantity,
     }));
 
-    const siteUrl = process.env.NEXT_PUBLIC_LOCAL_SITE_URL || '';
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || '';
     const formattedSiteUrl = siteUrl.startsWith('http') ? siteUrl : `https://${siteUrl}`;
 
     const session = await stripe.checkout.sessions.create({
