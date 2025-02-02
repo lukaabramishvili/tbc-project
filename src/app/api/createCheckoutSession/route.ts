@@ -30,6 +30,14 @@ export async function POST(req: Request): Promise<Response> {
       cancel_url: `${formattedSiteUrl}/pricing`,
     });
 
+    const { error } = await (await supabase)
+      .from("user_profiles")
+      .upsert({ id: user?.id, stripe_customer_id: customer.id });
+ 
+    if (error) {
+      throw new Error("Failed to update user profile with Stripe customer ID");
+    }
+
     return NextResponse.json({ id: session.id });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
