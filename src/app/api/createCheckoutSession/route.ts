@@ -26,8 +26,8 @@ export async function POST(req: Request): Promise<Response> {
       line_items: transformedItems,
       mode: 'subscription',
       customer: customer.id,
-      success_url: `${formattedSiteUrl}/pricing/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${formattedSiteUrl}/pricing`,
+      success_url: `${formattedSiteUrl}/courses/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${formattedSiteUrl}/courses`,
     });
 
     const { error } = await (await supabase)

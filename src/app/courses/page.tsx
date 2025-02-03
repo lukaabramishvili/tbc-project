@@ -9,7 +9,7 @@ if (!process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY) {
   console.warn('Stripe publishable key is missing. Ensure it is set in your .env.local file.');
 }
 
-export default function PricingPage() {
+export default function coursesPage() {
   const [loading, setLoading] = useState(false);
 
   interface Subscription {
@@ -66,7 +66,7 @@ export default function PricingPage() {
             onClick={handleSubscription}
             disabled={loading}
           >
-            {loading ? 'Processing...' : 'Subscribe Now'}
+            {loading ? 'Processing...' : 'Bought Now'}
           </button>
         </div>
       </div>

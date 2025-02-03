@@ -9,6 +9,7 @@ import LanguageToggle from "../LanguageToggle/LanguageToggle";
 import Image from "next/image";
 import Logo from "../../../../public/logo.png";
 import { useState } from "react";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 
 
@@ -18,6 +19,8 @@ export default function Header() {
   const handleBurgerBar = () => {
     setBurgerBar(!burgerBar);
   }
+
+  const { language } = useLanguage();
 
   return (
     <header className="bg-white dark:bg-[#2c2758] max-w-full h-24 flex items-center justify-around transition-colors duration-300">
@@ -49,7 +52,7 @@ export default function Header() {
       </div>
       {burgerBar && (
       <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-75 z-50">
-        <nav className="flex flex-col items-center justify-center gap-4 text-[#7f73eb] bg-white p-4 rounded-lg">
+        <nav className="flex flex-col items-center justify-center gap-4 text-[#7f73eb] bg-white dark:bg-[#2c2758] p-4 rounded-lg">
           <Link href="/profile" data-cy="profile-icon"> 
             <img
             className="max-h-20 cursor-pointer"
@@ -59,11 +62,24 @@ export default function Header() {
           </Link>
           <ThemeToggle />
           <LanguageToggle />
-          <Link href="/" className="text-xl">Home</Link>
-          <Link href="/products" className="text-xl">Products</Link>
-          <Link href="/contact" className="text-xl">Contact</Link>
-          <Link href="/about" className="text-xl">About</Link>
-          <Link href="/post" className="text-xl">Post</Link>
+          <Link href="/" className="text-xl">
+            {language === "eng" ? "Home" : "მთავარი"}
+          </Link>
+          <Link href="/products" className="text-xl">
+            {language === "eng" ? "Products" : "პროდუქტები"}
+          </Link>
+          <Link href="/posts" className="text-xl">
+            {language === "eng" ? "Posts" : "პოსტები"}
+          </Link>
+          <Link href="/contact" className="text-xl">
+            {language === "eng" ? "Contact" : "კონტაქტი"}
+          </Link>
+          <Link href="/about" className="text-xl">
+            {language === "eng" ? "About" : "ჩვენს შესახებ"}
+          </Link>
+          <Link href="/courses" className="text-xl">
+            {language === "eng" ? "Courses" : "კურსები"}
+          </Link>
           <button onClick={handleBurgerBar} className="mt-4 p-2 bg-red-500 text-white rounded">Close</button>
         </nav>
       </div>

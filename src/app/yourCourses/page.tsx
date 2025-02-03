@@ -2,7 +2,7 @@ import Image from "next/image";
 import { logout } from "../logout/actions";
 import Link from "next/link";
 
-export default function Subscriprionview() {
+export default function yourCourses() {
     const user = { email: "user@example.com" }; 
 
     return (
