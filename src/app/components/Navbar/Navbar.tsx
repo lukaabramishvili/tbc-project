@@ -20,6 +20,11 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="font-bold">
+          <Link data-cy="nav-posts" href="/posts" className="p-4">
+            {language === "eng" ? "Posts" : "პოსტები"}
+          </Link>
+        </li>
+        <li className="font-bold">
           <Link data-cy="nav-contact" href="/contact" className="p-4">
             {language === "eng" ? "Contact" : "კონტაქტი"}
           </Link>
@@ -30,18 +35,8 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="font-bold">
-          <Link data-cy="nav-posts" href="/posts" className="p-4">
-            {language === "eng" ? "Posts" : "პოსტები"}
-          </Link>
-        </li>
-        <li className="font-bold">
-          <Link data-cy="nav-pricing" href="/pricing" className="p-4">
-            {language === "eng" ? "Pricing" : "ფასები"}
-          </Link>
-        </li>
-        <li className="font-bold">
-          <Link data-cy="nav-subscribed" href="/subscribedUserView" className="p-4">
-            {language === "eng" ? "Subscribed" : "გამოწერა"}
+          <Link data-cy="nav-courses" href="/courses" className="p-4">
+            {language === "eng" ? "Courses" : "კურსები"}
           </Link>
         </li>
       </ul>
