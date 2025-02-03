@@ -1,20 +1,49 @@
-import { Mail, Phone, Globe, Building, Linkedin} from 'lucide-react';
+'use client'
 
-interface initValuesTypes {
-  name: string;
-  email: string;
-  message: string;
-  Subject: string;
-}
-
-const initValues: initValuesTypes = {
-  name: '',
-  email: '',
-  message: '',
-  Subject: ''
-};
+import { useState } from "react";
+import { Mail, Phone, Globe, Building, Linkedin } from "lucide-react";
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState("");
+
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    setLoading(true);
+    setResponseMessage("");
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setResponseMessage("Email sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setResponseMessage("Failed to send email.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setResponseMessage("Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#2C2758] p-8">
@@ -34,11 +63,11 @@ export default function ContactPage() {
 
           <div className="space-y-4">
             {[
-              { icon: Building, text: '7 Kote Marjanishvili St, Tbilisi 0102' },
-              { icon: Globe, text: 'https://tbc-project-five.vercel.app/' },
-              { icon: Phone, text: '(+995) 555-11-11-11' },
-              { icon: Mail, text: 'lukaabramishvili3@gmail.com' },
-              { icon: Linkedin, text: 'https://www.linkedin.com/in/luka-abramishvili-9332a7289/' },
+              { icon: Building, text: "7 Kote Marjanishvili St, Tbilisi 0102" },
+              { icon: Globe, text: "https://tbc-project-five.vercel.app/" },
+              { icon: Phone, text: "(+995) 555-11-11-11" },
+              { icon: Mail, text: "lukaabramishvili3@gmail.com" },
+              { icon: Linkedin, text: "https://www.linkedin.com/in/luka-abramishvili-9332a7289/" },
             ].map((item, index) => (
               <div key={index} className="flex items-center space-x-3 bg-blue-50 dark:bg-[#374151] p-4 rounded-xl">
                 <item.icon className="text-blue-500 dark:text-white" />
@@ -50,41 +79,54 @@ export default function ContactPage() {
 
         <div className="mt-12 text-center">
           <h2 className="text-2xl font-bold dark:text-white">Project in mind? Let’s Talk</h2>
-          <form className="mt-6 space-y-4">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <input
                 required
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Full Name"
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
               <input
                 required
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Email Address"
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
               <input
                 required
                 type="text"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
                 placeholder="Subject"
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
-
             </div>
             <textarea
               required
-              placeholder="What can we help you?"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="What can we help you with?"
               className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               rows={5}
             ></textarea>
             <button
               type="submit"
               className="w-full bg-indigo-600 dark:bg-[#2C2758] text-white py-3 rounded-full hover:bg-indigo-700 dark:hover:bg-indigo-500 transition transform hover:scale-105 shadow-lg"
+              disabled={loading}
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
+          {responseMessage && <p className="mt-4 text-green-500">{responseMessage}</p>}
         </div>
       </div>
     </div>
