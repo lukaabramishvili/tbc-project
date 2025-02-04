@@ -59,79 +59,56 @@ export default function CartDialog() {
       </button>
 
       {isOpen && (
-        <div className="fixed top-0 left-0 w-full h-full bg-[#2C2758] bg-opacity-50 backdrop-blur-md z-40">
+        <div className="fixed top-0 left-0 w-full h-full bg-[#2C2758] dark:bg-gray-900 bg-opacity-50 backdrop-blur-md z-40 flex items-center justify-center">
           <div
-            className="w-3/4 h-3/4 z-50 top-[12.5%] left-[12.5%] fixed pl-10 pr-10 bg-[#2C2758] rounded-xl flex flex-col items-center justify-start"
+            className="w-full max-w-lg h-auto max-h-[80vh] z-50 p-6 bg-[#2C2758] dark:bg-gray-800 rounded-xl flex flex-col items-center justify-start overflow-y-auto"
             style={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)" }}
           >
-            <div className="w-full h-16 border-b-2 border-gray-400 flex flex-row items-center justify-center">
-              <h2>Your Cart</h2>
+            <div className="w-full h-16 border-b-2 border-gray-400 dark:border-gray-600 flex flex-row items-center justify-center relative">
+              <h2 className="text-lg font-semibold text-white dark:text-gray-200">Your Cart</h2>
+              <button
+                onClick={handleClose}
+                className="absolute top-4 right-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              >
+                <X className="h-6 w-6 dark:text-gray-300" />
+              </button>
             </div>
-            <button
-              onClick={handleClose}
-              style={{
-                position: "absolute",
-                top: "16px",
-                right: "16px",
-              }}
-              className="justify-end rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-            >
-              <X className="h-4 w-4" />
-            </button>
 
             <div className="w-full p-4">
-              <ul>
+              <ul className="space-y-2">
                 {cartItems.length === 0 ? (
-                  <li>Your cart is empty...</li>
+                  <li className="text-center text-white dark:text-gray-400">Your cart is empty...</li>
                 ) : (
                   cartItems.map((item) => (
                     <li
                       key={item.product.id}
-                      className="flex flex-row items-center justify-between h-16 border border-gray-200 p-2 m-2 rounded-2xl"
+                      className="flex flex-col sm:flex-row items-center justify-between h-auto sm:h-16 border border-gray-200 dark:border-gray-700 p-2 rounded-2xl"
                     >
-                      <div className="flex flex-row">
+                      <div className="flex flex-row items-center">
                         <img
-                          className="border mr-2"
-                          style={{ width: "30px", height: "30px" }}
+                          className="border mr-2 w-10 h-10 object-cover"
                           src={item.product.img_url}
                           alt={item.product.title}
                         />
-                        <div className="mr-2">{item.product.title}</div>
+                        <div className="text-sm sm:text-base text-white dark:text-gray-200">{item.product.title}</div>
                       </div>
 
-                      <div className="flex flex-row gap-2">
-                        <div>
-                          Price: ${(item.product.price / 100).toFixed(2)}
-                        </div>
-                        <div className="flex flex-row gap-2">
-                          Quantity:
-                          <div className="flex flex-row gap-2">
-                            <Minus
-                              className="cursor-pointer border rounded-2xl hover:bg-[#2C2758]"
-                              onClick={() =>
-                                updateItemQuantity(
-                                  item.product.id,
-                                  item.quantity - 1
-                                )
-                              }
-                            />
-                            {item.quantity}
-                            <Plus
-                              className="cursor-pointer border rounded-2xl hover:bg-[#2C2758]"
-                              onClick={() =>
-                                updateItemQuantity(
-                                  item.product.id,
-                                  item.quantity + 1
-                                )
-                              }
-                            />
-                            <X
-                              className="cursor-pointer"
-                              onClick={() =>
-                                removeItemFromCart(item.product.id)
-                              }
-                            />
-                          </div>
+                      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 items-center">
+                        <div className="text-sm text-white dark:text-gray-300">Price: ${(item.product.price / 100).toFixed(2)}</div>
+                        <div className="flex flex-row items-center gap-2 text-white">
+                          <Minus
+                            className="cursor-pointer border rounded-2xl p-1 text-white hover:bg-[#2C2758] dark:hover:bg-gray-700"
+                            onClick={() => updateItemQuantity(item.product.id, item.quantity - 1)}
+                          />
+                          {item.quantity}
+                          <Plus
+                            className="cursor-pointer border rounded-2xl p-1 text-white hover:bg-[#2C2758] dark:hover:bg-gray-700"
+                            onClick={() => updateItemQuantity(item.product.id, item.quantity + 1)}
+                          />
+                          <X
+                            className="cursor-pointer text-red-500 dark:text-red-400"
+                            onClick={() => removeItemFromCart(item.product.id)}
+                          />
                         </div>
                       </div>
                     </li>
@@ -139,15 +116,14 @@ export default function CartDialog() {
                 )}
               </ul>
               <div
-                onClick={() => handleChekout()}
-                className="border rounded-2xl w-40 bg-green-200 h-10 flex flex-col items-center justify-center cursor-pointer"
+                onClick={handleChekout}
+                className="mt-4 border rounded-2xl w-full max-w-xs bg-green-200 dark:bg-green-700 h-12 flex items-center justify-center cursor-pointer text-center dark:text-gray-200"
               >
                 Proceed to Checkout
               </div>
             </div>
           </div>
         </div>
-      )}
-    </>
+      )}    </>
   );
 }

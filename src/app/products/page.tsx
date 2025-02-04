@@ -130,9 +130,8 @@ const Products = () => {
               </Link>
               <div className="flex justify-between w-full items-center mt-auto">
                 <div className="font-semibold text-gray-900 dark:text-gray-100">
-                  ${new Intl.NumberFormat("en-US").format(item.price)}
-                </div>
-                <button
+                  ${new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(item.price / 100)}
+                </div>                <button
                   className="px-6 py-2 text-sm font-semibold text-white bg-blue-600 rounded-full shadow-md hover:bg-blue-700 transition-all duration-300"
                   onClick={(e) => {
                     e.preventDefault();
