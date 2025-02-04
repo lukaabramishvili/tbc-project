@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
+import CoursesCard from '../components/CoursesCard/CoursesCard';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -49,27 +50,46 @@ export default function coursesPage() {
   };
 
   return (
-    <div className="rounded-2xl shadow-lg p-3 bg-[#2c2758] text-gray-500 max-w-xl mx-auto my-20 hover:bg-[#685dcd] transition duration-500">
-      <div className="relative flex flex-col items-center p-5 pt-10 bg-white rounded-xl hover:bg-gray-400 hover:text-white transition duration-500">
-        <span className="mt-[-12px] absolute top-0 right-0 flex items-center bg-[#2c2758] rounded-l-full py-2 px-3 text-xl font-semibold text-[#7f73eb]">
-          $9.99 <small className="text-xs ml-1 text-white">/ month</small>
-        </span>
-        <p className="text-xl font-semibold text-white bg-[#2c2758] px-2 py-1 rounded-lg">
-          Frontend Web Developer
-        </p>
-        <p className="text-center mt-3">
-          The 10-month web programming course will thoroughly teach the students JavaScript, React JS, and Node.js technology.
-        </p>
-        <div className="w-full flex justify-end mt-6">
-          <button
-            className="w-full py-3 text-center text-white bg-[#7f73eb] rounded-lg font-medium text-lg hover:bg-[#2c2758] focus:outline-none"
-            onClick={handleSubscription}
-            disabled={loading}
-          >
-            {loading ? 'Processing...' : 'Bought Now'}
-          </button>
+    <div className='dark:bg-[#1A202C] bg-gray-100 min-h-[calc(100vh-13.5rem)] p-6'>
+      <div className='max-w-7xl mx-auto'>
+        <header className='mb-12 text-center'>
+          <h2 className='text-4xl font-extrabold text-gray-900 dark:text-white mb-3'>
+            Explore Our
+            <span className='bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent ml-2'>
+              Learning Paths
+            </span>
+          </h2>
+          <p className='text-gray-600 dark:text-gray-300 text-lg'>
+            Master modern web development with our comprehensive courses
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8">
+          <CoursesCard 
+            title="Frontend Development"
+            price={9.99}
+            description="Master modern frontend development with JavaScript, React, and Next.js"
+            onSubscribe={handleSubscription}
+            loading={loading}
+          />
+
+          <CoursesCard 
+            title="Backend Development"
+            price={12.99}
+            description="Build scalable backend systems with Node.js, Express, and Databases"
+            onSubscribe={handleSubscription}
+            loading={loading}
+          />
+
+          <CoursesCard 
+            title="Full Stack Mastery"
+            price={19.99}
+            description="End-to-end development expertise with full stack projects"
+            onSubscribe={handleSubscription}
+            loading={loading}
+          />
         </div>
       </div>
-    </div>
+    </div>  
   );
 }
