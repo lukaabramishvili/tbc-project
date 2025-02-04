@@ -73,21 +73,30 @@ export default function coursesPage() {
             loading={loading}
           />
 
-          <CoursesCard 
-            title="Backend Development"
-            price={12.99}
-            description="Build scalable backend systems with Node.js, Express, and Databases"
-            onSubscribe={handleSubscription}
-            loading={loading}
-          />
+          <div className='cursor-not-allowed hover:opacity-50'>
+            <div className='pointer-events-none   '>
+              <CoursesCard 
+                title="Backend Development"
+                price={12.99}
+                description="Build scalable backend systems with Node.js, Express, and Databases"
+                onSubscribe={handleSubscription}
+                loading={loading}
+              />
+            </div>
+          </div>
 
-          <CoursesCard 
-            title="Full Stack Mastery"
-            price={19.99}
-            description="End-to-end development expertise with full stack projects"
-            onSubscribe={handleSubscription}
-            loading={loading}
-          />
+          <div className='cursor-not-allowed hover:opacity-50'>
+            <div className='pointer-events-none cursor-not-allowed hover:opacity-50 '>
+              <CoursesCard 
+                title="Full Stack Mastery"
+                price={19.99}
+                description="End-to-end development expertise with full stack projects. (frontend + backend)"
+                onSubscribe={handleSubscription}
+                loading={loading}
+              />
+            </div>
+          </div>
+
         </div>
       </div>
     </div>  

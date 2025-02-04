@@ -10,7 +10,7 @@ interface CoursesCardProps {
 
 const CoursesCard: React.FC<CoursesCardProps> = ({ title, price, description, onSubscribe, loading }) => {
   return (
-    <div className="relative flex flex-col items-center justify-between p-4 sm:p-6 bg-white dark:bg-[#2C2758] rounded-xl transition-all border border-gray-300 dark:border-gray-600">
+    <div className="relative flex flex-col justify-between p-4 sm:p-6 bg-white dark:bg-[#2C2758] rounded-xl transition-all border border-gray-300 dark:border-gray-600">
         <span className="absolute top-0 right-0 bg-indigo-600 text-white rounded-bl-lg rounded-tr-lg py-1 sm:py-2 px-3 sm:px-4 text-sm sm:text-lg font-bold shadow-md">
         ${price.toFixed(2)} <small className="text-xs">/ month</small>
         </span>
