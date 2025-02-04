@@ -63,8 +63,8 @@ function SuccessContent(): JSX.Element {
             {loading ? 'Saving your course...' : error || 'Your course is active! check your profile for more details.'}
           </p>
         </div>
-        <Link href="/home" className="block w-full mt-6 px-4 py-2 text-center text-white bg-[#7f73eb] rounded-md shadow-md hover:bg-[#7f73eb] dark:bg-white dark:text-[#7f73eb] dark:border-[#7f73eb] dark:hover:bg-[#7f73eb]">
-          Go back
+        <Link href="/yourCourses" className="block w-full mt-6 px-4 py-2 text-center text-white bg-[#7f73eb] rounded-md shadow-md hover:bg-[#7f73eb] dark:bg-white dark:text-[#7f73eb] dark:border-[#7f73eb] dark:hover:bg-[#7f73eb]">
+           SEE YOUR COURSES
         </Link>
       </div>
     </div>
