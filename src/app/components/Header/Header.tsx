@@ -53,7 +53,7 @@ export default function Header() {
       {burgerBar && (
       <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-75 z-50">
         <nav className="flex flex-col items-center justify-center gap-4 text-[#7f73eb] bg-white dark:bg-[#2c2758] p-4 rounded-lg">
-          <Link href="/profile" data-cy="profile-icon"> 
+          <Link href="/profile" data-cy="profile-icon" onClick={handleBurgerBar}> 
             <img
             className="max-h-20 cursor-pointer"
             src={profilImage.src}
@@ -62,22 +62,22 @@ export default function Header() {
           </Link>
           <ThemeToggle />
           <LanguageToggle />
-          <Link href="/" className="text-xl">
+          <Link href="/" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "Home" : "მთავარი"}
           </Link>
-          <Link href="/products" className="text-xl">
+          <Link href="/products" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "Products" : "პროდუქტები"}
           </Link>
-          <Link href="/posts" className="text-xl">
+          <Link href="/posts" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "Posts" : "პოსტები"}
           </Link>
-          <Link href="/contact" className="text-xl">
+          <Link href="/contact" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "Contact" : "კონტაქტი"}
           </Link>
-          <Link href="/about" className="text-xl">
+          <Link href="/about" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "About" : "ჩვენს შესახებ"}
           </Link>
-          <Link href="/courses" className="text-xl">
+          <Link href="/courses" className="text-xl" onClick={handleBurgerBar}>
             {language === "eng" ? "Courses" : "კურსები"}
           </Link>
           <button onClick={handleBurgerBar} className="mt-4 p-2 bg-red-500 text-white rounded">Close</button>
