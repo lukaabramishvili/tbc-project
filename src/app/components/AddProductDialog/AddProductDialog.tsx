@@ -60,74 +60,65 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
       </button>
 
       {open && (
-        <div className="sm:max-w-[580px] h-80 m-5 p-5 z-10 fixed top-0 right-96 bg-slate-200 rounded-2xl">
-          <div
-            className="absolute right-5 cursor-pointer"
-            onClick={() => setOpen(false)}
-          >
-            Close
-          </div>
-          <div className="flex flex-col items-start justify-start">
-            <h2>Add Product</h2>
-            <p>Please type product details below</p>
-          </div>
-          {isLoading && <div>...isLoading</div>}
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
+          <div className="w-full max-w-md sm:max-w-lg p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg relative">
+            <button
+              className="absolute top-4 right-4 text-gray-500 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-100"
+              onClick={() => setOpen(false)}
+            >
+              ✖
+            </button>
+            <div className="text-center mb-4">
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Add Product</h2>
+              <p className="text-gray-600 dark:text-gray-400">Please type product details below</p>
+            </div>
+            {isLoading && <div className="text-center text-gray-500 dark:text-gray-300">Loading...</div>}
 
-          <form onSubmit={createProduct}>
-            <div className="grid gap-4 py-4 pr-10">
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="name" className="text-right" >
-                  Name
-                </label>
+            <form onSubmit={createProduct} className="space-y-4">
+              <div className="flex flex-col">
+                <label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">Name</label>
                 <input 
                   id="name" 
                   name="name" 
-                  className="col-span-3" 
+                  className="mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600" 
                   data-cy="add-product-name" 
                   required 
                 />
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <label htmlFor="price" className="text-right" >
-                  Price
-                </label>
+              <div className="flex flex-col">
+                <label htmlFor="price" className="text-gray-700 dark:text-gray-300 font-medium">Price</label>
                 <input
                   id="price"
                   name="price"
                   type="number"
-                  className="col-span-3"
+                  className="mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
                   required
                   data-cy="add-product-price"
                 />
               </div>
-              <div>
-                <label htmlFor="file" className="text-right">
-                  Upload Photo
-                </label>
+              <div className="flex flex-col">
+                <label htmlFor="file" className="text-gray-700 dark:text-gray-300 font-medium">Upload Photo</label>
                 <input
                   id="file"
                   type="file"
                   name="file"
-                  className="col-span-3"
+                  className="mt-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-white dark:border-gray-600"
                   data-cy="add-product-img"
-                  // required
                 />
               </div>
-            </div>
-
-            <div className="flex flex-row items-center justify-center">
-              <button
-                type="submit"
-                className="rounded-2xl bg-slate-400 w-40 h-10"
-                data-cy="add-product-submit"
-              >
-                Create
-              </button>
-            </div>
-          </form>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="w-40 h-10 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-2xl transition-all dark:bg-indigo-400 dark:hover:bg-indigo-500"
+                  data-cy="add-product-submit"
+                >
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      )}
-    </div>
+      )}    </div>
   );
 };
 
