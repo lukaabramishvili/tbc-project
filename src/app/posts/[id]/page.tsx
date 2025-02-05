@@ -62,7 +62,7 @@ export default function PostsDetails({ params }: { params: Params }) {
       <h1 className="text-2xl font-bold dark:text-white">{post.title}</h1>
       <p className="w-1/2 text-lg leading-8 dark:text-white">{post.body}</p>
 
-      <div className="flex items-center gap-11">
+      {/* <div className="flex items-center gap-11">
         <div className="flex items-center gap-2 dark:text-white">
           <img src={Like.src} alt="like" className="w-5" />
           <p>{post.like}</p>
@@ -74,7 +74,7 @@ export default function PostsDetails({ params }: { params: Params }) {
       </div>
       <p className="text-sm text-gray-500 dark:text-white mb-4">
         Views: {post.views}
-      </p>
+      </p> */}
       <div>
         <ReturnButton />
       </div>

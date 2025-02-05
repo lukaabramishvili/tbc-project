@@ -83,8 +83,16 @@ const PostsFetch = () => {
             <Link key={post.id} href={`/posts/${post.id}`} className="text-black dark:text-white">
               <div className="post hover:scale-105 flex flex-col items-center gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 ease-in-out">
                 <h2 className="text-3xl mb-2">{post.title}</h2>
-                <p className="text-lg leading-7 max-w-4xl">{post.body}</p>
-                <div className="flex items-center gap-10">
+                <p className="text-lg leading-7 max-w-4xl">
+                  {post.body.length > 90 ? (
+                    <div className="flex">
+                      {post.body.slice(0, 90)}... <p className="cursor-pointer text-blue-500">Click to see more</p>
+                    </div>
+                  ) : (
+                    post.body
+                  )}
+                </p>                
+                {/* <div className="flex items-center gap-10">
                   <div className="flex items-center gap-2">
                     <img src={Like.src} alt="like" className="w-5" />
                     <p>{post.like}</p>
@@ -94,7 +102,7 @@ const PostsFetch = () => {
                     <p>{post.dislike}</p>
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-white mb-4">Views: {post.views}</p>
+                <p className="text-sm text-gray-500 dark:text-white mb-4">Views: {post.views}</p> */}
               </div>
             </Link>
           ))
