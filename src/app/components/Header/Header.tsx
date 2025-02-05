@@ -44,11 +44,11 @@ export default function Header() {
       </Link>
       </div>
       <div className="burger-bar">
-      <button onClick={handleBurgerBar} className="burger-bar-button flex flex-col gap-1">
-        <div className="w-8 h-1 bg-black"></div>
-        <div className="w-8 h-1 bg-black"></div>
-        <div className="w-8 h-1 bg-black"></div>
-      </button>
+        <button onClick={handleBurgerBar} data-cy="burgerBar" className="burger-bar-button flex flex-col gap-1">
+          <div className="w-8 h-1 bg-black"></div>
+          <div className="w-8 h-1 bg-black"></div>
+          <div className="w-8 h-1 bg-black"></div>
+        </button>
       </div>
       {burgerBar && (
       <div className="flex justify-center items-center fixed inset-0 bg-black bg-opacity-75 z-50">
