@@ -12,9 +12,7 @@ import Image from 'next/image';
 import Clock from '../../../../public/clock.png';
 import Location from '../../../../public/location.png';
 import Money from '../../../../public/money.png';
-import { time, timeStamp } from 'console';
-
-
+import { useLanguage } from '@/app/context/LanguageContext';
 
 const FeaturedJobscard = () => {
     const slides = [
@@ -80,15 +78,18 @@ const FeaturedJobscard = () => {
         fetchJobs();
     }, []);
       
+    const { language } = useLanguage();
       
   return (
       <div className="relative h-full w-full max-w-[calc(100vw-10rem)] my-16 overflow-hidden bg-white dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-8">
         <h2 className='mb-4'>
-            <strong className='text-5xl'>Featured Jobs</strong>
+            <strong className='text-5xl'>
+              {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
+            </strong>
         </h2>
         <p>
-            <strong>Over 10k opening jobs </strong>
-            Feel free to download and use our free HTML<br/> templates from Tooplate website.
+            <strong>{language === 'eng' ? 'Over 10k opening jobs.' : '10 ათასზე მეტი სამუშაო ადგილი. '}</strong>
+            {language === 'eng' ? 'You can best of them see here ' : 'მათგან საუკეთესო შეგიძლიათ ნახოთ აქ '}<br/>
         </p>
 
         {jobs.map((job, index) => (
@@ -125,7 +126,7 @@ const FeaturedJobscard = () => {
                     </div>
                 </div>
                 <button className="p-3 md:p-4 bg-[#7F73EB] rounded-full text-white hover:bg-[#0DCAF0] duration-100">
-                    Apply now
+                    {language === 'eng' ? 'Apply now' : 'მიმართეთ ახლავე'}
                 </button>
             </div>
         ))}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Mail, Phone, Globe, Building, Linkedin } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -45,6 +46,8 @@ export default function ContactPage() {
     }
   };
 
+  const { language } = useLanguage()
+
   return (
     <div className="min-h-screen bg-white dark:bg-[#2C2758] p-8">
       <div className="max-w-4xl mx-auto">
@@ -78,7 +81,9 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <h2 className="text-2xl font-bold dark:text-white">Project in mind? Let’s Talk</h2>
+          <h2 className="text-2xl font-bold dark:text-white">
+            {language === "eng" ? "Do you have something in mind? Let's talk." : "რაიმე გაქვს მხედველობაში? მოდით ვისაუბროთ"}
+          </h2>
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <input
@@ -87,7 +92,7 @@ export default function ContactPage() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Full Name"
+                placeholder={language === "eng" ? "Full Name" : "სრული სახელი და გვარი"}
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
               <input
@@ -96,7 +101,7 @@ export default function ContactPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Email Address"
+                placeholder={language === "eng" ? "Email Address" : "ელექტრონული ფოსტა"}
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
               <input
@@ -105,7 +110,7 @@ export default function ContactPage() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="Subject"
+                placeholder={language === "eng" ? "Subject" : "საგანი"}
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               />
             </div>
@@ -114,7 +119,7 @@ export default function ContactPage() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="What can we help you with?"
+              placeholder={language === "eng" ? "What can we help you with?" : "რით შეგვიძლია დაგეხმაროთ?"}
               className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
               rows={5}
             ></textarea>
@@ -123,7 +128,9 @@ export default function ContactPage() {
               className="w-full bg-indigo-600 dark:bg-[#2C2758] text-white py-3 rounded-full hover:bg-indigo-700 dark:hover:bg-indigo-500 transition transform hover:scale-105 shadow-lg"
               disabled={loading}
             >
-              {loading ? "Sending..." : "Send Message"}
+              {loading ? 
+              `${language === "eng" ? "Sending..." : "იგზავნება..."}` : 
+              `${language === "eng" ? "Send Message" : "მესიჯის გაგზავნა"}`}
             </button>
           </form>
           {responseMessage && <p className="mt-4 text-green-500">{responseMessage}</p>}
