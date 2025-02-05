@@ -29,7 +29,6 @@ const Products = () => {
   const [isRetriggered, retriggerFetch] = useState<boolean>(false);
 
 
-  // Fetch products from the API
   useEffect(() => {
     async function fetchProducts() {
       try {
@@ -47,7 +46,6 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  // Handle product deletion
   const handleDelete = async (id: number) => {
     setIsDeleting(id);
     try {
@@ -67,7 +65,6 @@ const Products = () => {
     setIsDeleting(null);
   };
 
-  // Filter and sort products
   const filteredProducts = products.filter((product) =>
     product.title.toLowerCase().includes(searchQuery)
   );
