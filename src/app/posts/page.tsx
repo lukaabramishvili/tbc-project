@@ -7,6 +7,7 @@ import SearchBar from "../components/searchBar/searchBar";
 import SortComponent from "../components/sort/sortComponent";
 import Like from "../../../public/like.png";
 import Dislike from "../../../public/dislike.png";
+import AddPostDialog from "../components/AddPostDialog/AddPostDialog";
 
 interface Post {
   id: number;
@@ -72,6 +73,9 @@ const PostsFetch = () => {
       <div className="flex items-center justify-between w-full mt-4 md:flex-row flex-col">
         <SearchBar searchType="posts" />
         <SortComponent sortType="posts" />
+      </div>
+      <div className="flex justify-center mb-4">
+        <AddPostDialog />
       </div>
       <div className="flex flex-col gap-4">
         {sortedPosts.length > 0 ? (
