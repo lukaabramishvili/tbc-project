@@ -10,6 +10,7 @@ import CustomerSupport from "../../../public/browse-by-categories/customer-suppo
 import { IntroductionJobFinder } from "../components/ForHome/IntroductionJobFinder";
 import FeaturedJobscard from '../components/FeaturedJobs/FeaturedJobscard';
 import { useLanguage } from '../context/LanguageContext';
+import ProgrammingMeme from '../components/ProgrammingMemes/ProgrammingMeme';
 
 
 export default function Home() {
@@ -70,7 +71,9 @@ export default function Home() {
 
       <IntroductionJobFinder />
 
-      <FeaturedJobscard/>
+      <FeaturedJobscard />
+
+      {/* <ProgrammingMeme /> */}
 
     </main>
   );

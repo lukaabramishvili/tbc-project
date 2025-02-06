@@ -1,13 +1,6 @@
 import React from 'react'
-import leftWhiteArrow from "../../../../public/lwa.png";
-import leftblackArrow from "../../../../public/lba.png";
-import rightWhiteArrow from "../../../../public/rwa.png";
-import rightblackArrow from "../../../../public/rba.png";
 import { useState, useEffect } from "react";
 import { createClient } from '@/utils/supabase/client';
-import chrysler from "../../../../public/car-photo.webp";
-import infiniti from "../../../../public/infiniti-q60.jpg";
-import bmw from "../../../../public/BMW-6.jpg";
 import Image from 'next/image';
 import Clock from '../../../../public/clock.png';
 import Location from '../../../../public/location.png';
@@ -15,14 +8,6 @@ import Money from '../../../../public/money.png';
 import { useLanguage } from '@/app/context/LanguageContext';
 
 const FeaturedJobscard = () => {
-    const slides = [
-        <img src={chrysler.src} alt="Chrysler car" />,
-        <img src={infiniti.src} alt="Infiniti Q60" />,
-        <img src={bmw.src} alt="BMW 6" />,
-    ];
-
-    const [currentSlide, setCurrentSlide] = useState(0);
-
     const supabase = createClient();
 
     useEffect(() => {
@@ -33,20 +18,6 @@ const FeaturedJobscard = () => {
     }
     fetchUser();
     }, []);
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    };
-
-    useEffect(() => {
-        const intervalId = setInterval(nextSlide, 5000);
-        return () => clearInterval(intervalId);
-    }, []);
-
 
     interface job {
         id: number;
@@ -132,39 +103,6 @@ const FeaturedJobscard = () => {
         ))}
 
         <div className='h-2'></div>
-        {/* <div className="homeSlide min-w-full transition-opacity duration-500 ease-in-out">
-          {slides[currentSlide]}
-        </div>
-        <button
-          className="absolute top-[40%] left-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-white dark:hover:bg-gray-700 hover:text-white dark:hover:text-white"
-          onClick={prevSlide}
-        >
-          <img
-            className="w-10 hidden dark:block"
-            src={leftWhiteArrow.src}
-            alt="dark"
-          />
-          <img
-            className="w-10 dark:hidden"
-            src={leftblackArrow.src}
-            alt="light"
-          />
-        </button>
-        <button
-          className="absolute top-[40%] right-8 p-8 bg-white dark:bg-black bg-opacity-70 border-none cursor-pointer transition-colors duration-200 hover:bg-white dark:hover:bg-gray-700 hover:text-white dark:hover:text-white"
-          onClick={nextSlide}
-        >
-          <img
-            className="w-10 dark:hidden"
-            src={rightblackArrow.src}
-            alt="light"
-          />
-          <img
-            className="w-10 hidden dark:block"
-            src={rightWhiteArrow.src}
-            alt="dark"
-          />
-        </button> */}
       </div>
   )
 }
