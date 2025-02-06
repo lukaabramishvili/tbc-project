@@ -54,7 +54,7 @@ const FeaturedJobscard = () => {
   return (
       <div className="relative h-full w-full max-w-[calc(100vw-10rem)] my-16 overflow-hidden bg-white dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-8">
         <h2 className='mb-4'>
-            <strong className='text-5xl'>
+            <strong className='text-5xl' id='featuredJobs'>
               {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
             </strong>
         </h2>
