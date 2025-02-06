@@ -26,8 +26,8 @@ export default function Header() {
     <header className="bg-white dark:bg-[#2c2758] max-w-full h-24 flex items-center justify-around transition-colors duration-300 border-b-[1px] pb-4">
       <div className="logoAndNavbar flex items-center gap-4">
       <Link href="/">
-        <h1 className="text-5xl uppercase cursor-pointer text-black dark:text-white">
-          <Image src={Logo} alt="logo" width={170} height={170} />
+        <h1 className="text-5xl uppercase cursor-pointer text-black dark:text-white pt-4">
+          <Image src={Logo} alt="logo" width={140} height={100} />
         </h1>
       </Link>
       <Navbar />
