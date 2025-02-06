@@ -89,7 +89,7 @@ const PostsFetch = () => {
 
 
   return (
-    <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-gray-700">
+    <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-[#2C2758]">
       <h1 className="text-center text-4xl mb-8 dark:text-white">Posts</h1>
       <div className="flex items-center justify-between w-full mt-4 md:flex-row flex-col">
         <SearchBar searchType="posts" />
@@ -102,13 +102,13 @@ const PostsFetch = () => {
         {sortedPosts.length > 0 ? (
           sortedPosts.map((post) => (
             <div>
-              <Link key={post.id} href={`/posts/${post.id}`} className="text-black dark:text-white">
-                <div className="post hover:scale-105 flex flex-col items-center gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 ease-in-out">
+              <Link key={post.id} href={`/posts/${post.id}`} className="text-black dark:text-white ">
+                <div className="post hover:scale-105 flex flex-col items-center gap-4 p-4 bg-white dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:bg-gray-900 rounded-lg shadow-md transition-transform duration-300 ease-in-out">
                   <h2 className="text-3xl mb-2">{post.title}</h2>
                   <p className="text-lg leading-7 max-w-4xl">
                     {post.body.length > 90 ? (
                       <div className="flex">
-                        {post.body.slice(0, 90)}... <p className="cursor-pointer text-blue-500">Click to see more</p>
+                        {post.body.slice(0, 90)}... <p className="cursor-pointer text-blue-950">Click to see more</p>
                       </div>
                     ) : (
                       post.body
