@@ -52,7 +52,7 @@ const FeaturedJobscard = () => {
     const { language } = useLanguage();
       
   return (
-      <div className="relative h-full w-full max-w-[calc(100vw-10rem)] my-16 overflow-hidden bg-white dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-8">
+      <div className="relative h-full w-full max-w-[calc(100vw-10rem)] my-16 overflow-hidden bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-8">
         <h2 className='mb-4'>
             <strong className='text-5xl' id='featuredJobs'>
               {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
@@ -65,7 +65,7 @@ const FeaturedJobscard = () => {
 
         {jobs.map((job, index) => (
             <div 
-                className="job-container w-full flex flex-wrap items-center justify-center md:justify-between gap-6 md:gap-12 mt-8 hover:scale-95 shadow-md duration-200 py-4 px-4"
+                className="job-container bg-white dark:text-black w-full flex flex-wrap items-center justify-center md:justify-between gap-6 md:gap-12 mt-8 hover:scale-95 shadow-md duration-200 py-4 px-4"
                 key={index}
             >
                 <div className="job-logo flex-shrink-0">

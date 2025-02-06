@@ -78,7 +78,7 @@ export default function coursesPage() {
   
           <div className="relative cursor-not-allowed hover:opacity-50 group">
             <h3 className="absolute inset-0 flex items-center justify-center z-10 text-lg sm:text-xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {language === 'eng' ? 'SOON' : 'მალე'}
+              {language === 'eng' ? 'COMING SOON' : 'მალე'}
             </h3>
             <div className="pointer-events-none">
               <CoursesCard 
@@ -93,7 +93,7 @@ export default function coursesPage() {
   
           <div className="relative cursor-not-allowed hover:opacity-50 group">
             <h3 className="absolute inset-0 flex items-center justify-center z-10 text-lg sm:text-xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {language === 'eng' ? 'SOON' : 'მალე'}
+              {language === 'eng' ? 'COMING SOON' : 'მალე'}
             </h3>
             <div className="pointer-events-none">
               <CoursesCard 

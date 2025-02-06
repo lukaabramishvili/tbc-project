@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 
 export default function Footer() {
   return (
-    <footer className="dark:bg-[#2c2758] bg-white flex flex-col md:flex-row justify-between px-4 md:px-8">
+    <footer className="dark:bg-[#2c2758] bg-white flex flex-col md:flex-row justify-between px-4 md:px-8 transition-colors duration-300 border-t-[1px] pt-4">
       <div className="footerContext hidden xl:block dark:text-white text-center w-full mb-8 md:mb-0">
         <h3 className="uppercase text-2xl mb-4">Navigation</h3>
         <ul className="navList flex justify-center gap-4">

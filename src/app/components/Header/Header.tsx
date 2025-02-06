@@ -23,7 +23,7 @@ export default function Header() {
   const { language } = useLanguage();
 
   return (
-    <header className="bg-white dark:bg-[#2c2758] max-w-full h-24 flex items-center justify-around transition-colors duration-300">
+    <header className="bg-white dark:bg-[#2c2758] max-w-full h-24 flex items-center justify-around transition-colors duration-300 border-b-[1px] pb-4">
       <div className="logoAndNavbar flex items-center gap-4">
       <Link href="/">
         <h1 className="text-5xl uppercase cursor-pointer text-black dark:text-white">

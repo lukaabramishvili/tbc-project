@@ -19,18 +19,18 @@ export default function Home() {
   const { language } = useLanguage();
 
   return (
-    <main className="flex flex-col items-center justify-center w-full dark:bg-gray-700 text-center">
+    <main className="flex flex-col items-center justify-center w-full dark:bg-[#2C2758] text-center">
       <div className="search-job w-full flex items-center justify-evenly lg:flex-row flex-col gap-10 p-10">
         <div className="serach-job-left flex flex-col gap-8 items-center justify-center">
           <h4 className="text-white text-xl">
             {language === 'eng' ? 'Are you looking for your dream job?' : 'ეძებთ თქვენი საოცნებო სამსახურს?'}
           </h4>
           <h2 className="text-white text-5xl font-bold">{language === 'eng' ? 'Online Platform.' : 'ონლაინ პლათფორმა.'} <br /> {language === 'eng' ? 'Best Job portal' : 'საუკეთესო სამუშაო პორტალი'}</h2>
-          <button className="border-2 font-bold border-[#7F73EB] rounded-full bg-transparent px-4 py-2 hover:bg-[#7F73EB] text-[#7F73EB] hover:text-white">
+          <button className="border-2 font-bold border-[#2C2758] rounded-full bg-transparent px-4 py-2 hover:bg-[#2C2758] text-[#2C2758] hover:text-white">
             {language === 'eng' ? 'Browse Categories' : 'კატეგორიების დათვალიერება'}
           </button>
         </div>
-        <div className="search-job-right flex flex-col justify-center gap-6 bg-[#7f73eb] dark:bg-[#2C2758] p-8 sm:p-12 rounded-xl shadow-lg">
+        <div className="search-job-right flex flex-col justify-center gap-6 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 p-8 sm:p-12 rounded-xl shadow-lg">
           <h3 className="text-center sm:text-start text-white text-3xl sm:text-4xl font-extrabold">
             {language === 'eng' ? 'Search Your Dream Job' : 'მოძებნეთ თქვენი ოცნების სამუშაო'}
           </h3>
