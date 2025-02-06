@@ -115,13 +115,13 @@ export default function ContactPage() {
               />
             </div>
             <textarea
-                required
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={language === "eng" ? "What can we help you with?" : "რით შეგვიძლია დაგეხმაროთ?"}
-                className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
-                rows={5}
+              required
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder={language === "eng" ? "What can we help you with?" : "რით შეგვიძლია დაგეხმაროთ?"}
+              className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
+              rows={5}
             ></textarea>
             <button
               type="submit"

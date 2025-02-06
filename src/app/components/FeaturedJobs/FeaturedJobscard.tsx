@@ -71,7 +71,7 @@ const FeaturedJobscard = () => {
   };
 
   return (
-    <div className="w-full max-w-[90rem] mx-auto my-16 bg-white dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-6 md:p-8">
+    <div className="w-full max-w-[90rem] mx-auto my-16 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:text-white rounded-xl shadow-xl p-6 md:p-8">
       <header className="mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
@@ -87,7 +87,7 @@ const FeaturedJobscard = () => {
         {jobs.map((job) => (
           <article 
             key={job.id}
-            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-white dark:bg-white text-black rounded-lg shadow-md hover:bg-gray-300 dark:hover:bg-gray-300 transition-colors"
           >
             <div className="flex items-center gap-6 flex-1 min-w-0">
               <img 
@@ -97,8 +97,8 @@ const FeaturedJobscard = () => {
               />
               <div className="min-w-0">
                 <h3 className="text-xl font-semibold truncate">{job.title}</h3>
-                <div className="flex flex-wrap gap-4 mt-2 text-gray-600 dark:text-gray-300">
-                  <div className="flex items-center gap-2">
+                <div className="flex flex-wrap gap-4 mt-2 text-black">
+                  <div className="flex items-center gap-2 ">
                     <Image src={Clock} alt="Clock" width={20} height={20} />
                     <span>{new Date(job.created_at).toLocaleDateString()}</span>
                   </div>
@@ -115,7 +115,7 @@ const FeaturedJobscard = () => {
             </div>
 
             <div className="flex flex-col md:flex-row items-center gap-4 shrink-0">
-              <span className="px-4 py-2 bg-indigo-100 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-200 rounded-full">
+              <span className="px-4 py-2 bg-indigo-100 transition-colors hover:bg-indigo-300 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-200 rounded-full">
                 {job.position}
               </span>
               <button

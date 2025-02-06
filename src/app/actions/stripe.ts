@@ -8,7 +8,7 @@ export async function createCheckoutSessionForCart(cartItems: CartItem[]) {
   const session: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
       success_url:
-        "https://tbc-project-five.vercel.app/orders/result?session_id={CHECKOUT_SESSION_ID}",
+        "http://localhost:3000/orders/result?session_id={CHECKOUT_SESSION_ID}",
       line_items: cartItems.map((item) => {
         return {
           quantity: item.quantity,
