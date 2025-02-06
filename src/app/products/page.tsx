@@ -145,7 +145,7 @@ const Products = () => {
           <p className="text-center text-lg text-gray-600 dark:text-gray-300">No products found</p>
         )}
       </div>
-      <CartDialog />
+      <CartDialog/>
     </div>
   );
 };
