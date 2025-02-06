@@ -49,7 +49,7 @@ export default function ContactPage() {
   const { language } = useLanguage()
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#2C2758] p-8">
+    <div className="min-h-screen bg-white dark:bg-[#2C2758] p-8 transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>

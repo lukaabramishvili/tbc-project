@@ -9,7 +9,7 @@ export default function About() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-white dark:bg-[#2C2758] text-gray-900 dark:text-white pt-8 pb-16 px-6 sm:px-12 lg:px-24">
+    <section className="bg-white dark:bg-[#2C2758] text-gray-900 dark:text-white pt-10 pb-16 px-6 sm:px-12 lg:px-24 transition-colors duration-300">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-extrabold mb-6 transition-all duration-300 hover:scale-105">
           {language === "eng" ? "About" : "ჩვენს შესახებ"}
