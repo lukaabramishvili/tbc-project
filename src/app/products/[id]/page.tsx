@@ -57,31 +57,31 @@ export default function ProductDetail({ params }: { params: Params }) {
   
 
   return (
-    <div className="container mx-auto px-4 py-8 dark:bg-gray-800">
-      <div className="bg-white dark:bg-[#2C2758] shadow-xl rounded-2xl overflow-hidden max-w-3xl mx-auto">
+    <div className="w-full min-h-screen px-4 py-8 bg-gray-100 dark:bg-[#2C2758]">
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:bg-gray-900 shadow-xl rounded-2xl overflow-hidden">
         {product.img_url ? (
           <img
             src={product.img_url}
             alt={product.title}
-            className="w-full h-80 object-cover sm:h-96"
+            className="w-full h-64 sm:h-80 md:h-96 object-cover"
           />
         ) : (
-          <div className="flex items-center justify-center h-80 sm:h-96 bg-gray-200 dark:bg-gray-700">
+          <div className="flex items-center justify-center h-64 sm:h-80 md:h-96 bg-gray-200 dark:bg-gray-700">
             <p className="text-gray-500 dark:text-gray-400">No image available</p>
           </div>
         )}
   
         <div className="p-6 sm:p-8">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             {product.title}
           </h1>
   
-          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+          <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             {product.description}
           </p>
   
           <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
-            <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+            <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">
               ${product.price}
             </p>
           </div>
@@ -93,4 +93,4 @@ export default function ProductDetail({ params }: { params: Params }) {
       </div>
     </div>
   );
-    }
+}

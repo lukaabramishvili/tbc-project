@@ -58,11 +58,15 @@ export default function PostsDetails({ params }: { params: Params }) {
   if (!post) return <NotFoundPage />;
 
   return (
-    <div className="flex flex-col justify-center items-center bg-white dark:bg-gray-700 rounded-lg shadow-md p-10 gap-7 container mx-auto">
-      <h1 className="text-2xl font-bold dark:text-white">{post.title}</h1>
-      <p className="w-1/2 text-lg leading-8 dark:text-white">{post.body}</p>
-
-      {/* <div className="flex items-center gap-11">
+    <div className="w-full min-h-[calc(100vh-12rem)] flex flex-col justify-center items-center bg-white dark:bg-[#2C2758] rounded-lg shadow-md pt-16 pb-16 gap-7 px-4">
+      <div className="max-w-4xl w-full text-center flex flex-col gap-10 ">
+        <h1 className="text-2xl md:text-3xl font-bold dark:text-white">{post.title}</h1>
+        <p className="w-full md:w-3/4 mx-auto text-lg md:text-xl leading-8 dark:text-white">
+          {post.body}
+        </p>
+      </div>
+      
+      {/* <div className="flex items-center gap-6 md:gap-11">
         <div className="flex items-center gap-2 dark:text-white">
           <img src={Like.src} alt="like" className="w-5" />
           <p>{post.like}</p>
@@ -75,9 +79,10 @@ export default function PostsDetails({ params }: { params: Params }) {
       <p className="text-sm text-gray-500 dark:text-white mb-4">
         Views: {post.views}
       </p> */}
+      
       <div>
         <ReturnButton />
       </div>
     </div>
   );
-}
+  }
