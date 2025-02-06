@@ -73,10 +73,10 @@ const FeaturedJobscard = () => {
   return (
     <div className="w-full max-w-[90rem] mx-auto my-16 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:text-white rounded-xl shadow-xl p-6 md:p-8">
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
           {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
         </h1>
-        <p className="text-lg md:text-xl">
+        <p className="text-lg md:text-xl text-white">
           {language === 'eng' 
             ? 'Discover over 10,000 opportunities. Find your perfect match below.'
             : '10,000-ზე მეტი შესაძლებლობა. იპოვეთ თქვენი იდეალური ვაკანსია.'}
@@ -131,7 +131,7 @@ const FeaturedJobscard = () => {
                 <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto">
                   <div className="p-6">
                     <div className="flex justify-between items-center mb-6">
-                      <h2 className="text-2xl font-bold">
+                      <h2 className="text-2xl font-bold dark:text-white">
                         {language === 'eng' ? 'Application Form' : 'განაცხადის ფორმა'}
                       </h2>
                       <button

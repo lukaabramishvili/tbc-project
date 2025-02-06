@@ -9,9 +9,9 @@ export default function About() {
   const { language } = useLanguage();
 
   return (
-    <section className="bg-white dark:bg-[#2C2758] text-gray-900 dark:text-white pt-10 pb-16 px-6 sm:px-12 lg:px-24 transition-colors duration-300">
+    <section className="bg-white dark:bg-[#2C2758] text-gray-900 dark:text-white pt-20 pb-24 sm:px-12 lg:px-24 transition-colors duration-300">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold mb-6 transition-all duration-300 hover:scale-105">
+        <h2 className="text-4xl font-extrabold mb-8 transition-all duration-300 hover:scale-105">
           {language === "eng" ? "About" : "ჩვენს შესახებ"}
           <span className="text-[#2C2758] dark:text-white"> Job Finder</span>
         </h2>
