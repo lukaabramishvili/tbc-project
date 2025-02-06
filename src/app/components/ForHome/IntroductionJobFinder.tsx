@@ -10,7 +10,7 @@ export const IntroductionJobFinder = () => {
     const { language } = useLanguage()
 
     return (
-        <div className="main flex flex-col xl:flex-row items-center justify-around mx-4 xl:mx-28 text-center xl:text-left gap-6 bg-[#0dcaf0] rounded-3xl mt-16 p-6 xl:p-0">
+        <div className="main flex flex-col xl:flex-row items-center justify-around mx-4 xl:mx-28 text-center xl:text-left gap-6 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 rounded-3xl mt-16 p-6 xl:p-0">
             <div className="introduction-first relative h-[20rem] w-full xl:w-[28rem] rounded-3xl overflow-hidden">
                 <Image 
                     src={Businesswoman.src} 

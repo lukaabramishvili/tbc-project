@@ -11,6 +11,7 @@ import { IntroductionJobFinder } from "../components/ForHome/IntroductionJobFind
 import FeaturedJobscard from '../components/FeaturedJobs/FeaturedJobscard';
 import { useLanguage } from '../context/LanguageContext';
 import ProgrammingMeme from '../components/ProgrammingMemes/ProgrammingMeme';
+import JobFinderPage from '../components/AboutJobFinderBanner/AboutJobFinderBanner';
 
 
 export default function Home() {
@@ -25,11 +26,11 @@ export default function Home() {
             {language === 'eng' ? 'Are you looking for your dream job?' : 'ეძებთ თქვენი საოცნებო სამსახურს?'}
           </h4>
           <h2 className="text-white text-5xl font-bold">{language === 'eng' ? 'Online Platform.' : 'ონლაინ პლათფორმა.'} <br /> {language === 'eng' ? 'Best Job portal' : 'საუკეთესო სამუშაო პორტალი'}</h2>
-          <button className="border-2 font-bold border-[#0dcaf0] rounded-full bg-transparent px-4 py-2 hover:bg-[#0dcaf0] text-[#0dcaf0] hover:text-white">
+          <button className="border-2 font-bold border-[#7F73EB] rounded-full bg-transparent px-4 py-2 hover:bg-[#7F73EB] text-[#7F73EB] hover:text-white">
             {language === 'eng' ? 'Browse Categories' : 'კატეგორიების დათვალიერება'}
           </button>
         </div>
-        <div className="search-job-right flex flex-col justify-center gap-6 bg-[#2C2758] p-8 sm:p-12 rounded-xl shadow-lg">
+        <div className="search-job-right flex flex-col justify-center gap-6 bg-[#7f73eb] dark:bg-[#2C2758] p-8 sm:p-12 rounded-xl shadow-lg">
           <h3 className="text-center sm:text-start text-white text-3xl sm:text-4xl font-extrabold">
             {language === 'eng' ? 'Search Your Dream Job' : 'მოძებნეთ თქვენი ოცნების სამუშაო'}
           </h3>
@@ -72,6 +73,8 @@ export default function Home() {
       <IntroductionJobFinder />
 
       <FeaturedJobscard />
+
+      <JobFinderPage />
 
       {/* <ProgrammingMeme /> */}
 
