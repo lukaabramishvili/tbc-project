@@ -118,7 +118,8 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
             </form>
           </div>
         </div>
-      )}    </div>
+      )}    
+    </div>
   );
 };
 
