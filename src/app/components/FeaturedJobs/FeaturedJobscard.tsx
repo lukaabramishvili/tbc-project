@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import Image from 'next/image';
 import Clock from '../../../../public/clock.png';
@@ -7,104 +6,205 @@ import Location from '../../../../public/location.png';
 import Money from '../../../../public/money.png';
 import { useLanguage } from '@/app/context/LanguageContext';
 
-const FeaturedJobscard = () => {
-    const supabase = createClient();
-
-    useEffect(() => {
-    async function fetchUser() {
-        const {
-        data: { user },
-        } = await supabase.auth.getUser();
-    }
-    fetchUser();
-    }, []);
-
-    interface job {
-        id: number;
-        created_at: string;
-        title: string;
-        img_url: string;
-        location: string;
-        salary: number;
-        position: string;
-        working_time: string;
-    }
-
-    const [jobs, setJobs] = useState<job[]>([]);
-
-    useEffect(() => {
-        async function fetchJobs() {
-          try {
-            const response = await fetch("/api/fetchJobs");
-            if (response.ok) {
-              const { data } = await response.json();
-              setJobs(data);
-            } else {
-              console.error("Failed to fetch jobs.");
-            }
-          } catch (error) {
-            console.error("Error fetching jobs:", error);
-          }
-        }
-        fetchJobs();
-    }, []);
-      
-    const { language } = useLanguage();
-      
-  return (
-      <div className="relative h-full w-full max-w-[calc(100vw-10rem)] my-16 overflow-hidden bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:bg-gray-700 dark:text-white rounded-xl shadow-xl p-8">
-        <h2 className='mb-4'>
-            <strong className='text-5xl' id='featuredJobs'>
-              {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
-            </strong>
-        </h2>
-        <p>
-            <strong>{language === 'eng' ? 'Over 10k opening jobs.' : '10 ათასზე მეტი სამუშაო ადგილი. '}</strong>
-            {language === 'eng' ? 'You can best of them see here ' : 'მათგან საუკეთესო შეგიძლიათ ნახოთ აქ '}<br/>
-        </p>
-
-        {jobs.map((job, index) => (
-            <div 
-                className="job-container bg-white dark:text-black w-full flex flex-wrap items-center justify-center md:justify-between gap-6 md:gap-12 mt-8 hover:scale-95 shadow-md duration-200 py-4 px-4"
-                key={index}
-            >
-                <div className="job-logo flex-shrink-0">
-                    <img src={job.img_url} alt={job.title} className="w-12 h-12 md:w-16 md:h-16 rounded-full" />
-                </div>
-                <div className="job-context text-center md:text-left">
-                    <h3 className="flex justify-center md:justify-start">
-                        <strong className='text-lg md:text-2xl'>{job.title}</strong>
-                    </h3>
-                    <div className="job-main-text flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-8 mt-2">
-                        <div className="flex items-center gap-2">
-                            <Image src={Clock.src} width={20} height={20} alt="Clock" />
-                            <p className="text-sm md:text-base">{job.created_at.slice(0, 10)}</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Image src={Location.src} width={20} height={20} alt="Location" />
-                            <p className="text-sm md:text-base">{job.location}</p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Image src={Money.src} width={20} height={20} alt="Money" />
-                            <p className="text-sm md:text-base">${job.salary.toLocaleString()}</p>
-                        </div>
-                        <p className="cursor-pointer p-2 text-sm md:text-base bg-[#0DCAF0] rounded-full text-white hover:bg-[#7F73EB] duration-100">
-                            {job.position}
-                        </p>
-                        <p className="cursor-pointer p-2 text-sm md:text-base bg-[#0DCAF0] rounded-full text-white hover:bg-[#7F73EB] duration-100">
-                            {job.working_time}
-                        </p>
-                    </div>
-                </div>
-                <button className="p-3 md:p-4 bg-[#7F73EB] rounded-full text-white hover:bg-[#0DCAF0] duration-100">
-                    {language === 'eng' ? 'Apply now' : 'მიმართეთ ახლავე'}
-                </button>
-            </div>
-        ))}
-
-        <div className='h-2'></div>
-      </div>
-  )
+interface Job {
+  id: number;
+  created_at: string;
+  title: string;
+  img_url: string;
+  location: string;
+  salary: number;
+  position: string;
+  working_time: string;
 }
 
-export default FeaturedJobscard
+const FeaturedJobscard = () => {
+  const supabase = createClient();
+  const { language } = useLanguage();
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [selectedJob, setSelectedJob] = useState<number | null>(null);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+  const [loading, setLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('/api/fetchJobs');
+        if (response.ok) {
+          const { data } = await response.json();
+          setJobs(data);
+        }
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+    };
+    fetchJobs();
+  }, []);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (res.ok) {
+        setResponseMessage(language === 'eng' ? 'Application sent!' : 'განაცხადი გაიგზავნა!');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setSelectedJob(null), 2000);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-[90rem] mx-auto my-16 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 dark:text-white rounded-xl shadow-xl p-6 md:p-8">
+      <header className="mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          {language === 'eng' ? 'Featured Jobs' : 'გამორჩეული ვაკანსიები'}
+        </h1>
+        <p className="text-lg md:text-xl">
+          {language === 'eng' 
+            ? 'Discover over 10,000 opportunities. Find your perfect match below.'
+            : '10,000-ზე მეტი შესაძლებლობა. იპოვეთ თქვენი იდეალური ვაკანსია.'}
+        </p>
+      </header>
+
+      <div className="space-y-8">
+        {jobs.map((job) => (
+          <article 
+            key={job.id}
+            className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-white dark:bg-white text-black rounded-lg shadow-md hover:bg-gray-300 dark:hover:bg-gray-300 transition-colors"
+          >
+            <div className="flex items-center gap-6 flex-1 min-w-0">
+              <img 
+                src={job.img_url} 
+                alt={job.title}
+                className="w-16 h-16 rounded-full object-cover"
+              />
+              <div className="min-w-0">
+                <h3 className="text-xl font-semibold truncate">{job.title}</h3>
+                <div className="flex flex-wrap gap-4 mt-2 text-black">
+                  <div className="flex items-center gap-2 ">
+                    <Image src={Clock} alt="Clock" width={20} height={20} />
+                    <span>{new Date(job.created_at).toLocaleDateString()}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Image src={Location} alt="Location" width={20} height={20} />
+                    <span>{job.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Image src={Money} alt="Salary" width={20} height={20} />
+                    <span>${job.salary.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center gap-4 shrink-0">
+              <span className="px-4 py-2 bg-indigo-100 transition-colors hover:bg-indigo-300 dark:bg-indigo-900 text-indigo-600 dark:text-indigo-200 rounded-full">
+                {job.position}
+              </span>
+              <button
+                onClick={() => setSelectedJob(job.id)}
+                className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full transition-colors"
+              >
+                {language === 'eng' ? 'Apply Now' : 'გამოხმაურება'}
+              </button>
+            </div>
+
+            {selectedJob === job.id && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto">
+                  <div className="p-6">
+                    <div className="flex justify-between items-center mb-6">
+                      <h2 className="text-2xl font-bold">
+                        {language === 'eng' ? 'Application Form' : 'განაცხადის ფორმა'}
+                      </h2>
+                      <button
+                        onClick={() => setSelectedJob(null)}
+                        className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100"
+                      >
+                        ✖
+                      </button>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <input
+                          required
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder={language === 'eng' ? 'Full Name' : 'სრული სახელი'}
+                          className="p-3 border rounded-lg dark:bg-gray-700"
+                        />
+                        <input
+                          required
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="Email"
+                          className="p-3 border rounded-lg dark:bg-gray-700"
+                        />
+                        <input
+                          required
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          placeholder={language === 'eng' ? 'Position' : 'პოზიცია'}
+                          className="p-3 border rounded-lg dark:bg-gray-700"
+                        />
+                      </div>
+                      
+                      <textarea
+                        required
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder={language === 'eng' ? 'Your qualifications...' : 'თქვენი კვალიფიკაცია...'}
+                        className="w-full p-3 border rounded-lg h-32 resize-y dark:bg-gray-700"
+                      />
+
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors disabled:opacity-50"
+                      >
+                        {loading 
+                          ? (language === 'eng' ? 'Sending...' : 'იგზავნება...')
+                          : (language === 'eng' ? 'Submit Application' : 'გაგზავნა')}
+                      </button>
+                    </form>
+
+                    {responseMessage && (
+                      <p className="mt-4 text-green-600 dark:text-green-400">
+                        {responseMessage}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FeaturedJobscard;
