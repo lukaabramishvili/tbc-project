@@ -56,7 +56,7 @@ export default function About() {
 
         <div className="mt-10 hover:scale-110 transition-all duration-300">
           <Link
-            href="/jobs"
+            href="/#featuredJobs"
             className="px-6 py-3 bg-[#2C2758] dark:bg-white text-white dark:text-[#2C2758] font-semibold rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
           >
             {language === "eng" ? "Explore Jobs" : "სამუშაო ადგილები"}
