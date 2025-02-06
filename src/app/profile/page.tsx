@@ -87,6 +87,13 @@ export default function Profile() {
             Your Courses
           </button>
         </Link>
+        <Link 
+          href={"/profile/ticTacToe"}
+          className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#2C2758] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105"
+          >
+            TicTacToe
+        </Link>
+
         <form action={logout}>
           <button
             data-cy="logout"
