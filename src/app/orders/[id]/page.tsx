@@ -54,18 +54,18 @@ export default async function OrderDetailsPage({ params }: Params) {
         </div>
         <div className="p-6 space-y-4 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">
           <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Order ID:</span>
-            <span className="text-gray-800">{order.id}</span>
+            <span className="font-medium text-white">Order ID:</span>
+            <span className="text-white">{order.id}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Price:</span>
-            <span className="text-gray-800">
+            <span className="font-medium text-white">Price:</span>
+            <span className="text-white">
               ${new Intl.NumberFormat("en-US").format(order.price)}
             </span>
           </div>
           <div className="flex justify-between">
-            <span className="font-medium text-gray-600">Order Date:</span>
-            <span className="text-gray-800">
+            <span className="font-medium text-white">Order Date:</span>
+            <span className="text-white">
               {new Date(order.created_at).toLocaleString()}
             </span>
           </div>
@@ -87,12 +87,12 @@ export default async function OrderDetailsPage({ params }: Params) {
             />
             <div className="flex-1 space-y-4">
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">Product Name:</span>
-                <span className="text-gray-800">{product.title}</span>
+                <span className="font-medium text-white">Product Name:</span>
+                <span className="text-white">{product.title}</span>
               </div>
               <div className="flex justify-between">
-                <span className="font-medium text-gray-600">Price:</span>
-                <span className="text-gray-800">
+                <span className="font-medium text-white">Price:</span>
+                <span className="text-white">
                   ${new Intl.NumberFormat("en-US").format(product.price)}
                 </span>
               </div>
