@@ -53,8 +53,6 @@ export default function ProductDetail({ params }: { params: Params }) {
 
   if (!product) return <NotFoundPage />;
 
-  console.log(product);
-  
 
   return (
     <div className="w-full min-h-screen px-4 py-8 bg-gray-100 dark:bg-[#2C2758]">
@@ -82,7 +80,10 @@ export default function ProductDetail({ params }: { params: Params }) {
   
           <div className="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow-md">
             <p className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">
-              ${product.price}
+              ${new Intl.NumberFormat("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }).format(product.price / 100)}
             </p>
           </div>
   

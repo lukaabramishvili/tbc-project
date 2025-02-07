@@ -4,7 +4,6 @@ import Link from "next/link";
 export default async function OrdersPage() {
   const supabase = await createClient();
 
-  // Get authenticated user
   const { data: userData, error: userError } = await supabase.auth.getUser();
   const user = userData?.user;
 
@@ -20,7 +19,6 @@ export default async function OrdersPage() {
     );
   }
 
-  // Fetch orders for the user
   const { data: orders, error: ordersError } = await supabase
     .from("orders")
     .select("*")
@@ -55,7 +53,10 @@ export default async function OrdersPage() {
                     </p>
                     <p className="text-lg text-white">
                       <strong>Price:</strong> $
-                      {new Intl.NumberFormat("en-US").format(order.price)}
+                      ${new Intl.NumberFormat("en-US", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      }).format(order.price / 100)}
                     </p>
                   </div>
                   <p className="text-sm text-white mt-4 md:mt-0 w-full md:w-auto">
