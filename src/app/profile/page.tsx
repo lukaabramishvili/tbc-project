@@ -52,7 +52,7 @@ export default function Profile() {
   }
 
   return (
-    <section className="flex flex-col gap-8 min-h-screen items-center justify-center text-center max-w-[136rem] mx-auto p-8 bg-white dark:bg-[#1a1a2e] text-gray-900 dark:text-white">
+    <section className="flex flex-col gap-8 min-h-screen items-center justify-center text-center max-w-[136rem] mx-auto p-8 bg-white dark:bg-[#2C2758] text-gray-900 dark:text-white">
       <h1 className="text-3xl font-extrabold text-[#2C2758] dark:text-[#a9a9ff]">
         Profile
       </h1>
