@@ -78,18 +78,18 @@ export default function Profile() {
   
       <div className="flex flex-col sm:flex-row gap-6 justify-center mt-6 w-full max-w-3xl">
         <Link href="/orders">
-          <button className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#2C2758] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105">
+          <button className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#7F73EB] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105">
             Orders
           </button>
         </Link>
         <Link href="/yourCourses">
-          <button className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#2C2758] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105">
+          <button className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#7F73EB] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105">
             Your Courses
           </button>
         </Link>
         <Link 
           href={"/profile/ticTacToe"}
-          className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#2C2758] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105"
+          className="rounded-lg px-6 py-2 cursor-pointer text-white bg-[#7F73EB] hover:bg-[#3e2784] duration-300 transition-all shadow-md hover:scale-105"
         >
           TicTacToe
         </Link>
