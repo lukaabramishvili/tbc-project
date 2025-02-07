@@ -1,21 +1,33 @@
+"use client"
+
 import "./Footer.css";
 import Navbar from "../Navbar/Navbar";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function Footer() {
+
+  const {language} = useLanguage()
+
   return (
     <footer className="dark:bg-[#2c2758] bg-white flex flex-col md:flex-row justify-between px-4 md:px-8 transition-colors duration-300 border-t-[1px] pt-4">
       <div className="footerContext hidden xl:block dark:text-white text-center w-full mb-8 md:mb-0">
-        <h3 className="uppercase text-2xl mb-4">Navigation</h3>
+        <h3 className="uppercase text-2xl mb-4">
+          {language === "eng" ? "Navigation" : "ნავიგაცია"}
+        </h3>
         <ul className="navList flex justify-center gap-4">
           <Navbar />
         </ul>
       </div>
 
       <div className="footerContext dark:text-white text-center w-full flex items-center justify-center flex-col">
-        <h3 className="uppercase text-2xl mb-4">Follow Us</h3>
+        <h3 className="uppercase text-2xl mb-4">
+          {language === "eng" ? "Follow Us" : "გამოგვყევით"}
+        </h3>
         <ul className="wrapper flex justify-center gap-4">
           <li className="icon facebook shadow-md dark:shadow-[0_1rem_1rem_rgba(255,255,255,0.1)]">
-            <span className="tooltip">Facebook</span>
+            <span className="tooltip">
+              {language === "eng" ? "Facebook" : "ფეისბუქი"}
+            </span>
             <svg
               viewBox="0 0 320 512"
               height="1.2em"
@@ -28,7 +40,9 @@ export default function Footer() {
             </svg>
           </li>
           <li className="icon twitter shadow-md dark:shadow-[0_1rem_1rem_rgba(255,255,255,0.1)]">
-            <span className="tooltip">Twitter</span>
+            <span className="tooltip">
+              {language === "eng" ? "Twitter" : "ტვიტერი"}
+            </span>
             <svg
               height="1.8em"
               fill="currentColor"
@@ -42,7 +56,9 @@ export default function Footer() {
             </svg>
           </li>
           <li className="icon instagram shadow-md dark:shadow-[0_1rem_1rem_rgba(255,255,255,0.1)]">
-            <span className="tooltip">Instagram</span>
+            <span className="tooltip">
+              {language === "eng" ? "Instagram" : "ინსტაგრამი"}
+            </span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1.2em"
