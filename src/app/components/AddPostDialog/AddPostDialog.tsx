@@ -1,3 +1,4 @@
+import { useLanguage } from "@/app/context/LanguageContext";
 import React, { useState, FormEvent } from "react";
 
 const AddPostDialog = () => {
@@ -28,6 +29,8 @@ const AddPostDialog = () => {
     }
   };
 
+  const { language } = useLanguage()
+
   return (
     <div>
       <button
@@ -35,7 +38,7 @@ const AddPostDialog = () => {
         onClick={() => setOpen(true)}
         className="border-none w-40 rounded shadow-xl bg-gray-900 hover:bg-gray-500 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-800 dark:hover:text-white p-4 text-xl text-white cursor-pointer"
       >
-        Add Post
+        {language === "eng" ? "Add Post" : "პოსტის დამატება"}
       </button>
 
       {open && (
@@ -49,15 +52,15 @@ const AddPostDialog = () => {
             </button>
             <div className="text-center mb-4">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
-                Add Post
+                {language === "eng" ? "Add Post" : "პოსტის დამატება"}
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Type your post below
+                {language === "eng" ? "Type your post below" : "დაწერე შენი პოსტი ქვემოთ"}
               </p>
             </div>
             {isLoading && (
               <div className="text-center text-gray-500 dark:text-gray-300">
-                Loading...
+                {language === "eng" ? "Loading..." : "იტვირთება..."}
               </div>
             )}
 
@@ -67,7 +70,7 @@ const AddPostDialog = () => {
                   htmlFor="title"
                   className="text-gray-700 dark:text-gray-300 font-medium"
                 >
-                  Title
+                  {language === "eng" ? "Title" : "სათაური" }
                 </label>
                 <input
                   id="title"
@@ -81,7 +84,7 @@ const AddPostDialog = () => {
                 required
                 id="body"
                 name="body"
-                placeholder="Type your post here"
+                placeholder={language === "eng" ? "Type your post here" : "დაწერე შენი პოსტი აქ"}
                 className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-blue-50 dark:bg-[#374151] dark:text-white"
                 rows={5}
               ></textarea>
@@ -91,7 +94,7 @@ const AddPostDialog = () => {
                   className="w-40 h-10 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-2xl transition-all dark:bg-indigo-400 dark:hover:bg-indigo-500"
                   data-cy="add-product-submit"
                 >
-                  Add
+                  {language === "eng" ? "Add" : "დამატება"}
                 </button>
               </div>
             </form>

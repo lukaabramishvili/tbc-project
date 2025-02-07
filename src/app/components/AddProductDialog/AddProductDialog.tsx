@@ -1,3 +1,4 @@
+import { useLanguage } from "@/app/context/LanguageContext";
 import React, { useState, FormEvent, useEffect } from "react";
 
 interface AddProductDialogProps {
@@ -49,6 +50,8 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
     }
   };
 
+  const { language } = useLanguage()
+
   return (
     <div>
       <button
@@ -56,7 +59,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
         onClick={() => setOpen(true)}
         className="border-none  w-40 rounded shadow-xl bg-gray-900 hover:bg-gray-500 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-800 dark:hover:text-white p-4 text-xl text-white cursor-pointer"
       >
-        Add Product
+        {language === "eng" ? "Add Product" : "პროდუქტის დამატება"}
       </button>
 
       {open && (
@@ -69,14 +72,22 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
               ✖
             </button>
             <div className="text-center mb-4">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Add Product</h2>
-              <p className="text-gray-600 dark:text-gray-400">Please type product details below</p>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+                {language === "eng" ? "Add Product" : "პროდუქტის დამატება"}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                {language === "eng" ? "Please type product details below" : "გთხოვთ, ჩაწერეთ პროდუქტის დეტალები ქვემოთ"}
+              </p>
             </div>
-            {isLoading && <div className="text-center text-gray-500 dark:text-gray-300">Loading...</div>}
+            {isLoading && <div className="text-center text-gray-500 dark:text-gray-300">
+              {language === "eng" ? "Loading..." : "იტვირთება..."}
+            </div>}
 
             <form onSubmit={createProduct} className="space-y-4">
               <div className="flex flex-col">
-                <label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">Name</label>
+                <label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">
+                  {language === "eng" ? "Name" : "სახელი" }
+                </label>
                 <input 
                   id="name" 
                   name="name" 
@@ -86,7 +97,9 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="price" className="text-gray-700 dark:text-gray-300 font-medium">Price</label>
+                <label htmlFor="price" className="text-gray-700 dark:text-gray-300 font-medium">
+                  {language === "eng" ? "Price" : "ფასი"}
+                </label>
                 <input
                   id="price"
                   name="price"
@@ -97,7 +110,9 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                 />
               </div>
               <div className="flex flex-col">
-                <label htmlFor="file" className="text-gray-700 dark:text-gray-300 font-medium">Upload Photo</label>
+                <label htmlFor="file" className="text-gray-700 dark:text-gray-300 font-medium">
+                  {language === "eng" ? "Upload Photo" : "ატვირთე ფოტო"}
+                </label>
                 <input
                   id="file"
                   type="file"
@@ -112,7 +127,7 @@ const AddProductDialog: React.FC<AddProductDialogProps> = ({
                   className="w-40 h-10 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-2xl transition-all dark:bg-indigo-400 dark:hover:bg-indigo-500"
                   data-cy="add-product-submit"
                 >
-                  Create
+                  {language === "eng" ? "Add" : "დამატება"}
                 </button>
               </div>
             </form>
