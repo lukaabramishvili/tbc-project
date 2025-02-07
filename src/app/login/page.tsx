@@ -8,6 +8,7 @@ import Logo from "../../../public/logo.png";
 import { url } from "inspector";
 import SignInWithGithub from "./signinWithGithub";
 import SignInWithGoogle from "./signinWithGoogle";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Login() {
   const router = useRouter();
@@ -49,6 +50,8 @@ export default function Login() {
     </div>
   );
 
+  const { language } = useLanguage()
+
   return (
     <>
       {loading ? (
@@ -62,7 +65,7 @@ export default function Login() {
           </div>
         </div>
       ) : (
-        <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-700">
+        <main className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-[#2C2758]">
           <div className="w-full max-w-md p-6">
         {isLogin ? (
           <div>
@@ -70,10 +73,12 @@ export default function Login() {
             <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
               <div className="flex flex-col items-center space-y-4 font-semibold text-gray-500">
                 <Image src={Logo} alt="logo" width={200} height={200} />
-                <h1 className="text-black dark:text-white text-2xl ">Log in Job Finder</h1>
+                <h1 className="text-black dark:text-white text-2xl ">
+                  {language === "eng" ? "Log in Job Finder" : "შედი Job Finder-ზე"}
+                </h1>
                 <input
                   className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
-                  placeholder="Email"
+                  placeholder={language === "eng" ? "Email" : "იმეილი"}
                   type="email"
                   name="email"
                   id="email"
@@ -81,32 +86,36 @@ export default function Login() {
                 />
                 <input
                   className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
-                  placeholder="Password"
+                  placeholder={language === "eng" ? "Password" : "პაროლი"}
                   type="password"
                   name="password"
                   id="password"
                   data-cy="password"
                 />
-                <input
+                <button
                   className="cursor-pointer w-full p-2 bg-gray-50 rounded-full font-bold text-gray-900 border-[4px] border-gray-700 hover:border-blue-500 transition-all duration-200"
                   type="submit"
                   data-cy="login"
-                />
-                <p>
-                  Don't have an account?{" "}
+                >
+                  {language === "eng" ? "submit" : "შესვლა"}                
+                </button>
+                <p className="text-black dark:text-white">
+                  {language === "eng" ? "Don't have an account?" : "არ გაქვს ანგარიში?"}{" "}
                   <button
                     type="button"
                     onClick={toggleForm}
                     className="cursor-pointer font-semibold text-gray-500 hover:text-blue-500 transition-all duration-200 rounded-xl p-1"
                   >
-                    Sign up
+                    {language === "eng" ? "Sign up" : "დარეგისტრირდი"}
                   </button>
                 </p>
               </div>
             </div>
           </form>
 
-          <h3 className="flex items-center justify-center mt-4 dark:text-white text-xl">or</h3>
+          <h3 className="flex items-center justify-center mt-4 dark:text-white text-xl">
+            {language === "eng" ? "or" : "ან"}
+          </h3>
 
           <SignInWithGithub/>
 
@@ -118,33 +127,38 @@ export default function Login() {
             <div className="bg-gray-100 dark:bg-gray-900 dark:border-[4px] border-blue-900 rounded-2xl dark:hover:border-blue-500 bg-gray-150 shadow-xl hover:shadow-2xl transition-all duration-200 p-8">
               <div className="flex flex-col items-center space-y-4 font-semibold text-gray-500">
                 <Image src={Logo} alt="logo" width={200} height={200} />
-                <h1 className="text-black dark:text-white text-2xl">Sign up Job Finder</h1>
+                <h1 className="text-black dark:text-white text-2xl">
+                  {language === "eng" ? "Sign up Job Finder" : "დარეგისტრირდი Job Finder-ზე"}
+                </h1>
                 <input
                   className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
-                  placeholder="Email"
+                  placeholder={language === "eng" ? "Email" : "იმეილი"}
                   type="email"
                   name="email"
                   id="email-signup"
                 />
                 <input
                   className="w-full p-2 text-white bg-blue-900 rounded-md border border-gray-700 focus:border-blue-700 hover:border-blue-500 transition-all duration-200"
-                  placeholder="Password"
+                  placeholder={language === "eng" ? "Password" : "პაროლი"}
                   type="password"
                   name="password"
                   id="password-signup"
                 />
-                <input
+                <button
                   className="cursor-pointer w-full p-2 bg-gray-50 rounded-full font-bold text-gray-900 border-[4px] border-gray-700 hover:border-blue-500 transition-all duration-200"
                   type="submit"
-                />
+                  data-cy="login"
+                >
+                  {language === "eng" ? "Register" : "რეგისტრაცია"}                
+                </button>
                 <p>
-                  Do you already have an account?{" "}
+                  {language === "eng" ? "Do you already have an account?" : "უკვე გაქვთ ანგარიში?"}{" "}
                   <button
                     type="button"
                     onClick={toggleForm}
                     className="cursor-pointer font-semibold text-gray-500 hover:text-blue-500 transition-all duration-200 rounded-xl p-1"
                   >
-                    Log in
+                    {language === "eng" ? "Log in" : "ავტორიზაცია"}
                   </button>
                 </p>
               </div>
