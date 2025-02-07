@@ -18,6 +18,14 @@ export default function Home() {
 
   const { language } = useLanguage();
 
+  const categories = [
+    { name: 'Web Design', bgColor: 'bg-[#5d52ba]', borderColor: 'border-[#7b6df4]', icon: WebDesign },
+    { name: 'Marketing', bgColor: 'bg-[#f59e0b]', borderColor: 'border-[#f4b850]', icon: Marketing },
+    { name: 'Video', bgColor: 'bg-[#10b981]', borderColor: 'border-[#40f6b9]', icon: Video },
+    { name: 'Website', bgColor: 'bg-[#3b82f6]', borderColor: 'border-[#629eff]', icon: Website },
+    { name: 'Customer Support', bgColor: 'bg-[#ef4444]', borderColor: 'border-[#fa7474]', icon: CustomerSupport },
+  ];
+
   return (
     <main className="flex flex-col items-center justify-center w-full dark:bg-[#2C2758] text-center">
       <div className="search-job w-full flex items-center justify-evenly lg:flex-row flex-col gap-10 p-10">
@@ -42,34 +50,23 @@ export default function Home() {
         </div>
       </div>
       
-      <div className="browse-by-categories mt-24 mb-10">
-        <h3 className="text-5xl font-bold text-gray-900 dark:text-gray-200 mb-12">
-          {language === 'eng' ? 'Our Jobs Categories' : 'ჩვენი სამუშაოების კატეგორიები'}
+      <div className="browse-by-categories mt-24 mb-10 px-4 md:px-8 lg:px-16">
+        <h3 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-200 text-center mb-12">
+          {language === 'eng' ? 'Our Job Categories' : 'ჩვენი სამუშაოების კატეგორიები'}
         </h3>
-        <div className="categories grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-          <div className="web-design cursor-pointer bg-[#5d52ba] p-4 rounded-full flex flex-col items-center justify-center w-full aspect-square border-8 border-[#7b6df4] hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-            <Image src={WebDesign.src} alt="WebDesign" width={50} height={50} />
-            <span className="mt-2 text-white text-center">Web Design</span>
-          </div>
-          <div className="marketing cursor-pointer bg-[#f59e0b] p-4 rounded-full flex flex-col items-center justify-center w-full aspect-square border-8 border-[#f4b850] hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-            <Image src={Marketing.src} alt="Marketing" width={50} height={50} />
-            <span className="mt-2 text-white text-center">Marketing</span>
-          </div>
-          <div className="video cursor-pointer bg-[#10b981] p-4 rounded-full flex flex-col items-center justify-center w-full aspect-square border-8 border-[#40f6b9] hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-            <Image src={Video.src} alt="Video" width={50} height={50} />
-            <span className="mt-2 text-white text-center">Video</span>
-          </div>
-          <div className="website cursor-pointer bg-[#3b82f6] p-4 rounded-full flex flex-col items-center justify-center w-full aspect-square border-8 border-[#629eff] hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-            <Image src={Website.src} alt="Website" width={50} height={50} />
-            <span className="mt-2 text-white text-center">Website</span>
-          </div>
-          <div className="customer-support cursor-pointer bg-[#ef4444] p-4 rounded-full flex flex-col items-center justify-center w-full aspect-square border-8 border-[#fa7474] hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300">
-            <Image src={CustomerSupport.src} alt="Customer Support" width={50} height={50} />
-            <span className="mt-2 text-white text-center">Customer Support</span>
-          </div>
+        <div className="categories grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 place-items-center">
+          {categories.map(({ name, bgColor, borderColor, icon }, index) => (
+            <div
+              key={index}
+              className={`cursor-pointer p-6 rounded-full flex flex-col items-center justify-center w-40 h-40 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 border-8 transition-all duration-300 ${bgColor} ${borderColor} hover:border-gray-300 dark:hover:border-gray-600 shadow-lg hover:shadow-xl`}
+            >
+              <Image src={icon.src} alt={name} width={50} height={50} />
+              <span className="mt-2 text-white text-center text-sm sm:text-base">{name}</span>
+            </div>
+          ))}
         </div>
       </div>
-
+      
       <IntroductionJobFinder />
 
       <FeaturedJobscard />
