@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import githubIcon from "../../../public/github.png";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function SignInWithGithub() {
   const signInWithGithub = async () => {
@@ -24,6 +25,8 @@ export default function SignInWithGithub() {
     }
   };
 
+  const {language} = useLanguage()
+
   return (
     <form
       onSubmit={(event) => {
@@ -43,7 +46,7 @@ export default function SignInWithGithub() {
             className="w-5 h-5" 
             alt={"github logo"}        
         />
-        Sign in with GitHub
+          {language === "eng" ? "Sign in with GitHub" : "გაიარე რეგისტრაცია GitHub-ით"}
       </button>
     </form>
   );

@@ -3,6 +3,7 @@
 import { createClient } from "@/utils/supabase/client";
 import Image from "next/image";
 import GoogleIcon from "../../../public/google.png";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function SignInWithGoogle() {
   const signInWithGoogle = async () => {
@@ -24,6 +25,8 @@ export default function SignInWithGoogle() {
     }
   };
 
+  const {language} = useLanguage()
+
   return (
     <form
       onSubmit={(event) => {
@@ -43,8 +46,8 @@ export default function SignInWithGoogle() {
             className="w-5 h-5" 
             alt={"Google logo"}        
         />
-        Sign in with Google
-      </button>
+          {language === "eng" ? "Sign in with Google" : "გაიარე რეგისტრაცია Google-ით"}
+        </button>
     </form>
   );
 }
