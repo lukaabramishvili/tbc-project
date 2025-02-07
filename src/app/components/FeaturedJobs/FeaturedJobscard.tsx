@@ -150,7 +150,7 @@ const FeaturedJobscard = () => {
                           value={formData.name}
                           onChange={handleChange}
                           placeholder={language === 'eng' ? 'Full Name' : 'სრული სახელი'}
-                          className="p-3 border rounded-lg dark:bg-gray-700"
+                          className="p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
                         />
                         <input
                           required
@@ -159,7 +159,7 @@ const FeaturedJobscard = () => {
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="Email"
-                          className="p-3 border rounded-lg dark:bg-gray-700"
+                          className="p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
                         />
                         <input
                           required
@@ -167,7 +167,7 @@ const FeaturedJobscard = () => {
                           value={formData.subject}
                           onChange={handleChange}
                           placeholder={language === 'eng' ? 'Position' : 'პოზიცია'}
-                          className="p-3 border rounded-lg dark:bg-gray-700"
+                          className="p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
                         />
                       </div>
                       
@@ -177,7 +177,7 @@ const FeaturedJobscard = () => {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder={language === 'eng' ? 'Your qualifications...' : 'თქვენი კვალიფიკაცია...'}
-                        className="w-full p-3 border rounded-lg h-32 resize-y dark:bg-gray-700"
+                        className="w-full p-3 border rounded-lg h-32 resize-y dark:bg-gray-700 dark:text-white"
                       />
 
                       <button
