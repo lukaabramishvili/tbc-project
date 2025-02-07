@@ -3,7 +3,6 @@ import { Minus, Plus, X } from "lucide-react"; // Assuming you have these icons 
 import { CartItem, useCart } from "../providers/CartProvider";
 import { createCheckoutSessionForCart } from "@/app/actions/stripe";
 import "./style.css";
-import { use } from "chai";
 import { useLanguage } from "@/app/context/LanguageContext";
 
 export default function CartDialog() {
@@ -28,7 +27,7 @@ export default function CartDialog() {
 
   return (
     <>
-      <button className="button" onClick={handleOpen}>
+      <button className="button bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500" onClick={handleOpen}>
         <span>
           {language === "eng" ? "Cart Items" : "კალათა"}
         </span>

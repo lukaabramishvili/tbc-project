@@ -8,6 +8,7 @@ import SortComponent from "../components/sort/sortComponent";
 import Like from "../../../public/like.png";
 import Dislike from "../../../public/dislike.png";
 import AddPostDialog from "../components/AddPostDialog/AddPostDialog";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Post {
   id: number;
@@ -87,16 +88,19 @@ const PostsFetch = () => {
     setIsDeleting(null);
   };
 
+  const { language } = useLanguage()
 
   return (
     <div className="p-10 bg-gray-100 min-h-[80vh] dark:bg-[#2C2758]">
-      <h1 className="text-center text-4xl mb-8 dark:text-white">Posts</h1>
+      <h1 className="text-center text-4xl mb-8 dark:text-white">
+        {language === "eng" ? "Posts" : "პოსტები"}
+      </h1>
+      <div className="flex justify-center mb-4">
+        <AddPostDialog />
+      </div>
       <div className="flex items-center justify-between w-full mt-4 md:flex-row flex-col">
         <SearchBar searchType="posts" />
         <SortComponent sortType="posts" />
-      </div>
-      <div className="flex justify-center mb-4">
-        <AddPostDialog />
       </div>
       <div className="flex flex-col gap-4">
         {sortedPosts.length > 0 ? (
@@ -125,7 +129,7 @@ const PostsFetch = () => {
                     {isDeleting === post.id ? "Deleting..." : "Delete"}
                   </button>
             
-                  {/* <div className="flex items-center gap-10">
+                  <div className="flex items-center gap-10">
                     <div className="flex items-center gap-2">
                       <img src={Like.src} alt="like" className="w-5" />
                       <p>{post.like}</p>
@@ -135,7 +139,9 @@ const PostsFetch = () => {
                       <p>{post.dislike}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-gray-500 dark:text-white mb-4">Views: {post.views}</p> */}
+                  <p className="text-sm text-gray-500 dark:text-white mb-4">
+                    {language === "eng" ? "Views: " : "ნახვები: "} {post.views}
+                  </p>
                 </div>
               </Link>
             </div>

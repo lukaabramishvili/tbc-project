@@ -8,6 +8,7 @@ import { useCart } from "../components/providers/CartProvider";
 import CartDialog from "../components/CartDialog/CartDialog";
 import SearchBar from "../components/searchBar/searchBar";
 import SortComponent from '../components/sort/sortComponent';
+import { useLanguage } from "../context/LanguageContext";
 
 export interface Product {
   id: number;
@@ -84,12 +85,16 @@ const Products = () => {
     }
   });
 
+  const { language } = useLanguage()
+
   return (
     <div className="w-full min-h-screen p-6 bg-gray-100 dark:bg-[#2C2758]">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-center text-3xl md:text-4xl font-bold mb-6 dark:text-white">Our Products</h1>
-        
+        <h1 className="text-center text-3xl md:text-4xl font-bold mb-6 dark:text-white">
+          {language === "eng" ? "Our Products" : "ჩვენი პროდუქტები"}
+        </h1>
         <div className="flex flex-col items-center justify-center mb-6">
+          <CartDialog />
           <AddProductDialog retriggerFetch={retriggerFetch} />
           <div className="flex flex-col md:flex-row w-full mt-4 items-center justify-between gap-4">
             <SearchBar searchType="products" />
@@ -151,8 +156,6 @@ const Products = () => {
             <p className="text-center text-lg text-gray-600 dark:text-gray-300">No products found</p>
           )}
         </div>
-  
-        <CartDialog />
       </div>
     </div>
   );

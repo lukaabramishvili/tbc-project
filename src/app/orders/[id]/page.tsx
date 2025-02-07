@@ -60,7 +60,10 @@ export default async function OrderDetailsPage({ params }: Params) {
           <div className="flex justify-between">
             <span className="font-medium text-white">Price:</span>
             <span className="text-white">
-              ${new Intl.NumberFormat("en-US").format(order.price)}
+              ${new Intl.NumberFormat("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              }).format(product.price / 100)}
             </span>
           </div>
           <div className="flex justify-between">
@@ -93,7 +96,10 @@ export default async function OrderDetailsPage({ params }: Params) {
               <div className="flex justify-between">
                 <span className="font-medium text-white">Price:</span>
                 <span className="text-white">
-                  ${new Intl.NumberFormat("en-US").format(product.price)}
+                  ${new Intl.NumberFormat("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(product.price / 100)}
                 </span>
               </div>
             </div>

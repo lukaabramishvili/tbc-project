@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useDebounce } from "@/app/hook/useDebounce";
 import Search from "../../../../public/search.png";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 interface SearchBarProps {
   searchType: string;
@@ -28,6 +29,8 @@ export default function SearchBar({ searchType }: SearchBarProps) {
     router.push(`/${searchType}/?${params.toString()}`);
   }, [debouncedValue, router, searchType, sortBy]);
 
+  const { language } = useLanguage()
+
   return (
     <div className="searchBar-container flex items-center gap-2">
       <img className="searchBar-icon w-8 h-8" src={Search.src} alt="search-icon" />
@@ -35,7 +38,7 @@ export default function SearchBar({ searchType }: SearchBarProps) {
         className="searchBar-input p-4 my-4 w-80 rounded-xl bg-gray-300"
         type="text"
         value={searchTerm}
-        placeholder="Looking for something?"
+        placeholder={language === "eng" ? "Looking for something?" : "რამეს ეძებ?"}
         onChange={handleSearchChange}
       />
     </div>

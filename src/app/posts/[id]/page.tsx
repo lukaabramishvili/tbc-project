@@ -5,6 +5,7 @@ import Like from "../../../../public/like.png";
 import Dislike from "../../../../public/dislike.png";
 import ReturnButton from "../../components/ReturnButton/returnButton";
 import NotFoundPage from "@/app/NotFoundPage";
+import { useLanguage } from "@/app/context/LanguageContext";
 
 interface Post {
   id: number;
@@ -57,6 +58,8 @@ export default function PostsDetails({ params }: { params: Params }) {
   
   if (!post) return <NotFoundPage />;
 
+  const { language } = useLanguage()
+
   return (
     <div className="w-full min-h-[calc(100vh-12rem)] flex flex-col justify-center items-center bg-white dark:bg-[#2C2758] rounded-lg shadow-md pt-16 pb-16 gap-7 px-4">
       <div className="max-w-4xl w-full text-center flex flex-col gap-10 ">
@@ -66,7 +69,7 @@ export default function PostsDetails({ params }: { params: Params }) {
         </p>
       </div>
       
-      {/* <div className="flex items-center gap-6 md:gap-11">
+      <div className="flex items-center gap-6 md:gap-11">
         <div className="flex items-center gap-2 dark:text-white">
           <img src={Like.src} alt="like" className="w-5" />
           <p>{post.like}</p>
@@ -77,8 +80,8 @@ export default function PostsDetails({ params }: { params: Params }) {
         </div>
       </div>
       <p className="text-sm text-gray-500 dark:text-white mb-4">
-        Views: {post.views}
-      </p> */}
+        {language === "eng" ? "Views: " : "ნახვები: "} {post.views}
+      </p>
       
       <div>
         <ReturnButton />
