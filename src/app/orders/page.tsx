@@ -44,21 +44,21 @@ export default async function OrdersPage() {
         <ul className="flex flex-col gap-2 w-full max-w-6xl space-y-6 px-4 sm:px-8 md:px-12 lg:px-16">
           {sortedOrders.map((order) => (
             <Link href={`/orders/${order.id}`} key={order.id} className="w-full">
-              <li className="list-none border border-gray-300 bg-white shadow-lg rounded-xl p-6 hover:shadow-2xl transition-shadow duration-300 cursor-pointer w-full">
+              <li className="list-none border border-gray-300 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500 shadow-lg rounded-xl p-6 hover:shadow-2xl transition-shadow duration-300 cursor-pointer w-full">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full">
                   <div className="w-full">
-                    <p className="text-lg font-semibold text-gray-700">
+                    <p className="text-lg font-semibold text-white">
                       <strong>Order ID:</strong> {order.id}
                     </p>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-lg text-white">
                       <strong>Product ID:</strong> {order.product_id}
                     </p>
-                    <p className="text-lg text-gray-600">
+                    <p className="text-lg text-white">
                       <strong>Price:</strong> $
                       {new Intl.NumberFormat("en-US").format(order.price)}
                     </p>
                   </div>
-                  <p className="text-sm text-gray-500 mt-4 md:mt-0 w-full md:w-auto">
+                  <p className="text-sm text-white mt-4 md:mt-0 w-full md:w-auto">
                     <strong>Date:</strong>{" "}
                     {new Date(order.created_at).toLocaleString()}
                   </p>

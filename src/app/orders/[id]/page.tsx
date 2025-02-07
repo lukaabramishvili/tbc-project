@@ -11,7 +11,6 @@ export default async function OrderDetailsPage({ params }: Params) {
   const supabase = await createClient();
   const id = params.id;
 
-  // Fetch order details by ID
   const { data: order, error: orderError } = await supabase
     .from("orders")
     .select("*")
@@ -28,7 +27,6 @@ export default async function OrderDetailsPage({ params }: Params) {
     );
   }
 
-  // Fetch product details using product_id from the order
   const { data: product, error: productError } = await supabase
     .from("products")
     .select("*")
@@ -46,16 +44,15 @@ export default async function OrderDetailsPage({ params }: Params) {
   }
 
   return (
-    <section className="max-w-[136rem] mx-auto p-8 flex flex-col items-center gap-12">
-      <h1 className="text-4xl font-extrabold text-gray-900">Order Details</h1>
+    <section className="max-w-[136rem] mx-auto p-8 py-24 flex flex-col items-center gap-12 dark:bg-[#2C2758]">
+      <h1 className="text-4xl font-extrabold dark:text-white dark:bg-[#2C2758] text-gray-900">Order Details</h1>
       <div className="w-full max-w-4xl bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden">
-        {/* Order Information */}
-        <div className="bg-gray-100 px-6 py-4 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-700">
+        <div className="bg-gray-100 px-6 py-4 border-b border-gray-200 dark:bg-[#2C2758]">
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-white">
             Order Information
           </h2>
         </div>
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">
           <div className="flex justify-between">
             <span className="font-medium text-gray-600">Order ID:</span>
             <span className="text-gray-800">{order.id}</span>
@@ -74,13 +71,12 @@ export default async function OrderDetailsPage({ params }: Params) {
           </div>
         </div>
 
-        {/* Product Information */}
-        <div className="bg-gray-100 px-6 py-4 border-t border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-700">
+        <div className="bg-gray-100 px-6 py-4 border-t border-gray-200 dark:bg-[#2C2758] ">
+          <h2 className="text-xl font-semibold text-gray-700 dark:text-white">
             Product Information
           </h2>
         </div>
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 bg-[#7F73EB] dark:bg-gradient-to-r dark:from-purple-500 dark:via-indigo-500 dark:to-blue-500">
           <div className="flex flex-col items-center md:flex-row md:items-start md:gap-6">
             <Image
               src={product.img_url}
