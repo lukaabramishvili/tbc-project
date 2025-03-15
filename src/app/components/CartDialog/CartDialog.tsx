@@ -55,6 +55,9 @@ export default function CartDialog() {
             </g>
           </g>
         </svg>
+        <div>
+          <span className="text-white dark:text-gray-200">{cartItems.length}</span>
+        </div>
       </button>
 
       {isOpen && (
